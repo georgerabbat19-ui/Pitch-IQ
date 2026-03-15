@@ -10,29 +10,29 @@ A fixture with no qualifying team gets no race tag (appears only in "All Fixture
 ### 🏆 Title Race
 - **Threshold:** Within **5 points of 1st place**
 - Condition: `team pts >= (1st place pts - 5)`
-- Example GW31: Arsenal = 70pts → threshold = 65pts+ → **no team qualifies → filter empty**
+- Example GW31: Arsenal = 70pts → threshold = 65pts+ → no team qualifies → filter empty
 
 ### 🔵 Top 5 Race *(Europa League)*
 - **Threshold:** Within **5 points of 5th place**
 - Condition: `team pts >= (5th place pts - 5)`
-- **Guard clause:** Top 5 tag is DISABLED if `(2nd place pts - 6th place pts) > 6`
-  - If 2nd place is more than 6 points ahead of 6th, the race isn't competitive enough to tag
-- Example GW31: Chelsea = 48pts → threshold = 43pts+, BUT Man City (2nd, 61pts) vs Liverpool (6th, 48pts) = **13pt gap > 6 → Top 5 DISABLED**
-- **Priority:** Top 5 > European (if enabled and a team hits both, Top 5 wins)
+- **2nd place exception:** If 2nd place is more than 6 points ahead of 6th place, 2nd place team does NOT qualify for Top 5 (they are not in that race). All other teams still use the standard threshold.
+- Example GW31: Chelsea = 48pts → threshold = 43pts+
+  - Man City (2nd, 61pts): gap to 6th (Liverpool, 48pts) = 13pts > 6 → **Man City excluded from Top 5**
+  - Liverpool (48pts): qualifies ✅ | Brentford (44pts): qualifies ✅
+- **Priority:** Top 5 > European
 
 ### 🌍 European Race *(Conference League / broader push)*
 - **Threshold:** Within **4 points of 6th place**
 - Condition: `team pts >= (6th place pts - 4)`
-- Example GW31: Liverpool = 48pts → threshold = 44pts+
-- **Only applies** if Top 5 tag is either disabled or team not already tagged Title/Top 5
-- Example GW31: Top 5 disabled → Liverpool (48pts) and Brentford (44pts) fall here
+- **Only applies** if team NOT already tagged Title or Top 5
+- Example GW31: threshold = 44pts+ → Liverpool and Brentford already tagged Top 5, so European is empty
 
 ---
 
 ## Application Rules (in order)
-1. Check if Title race is active: any team in the fixture within 5pts of 1st?
-2. Check if Top 5 race is active: gap between 2nd and 6th ≤ 6pts? If yes, any team within 5pts of 5th?
-3. Check European race: any team within 4pts of 6th, not already tagged?
+1. Check Title race: any team within 5pts of 1st?
+2. Check Top 5 race: any team within 5pts of 5th? (exclude 2nd place if they are 6+ pts clear of 6th)
+3. Check European race: any team within 4pts of 6th, not already tagged Title/Top 5?
 4. One tag per fixture, highest priority wins
 5. Fixtures with no qualifying teams → unlabelled (visible under "All Fixtures" only)
 
@@ -40,25 +40,20 @@ A fixture with no qualifying team gets no race tag (appears only in "All Fixture
 
 ## Example: GW31 (15 March 2026)
 
-**Standings used:** Arsenal 70 (1st) · Man City 61 (2nd) · Chelsea 48 (5th) · Liverpool 48 (6th)
+**Standings:** Arsenal 70 (1st) · Man City 61 (2nd) · Chelsea 48 (5th) · Liverpool 48 (6th) · Brentford 44 (7th)
 
-**Thresholds:**
-- Title: 65pts+ → nobody qualifies
-- Top 5: DISABLED (2nd to 6th gap = 13pts, exceeds 6pt guard)
-- European: 44pts+ → Liverpool (48) ✅, Brentford (44) ✅
+| Fixture | Tag | Reason |
+|---|---|---|
+| Man City vs Crystal Palace | *(none)* | Man City misses Title (65+); excluded from Top 5 (2nd, 13pts clear of 6th) |
+| Bournemouth vs Man United | *(none)* | Man Utd 51pts misses Title (65+) and Top 5 (43+ but Man Utd is not in that race) |
+| Brighton vs Liverpool | 🔵 Top 5 | Liverpool 48pts ≥ 43pt threshold |
+| Brentford vs Wolves | 🔵 Top 5 | Brentford 44pts ≥ 43pt threshold |
+| Aston Villa vs West Ham | *(none)* | Villa 51pts misses Title (65+); not in Top 5 race |
+| Newcastle vs Sunderland | *(none)* | Newcastle 42pts below Top 5 threshold (43+) |
+| Spurs vs Nottm Forest | *(none)* | Neither qualifies |
+| Fulham vs Burnley | *(none)* | Neither qualifies |
 
-| Fixture | Tag |
-|---|---|
-| Man City vs Crystal Palace | *(none — title disabled, top5 disabled, neither hits 44+)* |
-| Bournemouth vs Man United | *(none)* |
-| Brighton vs Liverpool | 🌍 European |
-| Brentford vs Wolves | 🌍 European |
-| Aston Villa vs West Ham | *(none — 51pts below title threshold 65+)* |
-| Newcastle vs Sunderland | *(none — 42pts below European threshold 44+)* |
-| Spurs vs Nottm Forest | *(none)* |
-| Fulham vs Burnley | *(none)* |
-
-**GW31 result:** Title = empty · Top 5 = disabled · European = 2 fixtures
+**GW31 result:** Title = empty · Top 5 = 2 fixtures · European = empty
 
 ---
 

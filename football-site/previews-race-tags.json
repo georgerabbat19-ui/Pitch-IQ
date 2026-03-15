@@ -16,17 +16,17 @@
     },
     "thresholds": {
       "title": "65pts+ (within 5 of Arsenal 70pts) — EMPTY this GW",
-      "top5": "DISABLED — 2nd (Man City 61pts) to 6th (Liverpool 48pts) gap = 13pts, exceeds 6pt guard",
-      "european": "44pts+ (within 4 of Liverpool 48pts) — ACTIVE"
+      "top5": "43pts+ (within 5 of Chelsea 48pts) — ACTIVE. Man City excluded (2nd place, 13pts clear of 6th = not in this race)",
+      "european": "44pts+ (within 4 of Liverpool 48pts) — EMPTY (qualifying teams already tagged Top 5)"
     },
-    "priority_rule": "Title > Top 5 > European. One tag per fixture only. Top 5 disabled when 2nd-to-6th gap > 6pts.",
+    "priority_rule": "Title > Top 5 > European. One tag per fixture only. 2nd place excluded from Top 5 if they are 6+ pts clear of 6th.",
     "logic_doc": "/home/ai/.openclaw/workspace/football-site/previews-race-logic.md"
   },
   "fixtures": [
     {
       "id": "brentford-wolves",
-      "races": ["european"],
-      "race_notes": "Brentford (44pts) hits European threshold (44+). Top 5 disabled this GW."
+      "races": ["top5"],
+      "race_notes": "Brentford (44pts) hits Top 5 threshold (43+). Top 5 active for non-2nd-place teams."
     },
     {
       "id": "bournemouth-man-utd",
@@ -35,8 +35,8 @@
     },
     {
       "id": "brighton-liverpool",
-      "races": ["european"],
-      "race_notes": "Liverpool (48pts) hits European threshold (44+). Top 5 disabled this GW. Brighton (40pts) not in any race."
+      "races": ["top5"],
+      "race_notes": "Liverpool (48pts) hits Top 5 threshold (43+). Top 5 active for non-2nd-place teams. Brighton (40pts) not in any race."
     },
     {
       "id": "fulham-burnley",
