@@ -453,7 +453,7 @@ header {
 }
 
 .cards-grid.wide {
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
 }
 
 /* ===== CARD ===== */
@@ -961,6 +961,144 @@ footer p {
   gap: 4px;
   flex-wrap: nowrap;
   margin-top: 4px;
+}
+
+/* ===== FORM STAT CARD (new design) ===== */
+.form-stat-card {
+  background: #12151e;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  animation: fadeUp 0.3s ease both;
+}
+
+.form-stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+  border-color: rgba(255,255,255,0.15);
+}
+
+.form-stat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  gap: 12px;
+}
+
+.form-stat-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.form-card-badge-img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
+  flex-shrink: 0;
+}
+
+.form-stat-team {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.2;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+}
+
+.form-stat-league {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.65);
+  font-weight: 500;
+  margin-top: 2px;
+  letter-spacing: 0.3px;
+}
+
+.form-stat-rank {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: rgba(255,255,255,0.9);
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.2);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  letter-spacing: -1px;
+}
+
+.form-stat-body {
+  padding: 14px 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-stat-pips {
+  display: flex;
+  gap: 4px;
+}
+
+.form-stat-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr;
+  gap: 6px;
+}
+
+.form-stat-box {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px;
+  padding: 7px 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.form-stat-val {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1;
+  text-align: center;
+}
+
+.form-stat-val.positive { color: var(--accent-green); }
+.form-stat-val.negative { color: var(--accent-red); }
+
+.form-stat-lbl {
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.form-stat-scorer {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.form-stat-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  gap: 8px;
+}
+
+.form-stat-next {
+  font-size: 0.75rem;
+  color: var(--text-muted);
 }
 
 /* ===== FORM PIPS (app.js form-pip) ===== */

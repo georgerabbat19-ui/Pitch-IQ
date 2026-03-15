@@ -122,26 +122,78 @@ function renderForm(filter = 'all') {
   const items = filter === 'all' ? FORM_DATA : FORM_DATA.filter(i => i.league === filter);
   document.getElementById('countForm').textContent = FORM_DATA.length;
   if (!items.length) { grid.innerHTML = '<p class="empty-state">No items match this filter.</p>'; return; }
+
+  // reuse same club meta from EPL teams section
+  const formClubMeta = {
+    'Arsenal':           { color: '#ef0107', plId: 't3'  },
+    'Manchester City':   { color: '#1c86cd', plId: 't43' },
+    'Chelsea':           { color: '#034694', plId: 't8'  },
+    'Liverpool':         { color: '#c8102e', plId: 't14' },
+    'Tottenham Hotspur': { color: '#132257', plId: 't6'  },
+    'Wolves':            { color: '#c8a84b', plId: 't39' },
+    'Manchester United': { color: '#da291c', plId: 't1'  },
+    'Aston Villa':       { color: '#670e36', plId: 't7'  },
+    'Brentford':         { color: '#e30613', plId: 't94' },
+    'Fulham':            { color: '#cc0000', plId: 't54' },
+    'Bournemouth':       { color: '#d71920', plId: 't91' },
+    'Brighton':          { color: '#0057b8', plId: 't36' },
+    'Newcastle':         { color: '#241f20', plId: 't4'  },
+    'Crystal Palace':    { color: '#1b458f', plId: 't31' },
+    'Everton':           { color: '#003399', plId: 't11' },
+    'Sunderland':        { color: '#eb172b', plId: 't56' },
+    'Leeds United':      { color: '#1d428a', plId: 't2'  },
+    'West Ham':          { color: '#7a263a', plId: 't21' },
+    'Nottm Forest':      { color: '#dd0000', plId: 't17' },
+    'Burnley':           { color: '#6c1d45', plId: 't90' },
+  };
+  const PL_BADGE = id => `https://resources.premierleague.com/premierleague/badges/70/${id}.png`;
+
   grid.innerHTML = items.map(i => {
     const gd = i.gf - i.ga;
+    const gdStr = (gd >= 0 ? '+' : '') + gd;
     const formPips = i.form.map(r => `<span class="form-pip form-${r.toLowerCase()}">${r}</span>`).join('');
+    const meta = formClubMeta[i.team] || { color: '#2a2f40', plId: '' };
+    const pts = i.wins * 3 + i.draws;
+    const badgeImg = meta.plId
+      ? `<img class="form-card-badge-img" src="${PL_BADGE(meta.plId)}" alt="${i.team}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">`
+      : '';
+    const badgeFallback = `<span style="${meta.plId ? 'display:none' : ''};font-size:2.2rem">${i.badge}</span>`;
+
     return `
-    <div class="card" data-search="${i.team} ${i.leagueName}">
-      <div class="card-border" style="background:var(--yellow)"></div>
-      <div class="card-body">
-        <div class="card-top">
-          <span class="card-tag">${i.leagueName}</span>
-          <span class="impact-badge impact-low">#${i.rank}</span>
+    <div class="form-stat-card" data-search="${i.team} ${i.leagueName}">
+      <div class="form-stat-header" style="background:linear-gradient(135deg,${meta.color}ee 0%,${meta.color}88 100%)">
+        <div class="form-stat-header-left">
+          ${badgeImg}${badgeFallback}
+          <div>
+            <div class="form-stat-team">${i.team}</div>
+            <div class="form-stat-league">${i.leagueName}</div>
+          </div>
         </div>
-        <div class="card-title">${i.badge} ${i.team}</div>
-        <div class="card-form">${formPips}</div>
-        <div class="card-stats">
-          <span>P${i.played}</span><span>${i.wins}W-${i.draws}D-${i.losses}L</span>
-          <span>GD ${gd >= 0 ? '+' : ''}${gd}</span><span>${i.cleanSheets} CS</span>
+        <div class="form-stat-rank">#${i.rank}</div>
+      </div>
+      <div class="form-stat-body">
+        <div class="form-stat-pips">${formPips}</div>
+        <div class="form-stat-row">
+          <div class="form-stat-box">
+            <span class="form-stat-val">${pts}</span>
+            <span class="form-stat-lbl">PTS</span>
+          </div>
+          <div class="form-stat-box">
+            <span class="form-stat-val">${i.wins}W ${i.draws}D ${i.losses}L</span>
+            <span class="form-stat-lbl">Record</span>
+          </div>
+          <div class="form-stat-box">
+            <span class="form-stat-val ${gd >= 0 ? 'positive' : 'negative'}">${gdStr}</span>
+            <span class="form-stat-lbl">GD</span>
+          </div>
+          <div class="form-stat-box">
+            <span class="form-stat-val">${i.cleanSheets}</span>
+            <span class="form-stat-lbl">CS</span>
+          </div>
         </div>
-        <div class="card-detail">⭐ ${i.topScorer}</div>
-        <div class="card-footer">
-          <span class="card-match">Next: ${i.nextMatch}</span>
+        <div class="form-stat-scorer">⭐ ${i.topScorer}</div>
+        <div class="form-stat-footer">
+          <span class="form-stat-next">Next: ${i.nextMatch}</span>
           ${i.source ? `<a class="card-source" href="${i.source}" target="_blank" rel="noopener">Source ↗</a>` : ''}
         </div>
       </div>
