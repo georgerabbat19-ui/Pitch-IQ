@@ -1191,9 +1191,10 @@ footer p {
   white-space: nowrap;
 }
 
-.imp-title    { background: rgba(255,214,0,0.12);  color: #ffd600; border: 1px solid rgba(255,214,0,0.25); }
-.imp-top4     { background: rgba(68,138,255,0.12); color: #448aff; border: 1px solid rgba(68,138,255,0.25); }
-.imp-europa   { background: rgba(0,230,118,0.1);   color: #00e676; border: 1px solid rgba(0,230,118,0.2); }
+.imp-title    { background: rgba(255,214,0,0.12);   color: #ffd600; border: 1px solid rgba(255,214,0,0.25); }
+.imp-top4,
+.imp-top5     { background: rgba(68,138,255,0.12);  color: #448aff; border: 1px solid rgba(68,138,255,0.25); }
+.imp-europa   { background: rgba(0,230,118,0.1);    color: #00e676; border: 1px solid rgba(0,230,118,0.2); }
 .imp-relegation { background: rgba(244,67,54,0.12); color: #f44336; border: 1px solid rgba(244,67,54,0.25); }
 .imp-low      { background: rgba(255,255,255,0.04); color: #5a6070; border: 1px solid rgba(255,255,255,0.07); }
 
