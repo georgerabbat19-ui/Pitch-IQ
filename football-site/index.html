@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PitchIQ — Football Predictions Intelligence</title>
+  <meta name="description" content="Aggregated football intelligence for smarter predictions — injuries, transfers, manager changes, VAR rules, and team form." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚽</text></svg>" />
+</head>
+<body>
+
+<!-- ===== CRISIS BANNER ===== -->
+<div class="crisis-banner" id="crisisBanner">
+  <div class="crisis-banner-left">
+    <span class="crisis-banner-icon">🚨</span>
+    <span class="crisis-banner-text"><strong>GW30 Crisis Alert:</strong> Spurs — 13 players out. Van de Ven &amp; Romero suspended. Liverpool away.</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px">
+    <a href="#news" class="crisis-banner-cta">Review Now</a>
+    <button class="crisis-banner-dismiss" id="crisisDismiss" title="Dismiss">✕</button>
+  </div>
+</div>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo">
+      <div class="logo-icon">⚽</div>
+      <div>
+        <div class="logo-text">PitchIQ</div>
+        <div class="logo-tagline">Predictions Intelligence</div>
+      </div>
+    </a>
+
+    <nav>
+      <ul class="nav-tabs" id="navTabs">
+        <li><a href="#injuries" class="active" data-section="injuries"><span class="tab-dot"></span>Injuries &amp; Suspensions</a></li>
+        <li><a href="#transfers" data-section="transfers"><span class="tab-dot"></span>Transfers</a></li>
+        <li><a href="#managers" data-section="managers"><span class="tab-dot"></span>Manager Changes</a></li>
+        <li><a href="#rules" data-section="rules"><span class="tab-dot"></span>Rules &amp; VAR</a></li>
+        <li><a href="#form" data-section="form"><span class="tab-dot"></span>Form &amp; Stats</a></li>
+        <li><a href="#epl-teams" data-section="epl-teams"><span class="tab-dot"></span>EPL Teams</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-right">
+      <div class="live-badge">
+        <div class="live-dot"></div>
+        Live
+      </div>
+      <span class="last-updated" id="lastUpdated">Updated just now</span>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Smarter Predictions,<br /><span>Better Decisions.</span></h1>
+    <p>Real-time intelligence on injuries, transfers, manager shifts, VAR rule changes, and team form — everything that actually moves the needle.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-value" id="statInjuries">—</span>
+        <span class="hero-stat-label">Injury Updates</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-value" id="statTransfers">—</span>
+        <span class="hero-stat-label">Transfer Moves</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-value" id="statManagers">—</span>
+        <span class="hero-stat-label">Manager Changes</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-value" id="statVar">—</span>
+        <span class="hero-stat-label">Rule Updates</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-value" id="statTeams">—</span>
+        <span class="hero-stat-label">Teams Tracked</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MAIN ===== -->
+<main class="main-content">
+
+  <!-- Alert -->
+  <div class="alert-banner">
+    <span class="alert-icon">⚡</span>
+    <p><strong>GW29 Tip:</strong> Three top-six clubs are missing key strikers this weekend. Bookmakers haven't fully adjusted. See injury section for details.</p>
+  </div>
+
+  <!-- Search -->
+  <div class="search-bar-wrap">
+    <span class="search-icon">🔍</span>
+    <input type="text" class="search-bar" id="searchBar" placeholder="Search player, club, or topic…" />
+  </div>
+
+  <!-- ===== INJURIES & SUSPENSIONS ===== -->
+  <section class="section" id="injuries">
+    <div class="section-header">
+      <div class="section-title">
+        <span class="section-icon">🩹</span>
+        Injuries &amp; Suspensions
+        <span class="section-count" id="countInjuries">—</span>
+      </div>
+      <div class="section-filters">
+        <button class="filter-btn active" data-filter="all" data-target="injuries-grid">All</button>
+        <button class="filter-btn" data-filter="injury" data-target="injuries-grid">Injuries</button>
+        <button class="filter-btn" data-filter="suspension" data-target="injuries-grid">Suspensions</button>
+        <button class="filter-btn" data-filter="doubt" data-target="injuries-grid">Doubt</button>
+      </div>
+    </div>
+    <div class="cards-grid" id="injuries-grid">
+      <!-- Cards injected by app.js -->
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ===== TRANSFERS ===== -->
+  <section class="section" id="transfers">
+    <div class="section-header">
+      <div class="section-title">
+        <span class="section-icon">🔄</span>
+        Transfers
+        <span class="section-count" id="countTransfers">—</span>
+      </div>
+      <div class="section-filters">
+        <button class="filter-btn active" data-filter="all" data-target="transfers-grid">All</button>
+        <button class="filter-btn" data-filter="transfer-in" data-target="transfers-grid">Signings</button>
+        <button class="filter-btn" data-filter="transfer-out" data-target="transfers-grid">Departures</button>
+      </div>
+    </div>
+    <div class="cards-grid" id="transfers-grid">
+      <!-- Cards injected by app.js -->
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ===== MANAGER CHANGES ===== -->
+  <section class="section" id="managers">
+    <div class="section-header">
+      <div class="section-title">
+        <span class="section-icon">🎙️</span>
+        Manager Changes
+        <span class="section-count" id="countManagers">—</span>
+      </div>
+    </div>
+    <div class="cards-grid wide" id="managers-grid">
+      <!-- Cards injected by app.js -->
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ===== RULES & VAR ===== -->
+  <section class="section" id="rules">
+    <div class="section-header">
+      <div class="section-title">
+        <span class="section-icon">📺</span>
+        Rules &amp; VAR Changes
+        <span class="section-count" id="countRules">—</span>
+      </div>
+    </div>
+    <div class="cards-grid wide" id="rules-grid">
+      <!-- Cards injected by app.js -->
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ===== FORM & STATS ===== -->
+  <section class="section" id="form">
+    <div class="section-header">
+      <div class="section-title">
+        <span class="section-icon">📊</span>
+        Form &amp; Stats
+        <span class="section-count" id="countForm">—</span>
+      </div>
+      <div class="section-filters">
+        <button class="filter-btn active" data-filter="all" data-target="form-grid">All Leagues</button>
+        <button class="filter-btn" data-filter="premier-league" data-target="form-grid">Premier League</button>
+        <button class="filter-btn" data-filter="la-liga" data-target="form-grid">La Liga</button>
+        <button class="filter-btn" data-filter="bundesliga" data-target="form-grid">Bundesliga</button>
+        <button class="filter-btn" data-filter="serie-a" data-target="form-grid">Serie A</button>
+      </div>
+    </div>
+    <div class="cards-grid wide" id="form-grid">
+      <!-- Cards injected by app.js -->
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ===== EPL TEAMS ===== -->
+  <section class="section" id="epl-teams">
+    <div class="section-header">
+      <div class="section-title">
+        <span class="section-icon">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span>
+        EPL Teams
+        <span class="section-count" id="countEplTeams">—</span>
+      </div>
+    </div>
+    <div class="epl-teams-grid" id="epl-teams-grid">
+      <!-- Team cards injected by app.js -->
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== EPL TEAM MODAL ===== -->
+<div class="epl-modal-overlay" id="eplModalOverlay" role="dialog" aria-modal="true" aria-labelledby="eplModalTitle">
+  <div class="epl-modal">
+    <div class="epl-modal-header">
+      <div class="epl-modal-team-info">
+        <div class="epl-modal-badge" id="eplModalBadge">⚽</div>
+        <div>
+          <div class="epl-modal-title" id="eplModalTitle">Team Name</div>
+          <div class="epl-modal-subtitle">Premier League · 2024/25</div>
+        </div>
+      </div>
+      <button class="epl-modal-close" id="eplModalClose" aria-label="Close">✕</button>
+    </div>
+    <div class="epl-modal-body" id="eplModalBody">
+      <!-- News cards injected dynamically -->
+    </div>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Pitch<span>IQ</span></div>
+    <p>Football Predictions Intelligence &mdash; Data for informational purposes only.</p>
+    <p style="margin-top:4px;">Not affiliated with any football governing body. Please gamble responsibly.</p>
+  </div>
+</footer>
+
+<script src="data.js"></script><!-- DATA ONLY — safe for sub-agents to update -->
+<script src="app.js"></script><!-- RENDERING ENGINE — do not touch -->
+<script>
+  // Crisis Banner dismiss
+  (function() {
+    var btn = document.getElementById('crisisDismiss');
+    var banner = document.getElementById('crisisBanner');
+    if (btn && banner) {
+      btn.addEventListener('click', function() {
+        banner.classList.add('hidden');
+        try { sessionStorage.setItem('crisisBannerDismissed', '1'); } catch(e) {}
+      });
+      try {
+        if (sessionStorage.getItem('crisisBannerDismissed')) banner.classList.add('hidden');
+      } catch(e) {}
+    }
+  })();
+</script>
+</body>
+</html>
