@@ -388,7 +388,7 @@ function setupLastUpdated() {
 // ─── MATCH PREVIEWS ───────────────────────────────────────────────────────────
 
 function importanceLabel(key) {
-  return { title: '🏆 Title Race', top4: '⭐ Top 4', top5: '⭐ Top 5', europa: '🌍 European Push', relegation: '🔥 Relegation Battle', low: '— Mid-table' }[key] || key;
+  return { title: '🏆 Title Race', top4: '⭐ Top 5', top5: '⭐ Top 5', europa: '🌍 European Push', relegation: '🔥 Relegation Battle', low: '— Mid-table' }[key] || key;
 }
 function importanceClass(key) {
   return { title: 'imp-title', top4: 'imp-top4', top5: 'imp-top5', europa: 'imp-europa', relegation: 'imp-relegation', low: 'imp-low' }[key] || 'imp-low';
