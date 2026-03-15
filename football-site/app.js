@@ -148,6 +148,7 @@ function renderForm(filter = 'all') {
   };
   const PL_BADGE = id => `https://resources.premierleague.com/premierleague/badges/70/${id}.png`;
 
+  items.sort((a, b) => (a.rank || 99) - (b.rank || 99));
   grid.innerHTML = items.map(i => {
     const gd = i.gf - i.ga;
     const gdStr = (gd >= 0 ? '+' : '') + gd;
