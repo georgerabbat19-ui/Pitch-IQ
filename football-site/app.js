@@ -198,11 +198,13 @@ function renderEplTeams(searchTerm = '') {
       : `<span class="team-news-count no-news">No updates</span>`;
 
     return `
-    <div class="team-card" data-search="${t.name}" onclick="openTeamModal('${t.id}')" style="--club-color:${color}">
-      <div class="team-card-header">
+    <div class="team-card" data-search="${t.name}" onclick="openTeamModal('${t.id}')">
+      <div class="team-card-header" style="background:${color}">
+        <div class="tc-rank-bg">${stats.rank || ''}</div>
         <div class="team-badge-large">${t.badge}</div>
-        ${rankBadge}
+        ${stats.rank ? `<span class="team-rank">#${stats.rank} PL</span>` : ''}
       </div>
+      <div class="team-card-accent" style="background:${color}"></div>
       <div class="team-card-body">
         <div class="team-name">${t.name}</div>
         ${formPips ? `<div class="team-form">${formPips}</div>` : ''}
