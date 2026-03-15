@@ -175,36 +175,53 @@ function renderEplTeams(searchTerm = '') {
     if (match) formLookup[match.id] = { rank: f.rank, form: f.form };
   });
 
-  const clubColors = {
-    'arsenal': '#ef0107', 'aston-villa': '#670e36', 'bournemouth': '#d71920',
-    'brentford': '#e30613', 'brighton': '#0057b8', 'burnley': '#6c1d45',
-    'chelsea': '#034694', 'crystal-palace': '#1b458f', 'everton': '#003399',
-    'fulham': '#cc0000', 'liverpool': '#c8102e', 'man-city': '#1c86cd',
-    'man-utd': '#da291c', 'newcastle': '#241f20', 'nottm-forest': '#dd0000',
-    'leeds': '#1d428a', 'spurs': '#132257', 'west-ham': '#7a263a',
-    'wolves': '#fdb913', 'sunderland': '#eb172b'
+  const clubMeta = {
+    'arsenal':       { color: '#ef0107', plId: 't3'  },
+    'aston-villa':   { color: '#670e36', plId: 't7'  },
+    'bournemouth':   { color: '#d71920', plId: 't91' },
+    'brentford':     { color: '#e30613', plId: 't94' },
+    'brighton':      { color: '#0057b8', plId: 't36' },
+    'burnley':       { color: '#6c1d45', plId: 't90' },
+    'chelsea':       { color: '#034694', plId: 't8'  },
+    'crystal-palace':{ color: '#1b458f', plId: 't31' },
+    'everton':       { color: '#003399', plId: 't11' },
+    'fulham':        { color: '#cc0000', plId: 't54' },
+    'liverpool':     { color: '#c8102e', plId: 't14' },
+    'man-city':      { color: '#1c86cd', plId: 't43' },
+    'man-utd':       { color: '#da291c', plId: 't1'  },
+    'newcastle':     { color: '#241f20', plId: 't4'  },
+    'nottm-forest':  { color: '#dd0000', plId: 't17' },
+    'leeds':         { color: '#1d428a', plId: 't2'  },
+    'spurs':         { color: '#132257', plId: 't6'  },
+    'west-ham':      { color: '#7a263a', plId: 't21' },
+    'wolves':        { color: '#c8a84b', plId: 't39' },
+    'sunderland':    { color: '#eb172b', plId: 't56' },
   };
+  const PL_BADGE = id => `https://resources.premierleague.com/premierleague/badges/70/${id}.png`;
 
   grid.innerHTML = items.map(t => {
     const hasNew = t.news.some(n => n.isNew);
     const stats = formLookup[t.id] || {};
-    const rankBadge = stats.rank ? `<span class="team-rank">#${stats.rank}</span>` : '';
+    const meta = clubMeta[t.id] || { color: '#2a2f40', plId: '' };
     const formPips = (stats.form || []).map(r =>
       `<span class="form-pip form-${r.toLowerCase()}">${r}</span>`
     ).join('');
-    const color = clubColors[t.id] || '#2a2f40';
     const newsLabel = t.news.length > 0
-      ? `<span class="team-news-count">${t.news.length} update${t.news.length !== 1 ? 's' : ''}${hasNew ? ' · NEW' : ''}</span>`
+      ? `<span class="team-news-count">${t.news.length} update${t.news.length !== 1 ? 's' : ''}${hasNew ? ' · <b style="color:#f44336">NEW</b>' : ''}</span>`
       : `<span class="team-news-count no-news">No updates</span>`;
+    const badgeImg = meta.plId
+      ? `<img class="team-badge-img" src="${PL_BADGE(meta.plId)}" alt="${t.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">`
+      : '';
+    const badgeFallback = `<span class="team-badge-emoji" style="${meta.plId ? 'display:none' : ''}">${t.badge}</span>`;
 
     return `
     <div class="team-card" data-search="${t.name}" onclick="openTeamModal('${t.id}')">
-      <div class="team-card-header" style="background:${color}">
+      <div class="team-card-header" style="background:linear-gradient(160deg,${meta.color}dd 0%,${meta.color}88 100%)">
         <div class="tc-rank-bg">${stats.rank || ''}</div>
-        <div class="team-badge-large">${t.badge}</div>
-        ${stats.rank ? `<span class="team-rank">#${stats.rank} PL</span>` : ''}
+        ${badgeImg}${badgeFallback}
+        ${stats.rank ? `<span class="team-rank">#${stats.rank}</span>` : ''}
       </div>
-      <div class="team-card-accent" style="background:${color}"></div>
+      <div class="team-card-accent" style="background:${meta.color}"></div>
       <div class="team-card-body">
         <div class="team-name">${t.name}</div>
         ${formPips ? `<div class="team-form">${formPips}</div>` : ''}

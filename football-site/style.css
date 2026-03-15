@@ -1114,7 +1114,22 @@ footer p {
   z-index: 0;
 }
 
-.team-badge-large {
+.team-badge-img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.6));
+  transition: transform 0.18s ease;
+}
+
+.team-card:hover .team-badge-img {
+  transform: scale(1.1);
+}
+
+.team-badge-large,
+.team-badge-emoji {
   font-size: 3.2rem;
   line-height: 1;
   position: relative;
