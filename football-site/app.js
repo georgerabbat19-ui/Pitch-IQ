@@ -348,10 +348,16 @@ function setupSearch() {
   if (!bar) return;
   bar.addEventListener('input', () => {
     const q = bar.value.toLowerCase().trim();
-    document.querySelectorAll('.card[data-search]').forEach(card => {
+    // Filter all static data-search cards (injuries, transfers, managers, rules)
+    document.querySelectorAll('.card[data-search], .var-card[data-search]').forEach(card => {
       card.style.display = card.dataset.search.toLowerCase().includes(q) ? '' : 'none';
     });
+    // Re-render dynamic sections with search filter
     renderEplTeams(q);
+    // Filter form cards directly (they're re-rendered on filter change, so just show/hide)
+    document.querySelectorAll('.form-stat-card[data-search]').forEach(card => {
+      card.style.display = (!q || card.dataset.search.toLowerCase().includes(q)) ? '' : 'none';
+    });
   });
 }
 
