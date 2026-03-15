@@ -14,71 +14,76 @@
       "8": { "team": "Everton",      "pts": 43, "played": 30 },
       "9": { "team": "Newcastle",    "pts": 42, "played": 30 }
     },
-    "race_definitions": {
-      "title": "Within 5 points of 1st place (Arsenal, 70pts) → 65pts+ qualifies. GW31: Arsenal has no fixture — filter EMPTY this week.",
-      "top5": "Within 5 points of 5th place (Chelsea, 48pts) → 43pts+ qualifies. Excludes teams already in Title Race. GW31: Man City (61), Man United (51), Aston Villa (51), Liverpool (48), Brentford (44), Everton (43, no fixture).",
-      "european": "Within 4 points of 6th place (Liverpool, 48pts) → 44pts+ qualifies. Excludes teams already in Title Race or Top 5. GW31: EMPTY — every 44pt+ team already captured by Top 5."
+    "race_logic_applied": {
+      "title_race": {
+        "rule": "Within 5pts of 1st place",
+        "threshold": "65pts+ (Arsenal 1st on 70pts)",
+        "qualifying_teams": ["Arsenal"],
+        "gw31_status": "EMPTY — Arsenal has no GW31 PL fixture"
+      },
+      "top5_race": {
+        "rule": "Only active if gap between 2nd and 6th is ≤ 6pts",
+        "gap_check": "Man City 2nd (61pts) vs Liverpool 6th (48pts) = 13pt gap → INACTIVE",
+        "gw31_status": "EMPTY — gap too large"
+      },
+      "european_race": {
+        "rule": "Within 4pts of 6th place, excluding Title/Top5 teams",
+        "threshold": "44pts+ (Liverpool 6th on 48pts)",
+        "qualifying_teams_gw31": ["Brentford (44pts)"],
+        "gw31_status": "ACTIVE — Brentford qualify"
+      }
     },
     "priority_rule": "Title > Top 5 > European. One category per fixture — highest applicable wins.",
-    "notes": [
-      "Title Race corrected per Boss instruction: within 5pts of 1st (not positional). Arsenal 70pts → threshold 65pts. Only Arsenal qualifies — no GW31 fixture, so Title filter is empty this week.",
-      "Man City (61pts), Man United (51pts), Aston Villa (51pts) all fall to Top 5 under corrected logic.",
-      "Chelsea and Everton have no GW31 PL fixture.",
-      "Newcastle (42pts) misses both thresholds.",
-      "European filter empty — all 44pt+ teams already in Top 5.",
-      "European filter will populate in future GWs as standings diverge."
-    ],
-    "referee_verdict": "APPROVED (corrected)",
+    "referee_verdict": "APPROVED — final corrected version",
     "referee_notes": [
-      "Title Race logic corrected per Boss: within 5pts of 1st, not top-4 positional. Arsenal 70pts → 65pts+ threshold.",
-      "Man City (61pts) does NOT qualify for Title Race under corrected logic. Reassigned to Top 5.",
-      "Man United (51pts) and Aston Villa (51pts) also reassigned to Top 5.",
-      "Title filter empty for GW31 — Arsenal has no PL fixture this week.",
-      "All other thresholds verified against ESPN live table.",
-      "Race logic rules permanently added to RULES.md."
+      "Title Race: Arsenal only (70pts). No GW31 fixture — filter empty.",
+      "Top 5 Race: INACTIVE this GW. 2nd place (Man City, 61pts) is 13pts ahead of 6th (Liverpool, 48pts). Gap > 6 → Top 5 category does not apply.",
+      "European Race: ACTIVE. Brentford (44pts) within 4pts of Liverpool (6th, 48pts). Brentford-Wolves tagged 'european'.",
+      "All other fixtures: no race tag applicable.",
+      "Logic permanently written to RULES.md."
     ]
   },
   "fixtures": [
     {
       "id": "brentford-wolves",
-      "races": ["top5"],
-      "race_notes": "Brentford (7th, 44pts) — within 5pts of 5th (Chelsea, 48pts). Top 5 race. Win keeps their Europa League push alive. Wolves not in any race."
+      "races": ["european"],
+      "race_notes": "Brentford (7th, 44pts) — within 4pts of Liverpool (6th, 48pts). European race. Top 5 race inactive this GW (gap too large). Wolves not in any race."
     },
     {
       "id": "bournemouth-man-utd",
-      "races": ["top5"],
-      "race_notes": "Man United (3rd, 51pts) — qualifies for Top 5 (51 > 43). Title Race threshold is 65pts; Man United are 19pts off, so Top 5 applies. Bournemouth not in any race."
+      "races": [],
+      "race_notes": "Man United (3rd, 51pts) — Top 5 race inactive this GW. Title Race threshold is 65pts; Man United at 51pts do not qualify. No race tag."
     },
     {
       "id": "brighton-liverpool",
-      "races": ["top5"],
-      "race_notes": "Liverpool (6th, 48pts) — level on pts with Chelsea in 5th, with a game in hand. Win moves them above Chelsea into 5th. Top 5 race. Brighton not in any race."
+      "races": [],
+      "race_notes": "Liverpool (6th, 48pts) — defines the European threshold but Top 5 race is inactive (gap too large). Liverpool themselves are 6th place reference point, not tagged for European race. Brighton not in any race."
     },
     {
       "id": "fulham-burnley",
       "races": [],
-      "race_notes": "Fulham (12th) comfortably mid-table. Burnley (19th) relegation battle. No title/top5/european relevance."
+      "race_notes": "Neither team in any race. Fulham mid-table, Burnley relegation."
     },
     {
       "id": "man-city-crystal-palace",
-      "races": ["top5"],
-      "race_notes": "Man City (2nd, 61pts) — Title Race threshold is 65pts; City at 61 do not qualify. Falls to Top 5 (61 > 43). Must win to maintain pressure at the top. Crystal Palace not in any race.",
-      "flag": "⚠️ Fixture postponement unverified — check closer to kickoff."
+      "races": [],
+      "race_notes": "Man City (2nd, 61pts) — Title Race threshold 65pts; City at 61 do not qualify. Top 5 race inactive. No race tag.",
+      "flag": "⚠️ Fixture postponement unverified — confirm before publishing."
     },
     {
       "id": "newcastle-sunderland",
       "races": [],
-      "race_notes": "Newcastle (9th, 42pts) — below both thresholds (Top 5 needs 43+, European needs 44+). No race tag. Sunderland (13th) mid-table, no race relevance."
+      "race_notes": "Newcastle (42pts) below European threshold (44pts+). Sunderland mid-table. No race tag."
     },
     {
       "id": "aston-villa-west-ham",
-      "races": ["top5"],
-      "race_notes": "Aston Villa (4th, 51pts) — Title Race threshold is 65pts; Villa at 51 do not qualify. Falls to Top 5 (51 > 43). Level with Man United on pts — a slip here tightens the race significantly. West Ham in relegation battle."
+      "races": [],
+      "race_notes": "Aston Villa (4th, 51pts) — Title Race threshold 65pts; Villa at 51 do not qualify. Top 5 race inactive. No race tag."
     },
     {
       "id": "spurs-nottm-forest",
       "races": [],
-      "race_notes": "Both teams in or near relegation zone. No title/top5/european relevance."
+      "race_notes": "Both teams in/near relegation zone. No race tag."
     }
   ]
 }
