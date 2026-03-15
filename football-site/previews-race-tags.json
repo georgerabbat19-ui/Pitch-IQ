@@ -1,0 +1,72 @@
+{
+  "_meta": {
+    "generated": "2026-03-15",
+    "gw": 31,
+    "standings_source": "Sky Sports — updated 15 March 2026 05:16 UTC",
+    "standings_snapshot": {
+      "1": { "team": "Arsenal", "pts": 70, "played": 31 },
+      "2": { "team": "Man City", "pts": 61, "played": 30 },
+      "3": { "team": "Man United", "pts": 51, "played": 29 },
+      "4": { "team": "Aston Villa", "pts": 51, "played": 29 },
+      "5": { "team": "Chelsea", "pts": 48, "played": 30 },
+      "6": { "team": "Liverpool", "pts": 48, "played": 29 },
+      "7": { "team": "Brentford", "pts": 44, "played": 29 },
+      "8": { "team": "Everton", "pts": 43, "played": 30 },
+      "9": { "team": "Newcastle", "pts": 42, "played": 30 }
+    },
+    "race_definitions": {
+      "title": "Positions 1–4 (Champions League). Teams in GW31: Arsenal (no fixture), Man City, Man United, Aston Villa",
+      "top5": "Within 5 points of 5th place (Chelsea, 48pts) → 43pts+ qualifies. Priority over European. Teams: Chelsea (no fixture), Liverpool, Brentford, Everton (no fixture)",
+      "european": "Within 4 points of 6th place (Liverpool, 48pts) → 44pts+ qualifies. Only applies if team NOT already tagged Top 5. GW31: no eligible fixtures (all qualifying teams already captured by Top 5)"
+    },
+    "priority_rule": "Title > Top 5 > European. A fixture appears in ONE category only — the highest that applies.",
+    "notes": [
+      "Chelsea and Everton have no GW31 PL fixture.",
+      "Newcastle (42pts) misses both thresholds (need 43+ for Top 5, 44+ for European).",
+      "European filter is empty for GW31 — every 44pt+ team also qualifies for Top 5, so Top 5 wins.",
+      "European filter will populate in future GWs as standings diverge."
+    ]
+  },
+  "fixtures": [
+    {
+      "id": "brentford-wolves",
+      "races": ["top5"],
+      "race_notes": "Brentford (7th, 44pts) — qualifies for both Top 5 and European, but Top 5 takes priority. Win here keeps them in the Europa League hunt. Wolves not in any race."
+    },
+    {
+      "id": "bournemouth-man-utd",
+      "races": ["title"],
+      "race_notes": "Man United (3rd, 51pts) — must win to keep pressure on Arsenal and hold off a chasing pack. Title race critical fixture. Bournemouth not in any race."
+    },
+    {
+      "id": "brighton-liverpool",
+      "races": ["top5"],
+      "race_notes": "Liverpool (6th, 48pts) — level on pts with Chelsea in 5th but with a game in hand. Win puts them above Chelsea. Qualifies for both but Top 5 takes priority. Brighton not in any race."
+    },
+    {
+      "id": "fulham-burnley",
+      "races": [],
+      "race_notes": "Fulham (12th) comfortably mid-table. Burnley (19th) relegation battle. No title/top5/european relevance."
+    },
+    {
+      "id": "man-city-crystal-palace",
+      "races": ["title"],
+      "race_notes": "Man City (2nd, 61pts) — 9 points behind Arsenal. Cannot afford slip-ups. Title race fixture. Crystal Palace not in any race."
+    },
+    {
+      "id": "newcastle-sunderland",
+      "races": [],
+      "race_notes": "Newcastle (9th, 42pts) — falls short of both thresholds (need 43+ for top5, 44+ for european). No race tag. Sunderland (13th) mid-table, no race relevance."
+    },
+    {
+      "id": "aston-villa-west-ham",
+      "races": ["title"],
+      "race_notes": "Aston Villa (4th, 51pts) — level with Man United on pts, separated only by GD. Drop points and Chelsea/Liverpool can capitalise. Title race fixture. West Ham in relegation battle."
+    },
+    {
+      "id": "spurs-nottm-forest",
+      "races": [],
+      "race_notes": "Both teams in or near relegation zone. No title/top5/european relevance."
+    }
+  ]
+}
