@@ -156,12 +156,34 @@ function renderEplTeams(searchTerm = '') {
     ? EPL_TEAMS.filter(t => t.name.toLowerCase().includes(searchTerm.toLowerCase()))
     : EPL_TEAMS;
   document.getElementById('countEplTeams').textContent = EPL_TEAMS.length;
-  // Build rank + form lookup from FORM_DATA
+  // Build rank + form lookup from FORM_DATA — keyed by team id to avoid badge collisions
+  const idToFormKey = {
+    'arsenal': 'Arsenal', 'aston-villa': 'Aston Villa', 'bournemouth': 'Bournemouth',
+    'brentford': 'Brentford', 'brighton': 'Brighton', 'burnley': 'Burnley',
+    'chelsea': 'Chelsea', 'crystal-palace': 'Crystal Palace', 'everton': 'Everton',
+    'fulham': 'Fulham', 'liverpool': 'Liverpool', 'man-city': 'Manchester City',
+    'man-utd': 'Manchester United', 'newcastle': 'Newcastle', 'nottm-forest': 'Nottm Forest',
+    'leeds': 'Leeds United', 'spurs': 'Tottenham Hotspur', 'west-ham': 'West Ham',
+    'wolves': 'Wolves', 'sunderland': 'Sunderland'
+  };
   const formLookup = {};
   FORM_DATA.forEach(f => {
-    const match = EPL_TEAMS.find(t => t.badge === f.badge || t.name.toLowerCase().startsWith(f.team.toLowerCase().split(' ')[0].toLowerCase()));
+    const match = EPL_TEAMS.find(t => {
+      const key = idToFormKey[t.id] || '';
+      return key.toLowerCase() === f.team.toLowerCase() || f.team.toLowerCase().includes(t.name.toLowerCase().split(' ')[0].toLowerCase());
+    });
     if (match) formLookup[match.id] = { rank: f.rank, form: f.form };
   });
+
+  const clubColors = {
+    'arsenal': '#ef0107', 'aston-villa': '#670e36', 'bournemouth': '#d71920',
+    'brentford': '#e30613', 'brighton': '#0057b8', 'burnley': '#6c1d45',
+    'chelsea': '#034694', 'crystal-palace': '#1b458f', 'everton': '#003399',
+    'fulham': '#cc0000', 'liverpool': '#c8102e', 'man-city': '#1c86cd',
+    'man-utd': '#da291c', 'newcastle': '#241f20', 'nottm-forest': '#dd0000',
+    'leeds': '#1d428a', 'spurs': '#132257', 'west-ham': '#7a263a',
+    'wolves': '#fdb913', 'sunderland': '#eb172b'
+  };
 
   grid.innerHTML = items.map(t => {
     const hasNew = t.news.some(n => n.isNew);
@@ -170,19 +192,24 @@ function renderEplTeams(searchTerm = '') {
     const formPips = (stats.form || []).map(r =>
       `<span class="form-pip form-${r.toLowerCase()}">${r}</span>`
     ).join('');
+    const color = clubColors[t.id] || '#2a2f40';
     const newsLabel = t.news.length > 0
-      ? `<div class="team-news-count">${t.news.length} update${t.news.length !== 1 ? 's' : ''}${hasNew ? ' &middot; <span style="color:var(--accent-red);font-weight:800">NEW</span>' : ''}</div>`
-      : `<div class="team-news-count no-news">No updates</div>`;
+      ? `<span class="team-news-count">${t.news.length} update${t.news.length !== 1 ? 's' : ''}${hasNew ? ' · NEW' : ''}</span>`
+      : `<span class="team-news-count no-news">No updates</span>`;
 
     return `
-    <div class="team-card" data-search="${t.name}" onclick="openTeamModal('${t.id}')">
-      <div class="team-card-top">
+    <div class="team-card" data-search="${t.name}" onclick="openTeamModal('${t.id}')" style="--club-color:${color}">
+      <div class="team-card-header">
         <div class="team-badge-large">${t.badge}</div>
         ${rankBadge}
       </div>
-      <div class="team-name">${t.name}</div>
-      ${formPips ? `<div class="team-form">${formPips}</div>` : ''}
-      ${newsLabel}
+      <div class="team-card-body">
+        <div class="team-name">${t.name}</div>
+        ${formPips ? `<div class="team-form">${formPips}</div>` : ''}
+      </div>
+      <div class="team-card-footer">
+        ${newsLabel}
+      </div>
     </div>`;
   }).join('');
 }

@@ -1047,103 +1047,117 @@ footer p {
 /* ===== EPL TEAMS GRID ===== */
 .epl-teams-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
 }
 
-/* ===== TEAM CARD (rendered by app.js as .team-card) ===== */
+/* ===== TEAM CARD — Tops-style ===== */
 .team-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  padding: 16px 14px 14px;
   cursor: pointer;
   transition: var(--transition);
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  position: relative;
   overflow: hidden;
+  position: relative;
   animation: fadeUp 0.3s ease both;
 }
 
-.team-card::before {
+.team-card:hover {
+  border-color: var(--border-accent);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  transform: translateY(-3px) scale(1.02);
+}
+
+/* Coloured header band */
+.team-card-header {
+  background: var(--club-color, #2a2f40);
+  padding: 18px 12px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  min-height: 100px;
+}
+
+/* subtle gradient overlay on header */
+.team-card-header::after {
   content: '';
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 3px;
-  background: var(--accent-green);
-  opacity: 0;
-  transition: opacity var(--transition);
-}
-
-.team-card:hover {
-  background: var(--bg-card-hover);
-  border-color: var(--border-accent);
-  box-shadow: var(--shadow-card);
-  transform: translateY(-2px);
-}
-
-.team-card:hover::before {
-  opacity: 1;
-}
-
-.team-card-top {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.4) 100%);
+  pointer-events: none;
 }
 
 .team-badge-large {
-  font-size: 2.6rem;
+  font-size: 3rem;
   line-height: 1;
-  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
 }
 
 .team-rank {
   font-size: 0.7rem;
   font-weight: 800;
-  color: var(--text-muted);
-  background: var(--bg-secondary);
-  border: 1px solid var(--border);
-  padding: 2px 7px;
+  color: rgba(255,255,255,0.9);
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 2px 8px;
   border-radius: 20px;
-  letter-spacing: 0.3px;
-  flex-shrink: 0;
-  margin-top: 2px;
+  letter-spacing: 0.5px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Card body */
+.team-card-body {
+  padding: 12px 12px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
 }
 
 .team-name {
   font-size: 0.88rem;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--text-primary);
   line-height: 1.2;
+  text-align: center;
 }
 
 .team-form {
   display: flex;
   gap: 3px;
   flex-wrap: nowrap;
+  justify-content: center;
+}
+
+.team-card-footer {
+  padding: 8px 12px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .team-news-count {
   font-size: 0.7rem;
-  font-weight: 600;
-  padding: 2px 9px;
-  border-radius: 20px;
-  background: rgba(0,230,118,0.08);
-  border: 1px solid rgba(0,230,118,0.2);
+  font-weight: 700;
   color: var(--accent-green);
-  width: fit-content;
+  letter-spacing: 0.3px;
 }
 
 .team-news-count.no-news {
-  background: transparent;
-  border-color: var(--border);
   color: var(--text-muted);
+  font-weight: 500;
 }
 
-/* Legacy aliases for old CSS class names */
+/* Legacy aliases — kept for safety */
 .epl-team-card { display: none; }
 
 .new-badge {
