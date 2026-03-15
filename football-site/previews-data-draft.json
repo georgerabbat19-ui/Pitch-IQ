@@ -1,0 +1,226 @@
+[
+  {
+    "_meta": {
+      "generated": "2026-03-15",
+      "gw": 31,
+      "source_fixtures": "Sky Sports (skysports.com) — individual fixture pages confirmed",
+      "source_injuries": "/home/ai/.openclaw/workspace/football-site/data.js (as of Mar 14, 2026)",
+      "source_standings": "data.js FORM_DATA (GW29 base; GW30 completing Mar 15)",
+      "notes": [
+        "Man City vs Crystal Palace was listed as 'Match postponed' on Sky Sports PL fixtures list but individual fixture page (531435) shows 3:00pm Sat 21 Mar. Flagged as unverified — may have been rescheduled.",
+        "Arsenal and Chelsea have no listed GW31 PL fixture (likely UCL second-leg week — Arsenal vs Leverkusen, Chelsea vs PSG).",
+        "Everton and Leeds also have no GW31 PL fixture listed in this window.",
+        "GW30 was completing on Mar 15 (Liverpool vs Tottenham still to play at 4:30pm). Standings importance tags based on pre-GW30 positions.",
+        "UK clocks on GMT (BST change not until Mar 29). All UK times = UTC."
+      ]
+    }
+  },
+  {
+    "id": "brentford-wolves",
+    "home": "Brentford",
+    "away": "Wolves",
+    "homeId": "brentford",
+    "awayId": "wolves",
+    "kickoff": "2026-03-16T20:00:00Z",
+    "competition": "Premier League GW31",
+    "homeImportance": "europa",
+    "awayImportance": "relegation",
+    "narrative": "Brentford sit 7th and are pushing for a Europa League spot in what would be a remarkable season despite a raft of long-term absentees. For Wolves — bottom of the table with just 3 wins all season — this is as close to a must-win as a 20th-placed side gets with 8 games left.",
+    "homeInjuries": [
+      "Aaron Hickey (thigh — long-term)",
+      "Vitaly Janelt (ankle — long-term)",
+      "Rico Henry (thigh — long-term)",
+      "Myles Milambo (knee — long-term)",
+      "Fabio Carvalho (ACL — long-term)",
+      "Josh Dasilva (knee — long-term)"
+    ],
+    "awayInjuries": [
+      "Enso Medina (knee — out)"
+    ],
+    "managerNote": null,
+    "sourceKickoff": "https://www.skysports.com/football/brentford-vs-wolverhampton-wanderers/531420"
+  },
+  {
+    "id": "bournemouth-man-utd",
+    "home": "Bournemouth",
+    "away": "Man United",
+    "homeId": "bournemouth",
+    "awayId": "man-utd",
+    "kickoff": "2026-03-20T20:00:00Z",
+    "competition": "Premier League GW31",
+    "homeImportance": "low",
+    "awayImportance": "top4",
+    "narrative": "Michael Carrick's United arrive at the Vitality in red-hot form — 5 wins in his first 6 league games after the Amorim sacking — and will be desperate to keep pace with Aston Villa in the top-four race. Bournemouth (10th) are comfortable but have quietly won three of their last five, making this a trickier away day than the table suggests.",
+    "homeInjuries": [
+      "Lewis Cook (thigh — out)",
+      "Justin Kluivert (knee — out)",
+      "Ben Doak (hamstring — doubt)"
+    ],
+    "awayInjuries": [
+      "Matthijs de Ligt (back — serious doubt, may miss rest of season)",
+      "Lisandro Martinez (calf — out)",
+      "Patrick Dorgu (thigh — out)",
+      "Noussair Mazraoui (foot — doubt)",
+      "Mason Mount (knock — doubt)"
+    ],
+    "managerNote": "Michael Carrick (Man Utd) — appointed Jan 13, 2026. Won 5 of his first 6 PL games. Roberto De Zerbi linked for the permanent role but Carrick is building a strong case. Hojlund exit to Napoli (€50m) confirmed, freeing up summer funds.",
+    "sourceKickoff": "https://www.skysports.com/football/bournemouth-vs-manchester-united/531430"
+  },
+  {
+    "id": "brighton-liverpool",
+    "home": "Brighton",
+    "away": "Liverpool",
+    "homeId": "brighton",
+    "awayId": "liverpool",
+    "kickoff": "2026-03-21T12:30:00Z",
+    "competition": "Premier League GW31",
+    "homeImportance": "low",
+    "awayImportance": "top4",
+    "narrative": "Liverpool desperately need a response after Wolves stunned them at Molineux in GW30 — a result that leaves Arne Slot's side fighting just to hold onto a European spot, let alone top four. Brighton head into this in confident mood after back-to-back league wins, but Liverpool with a point to prove at the Amex is dangerous.",
+    "homeInjuries": [
+      "Kaoru Mitoma (ankle — doubt, forced off vs Arsenal Mar 4)",
+      "Adam Webster (knee — out)",
+      "Tzimas (out)"
+    ],
+    "awayInjuries": [
+      "Alexander Isak (broken leg — season over)",
+      "Wataru Endo (ankle — out)",
+      "Trent Alexander-Arnold/Bradley (knee — out)",
+      "Alisson (doubt — flagged for GW30)",
+      "Federico Chiesa (doubt — flagged for GW30)"
+    ],
+    "managerNote": null,
+    "sourceKickoff": "https://www.skysports.com/football/brighton-and-hove-albion-vs-liverpool/531431"
+  },
+  {
+    "id": "fulham-burnley",
+    "home": "Fulham",
+    "away": "Burnley",
+    "homeId": "fulham",
+    "awayId": "burnley",
+    "kickoff": "2026-03-21T15:00:00Z",
+    "competition": "Premier League GW31",
+    "homeImportance": "low",
+    "awayImportance": "relegation",
+    "narrative": "Burnley are second-bottom with 4 wins all season and a goal difference of -34 — a trip to a mid-table Fulham side in decent form is a fixture they desperately need a result from. Fulham have been quietly consistent (12W-7D-11L) and a home win here could push them towards an outside Europa challenge.",
+    "homeInjuries": [],
+    "awayInjuries": [
+      "Lyle Foster (listed as top scorer — no specific injury noted in sources)"
+    ],
+    "managerNote": null,
+    "sourceKickoff": "https://www.skysports.com/football/fulham-vs-burnley/531433",
+    "flag": "Burnley injury list not in data.js source — assume full squad available or check closer to kickoff"
+  },
+  {
+    "id": "man-city-crystal-palace",
+    "home": "Man City",
+    "away": "Crystal Palace",
+    "homeId": "man-city",
+    "awayId": "crystal-palace",
+    "kickoff": "2026-03-21T15:00:00Z",
+    "competition": "Premier League GW31",
+    "homeImportance": "title",
+    "awayImportance": "low",
+    "narrative": "Man City cannot afford any more dropped points in the title race against Arsenal — Pep Guardiola's side are second and need to keep winning to apply pressure on the league leaders. Crystal Palace arrive fresh from a stunning 3-1 win at Tottenham last week, but face a very different proposition at the Etihad.",
+    "homeInjuries": [
+      "Josko Gvardiol (ankle — out)",
+      "Mateo Kovacic (ankle — out)",
+      "Rico Lewis (ankle — doubt)"
+    ],
+    "awayInjuries": [
+      "Eddie Nketiah (thigh — out)",
+      "Cheick Doucoure (knee — out)",
+      "Daniel Munoz (shoulder — doubt)"
+    ],
+    "managerNote": null,
+    "sourceKickoff": "https://www.skysports.com/football/manchester-city-vs-crystal-palace/531435",
+    "flag": "⚠️ This fixture was listed as 'Match postponed' on Sky Sports PL scores-fixtures page, but the individual fixture page (531435) shows Sat 21 March 3:00pm. Kickoff time UNVERIFIED — treat as provisional and check closer to date."
+  },
+  {
+    "id": "newcastle-sunderland",
+    "home": "Newcastle",
+    "away": "Sunderland",
+    "homeId": "newcastle",
+    "awayId": "sunderland",
+    "kickoff": "2026-03-22T12:00:00Z",
+    "competition": "Premier League GW31",
+    "homeImportance": "europa",
+    "awayImportance": "low",
+    "narrative": "The Tyne-Wear derby returns to St James' Park for the first time since Sunderland's return to the top flight — an occasion drenched in local rivalry that transcends league positions. Newcastle (9th) need the points for a Europa push, while Sunderland's first taste of a Tyneside derby in years will be a defining moment for their promoted squad.",
+    "homeInjuries": [
+      "Bruno Guimaraes (thigh — out until April)",
+      "Jacob Ramsey (suspension — status uncertain, ban 'until Mar 22'; availability for this game unverified)",
+      "Fabian Schär (ankle — out)",
+      "Lewis Miley (knee — out)",
+      "Emil Krafth (thigh — out)"
+    ],
+    "awayInjuries": [
+      "Bertrand Traore (knee — up to 2 months out)",
+      "Mundle (thigh — out)",
+      "Ta Bi (ankle — out)",
+      "Brian Brobbey (groin — doubt for GW30; status for GW31 unverified)",
+      "Dennis Cirkin (thigh — doubt for GW30; status for GW31 unverified)"
+    ],
+    "managerNote": null,
+    "sourceKickoff": "https://www.skysports.com/football/newcastle-united-vs-sunderland/531436"
+  },
+  {
+    "id": "aston-villa-west-ham",
+    "home": "Aston Villa",
+    "away": "West Ham",
+    "homeId": "aston-villa",
+    "awayId": "west-ham",
+    "kickoff": "2026-03-22T14:15:00Z",
+    "competition": "Premier League GW31",
+    "homeImportance": "top4",
+    "awayImportance": "relegation",
+    "narrative": "Aston Villa's top-four place is under real pressure and they must win at Villa Park to stay ahead of Man United and Chelsea. West Ham are in a relegation dog-fight — 2 points from the drop — and a point here could prove season-defining, though their injury woes make survival feel like a miracle in progress.",
+    "homeInjuries": [
+      "Youri Tielemans (ankle — out for GW30, status for GW31 uncertain)",
+      "Boubacar Kamara (knee — out for GW30, status for GW31 uncertain)",
+      "Matty Cash (calf — doubt for GW30, status for GW31 uncertain)"
+    ],
+    "awayInjuries": [
+      "Crysencio Summerville (lower leg — out, no return timeline)",
+      "Lukasz Fabianski (back — out)"
+    ],
+    "managerNote": "Jadon Sancho (Villa, on loan from Man United) was ineligible vs Man United in GW30 — returns to availability for this fixture.",
+    "sourceKickoff": "https://www.skysports.com/football/aston-villa-vs-west-ham-united/531429"
+  },
+  {
+    "id": "spurs-nottm-forest",
+    "home": "Tottenham",
+    "away": "Nottm Forest",
+    "homeId": "spurs",
+    "awayId": "nottm-forest",
+    "kickoff": "2026-03-22T14:15:00Z",
+    "competition": "Premier League GW31",
+    "homeImportance": "relegation",
+    "awayImportance": "relegation",
+    "narrative": "This is arguably the biggest six-pointer of the season — two clubs staring down the barrel of the drop meet in what could define both their fates. Igor Tudor's Spurs are winless in 5 since his appointment, while Forest's Vítor Pereira is similarly yet to find a league win; one of them must blink first.",
+    "homeInjuries": [
+      "James Maddison (ACL — season over)",
+      "Palhinha (out)",
+      "Yves Bissouma (out)",
+      "Pierre-Emile Hojbjerg/Odobert (out)",
+      "Destiny Udogie (out)",
+      "Rodrigo Bentancur (out)",
+      "Mohammed Kudus (out)",
+      "Lucas Bergvall (out)",
+      "Dejan Kulusevski (out)",
+      "Ben Davies (out)",
+      "Note: Van de Ven and Romero (suspended for GW30) — availability for GW31 to be confirmed"
+    ],
+    "awayInjuries": [
+      "Chris Wood (knee — out)",
+      "Ndoye (out)",
+      "Matz Sels/Ortega (calf — out)",
+      "Willy Boly (knee — out)",
+      "Filippo Savona (knee — out)",
+      "John Victor (knee — out)",
+      "Jair Cunha (ankle — doubt)"
+    ],
+    "managerNote": "Igor Tudor (Spurs) — appointed Feb 14, 0 wins in 5 PL matches. 'Future in serious doubt' per Football Insider. Club one point above relegation zone. Vítor Pereira (Forest) — appointed Feb 15, also winless in 5 PL matches. Both managers under extreme pressure.",
+    "sourceKickoff": "https://www.skysports.com/football/tottenham-hotspur-vs-nottingham-forest/531437"
+  }
+]
