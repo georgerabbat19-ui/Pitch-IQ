@@ -1,0 +1,48 @@
+{
+  "top5Race": [
+    {"team": "Manchester United", "position": 3, "points": 51},
+    {"team": "Aston Villa", "position": 4, "points": 51},
+    {"team": "Chelsea", "position": 5, "points": 48},
+    {"team": "Liverpool", "position": 6, "points": 48},
+    {"team": "Brentford", "position": 7, "points": 44},
+    {"team": "Everton", "position": 8, "points": 43}
+  ],
+  "titleRace": [],
+  "europeanRace": [],
+  "5thPlacePoints": 48,
+  "6thPlacePoints": 48,
+  "gapCheck": {
+    "2ndPlace": "Manchester City",
+    "2ndPoints": 61,
+    "6thPlace": "Liverpool",
+    "6thPoints": 48,
+    "gap": 13,
+    "threshold": 6,
+    "status": "EXCLUDED — gap exceeds 6pt rule"
+  },
+  "generatedAt": "2026-03-16",
+  "_note": "Title Race empty (Arsenal has no GW31 fixture). Top 5 includes teams within 5pts of 5th (Chelsea 48pts) excluding 2nd place (Man City excluded — 13pt gap to 6th exceeds 6pt threshold). European Race empty (all qualifying teams already in Top 5).",
+  "_standings_source": "ESPN live GW30 — https://www.espn.com/soccer/table/_/league/ENG.1",
+  "_standings_snapshot": {
+    "1": {"team": "Arsenal", "points": 70, "record": "21-7-3"},
+    "2": {"team": "Manchester City", "points": 61, "record": "18-7-5"},
+    "3": {"team": "Manchester United", "points": 51, "record": "16-5-8"},
+    "4": {"team": "Aston Villa", "points": 51, "record": "15-6-8"},
+    "5": {"team": "Chelsea", "points": 48, "record": "13-9-8"},
+    "6": {"team": "Liverpool", "points": 48, "record": "13-5-11"},
+    "7": {"team": "Brentford", "points": 44, "record": "13-5-11"},
+    "8": {"team": "Everton", "points": 43, "record": "10-13-7"},
+    "9": {"team": "Newcastle United", "points": 42, "record": "12-6-12"},
+    "10": {"team": "Bournemouth", "points": 41, "record": "12-6-12"},
+    "11": {"team": "Brighton", "points": 40, "record": "10-10-10"},
+    "12": {"team": "Fulham", "points": 40, "record": "12-4-14"},
+    "13": {"team": "Sunderland", "points": 40, "record": "10-10-10"},
+    "14": {"team": "Crystal Palace", "points": 38, "record": "12-2-15"},
+    "15": {"team": "Leeds United", "points": 31, "record": "7-10-12"},
+    "16": {"team": "Tottenham Hotspur", "points": 29, "record": "7-8-15"},
+    "17": {"team": "West Ham United", "points": 29, "record": "7-8-15"},
+    "18": {"team": "Nottingham Forest", "points": 28, "record": "7-7-15"},
+    "19": {"team": "Burnley", "points": 20, "record": "4-8-18"},
+    "20": {"team": "Wolves", "points": 16, "record": "3-7-20"}
+  }
+}
