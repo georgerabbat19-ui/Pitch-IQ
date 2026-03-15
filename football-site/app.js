@@ -385,6 +385,101 @@ function setupLastUpdated() {
   if (el) el.textContent = 'Updated ' + new Date().toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' });
 }
 
+// ─── MATCH PREVIEWS ───────────────────────────────────────────────────────────
+
+function importanceLabel(key) {
+  return { title: '🏆 Title Race', top4: '⭐ Top 4', europa: '🌍 European Push', relegation: '🔥 Relegation Battle', low: '— Mid-table' }[key] || key;
+}
+function importanceClass(key) {
+  return { title: 'imp-title', top4: 'imp-top4', europa: 'imp-europa', relegation: 'imp-relegation', low: 'imp-low' }[key] || 'imp-low';
+}
+
+function renderPreviews(filter = 'all') {
+  const grid = document.getElementById('previews-grid');
+  if (!grid || typeof PREVIEWS_DATA === 'undefined') return;
+  const items = filter === 'all'
+    ? PREVIEWS_DATA.filter(p => p.id)
+    : PREVIEWS_DATA.filter(p => p.id && (p.homeImportance === filter || p.awayImportance === filter));
+
+  document.getElementById('countPreviews').textContent = PREVIEWS_DATA.filter(p => p.id).length;
+
+  const PL_BADGE = id => `https://resources.premierleague.com/premierleague/badges/70/${id}.png`;
+
+  grid.innerHTML = items.map(p => {
+    const homeInj = p.homeInjuries.length
+      ? p.homeInjuries.map(i => `<li>${i}</li>`).join('')
+      : '<li class="no-issues">None reported</li>';
+    const awayInj = p.awayInjuries.length
+      ? p.awayInjuries.map(i => `<li>${i}</li>`).join('')
+      : '<li class="no-issues">None reported</li>';
+    const flagHtml = p.flag ? `<div class="preview-flag">⚠️ ${p.flag}</div>` : '';
+    const managerHtml = p.managerNote ? `<div class="preview-manager-note">🎙️ ${p.managerNote}</div>` : '';
+
+    return `
+    <div class="preview-card" data-home="${p.homeImportance}" data-away="${p.awayImportance}">
+      ${flagHtml}
+
+      <!-- Header: matchup -->
+      <div class="preview-header">
+        <div class="preview-team preview-team-home">
+          <img class="preview-badge" src="${PL_BADGE(p.homeBadgePlId)}" alt="${p.home}" loading="lazy" onerror="this.style.display='none'">
+          <span class="preview-team-name">${p.home}</span>
+          <span class="preview-imp ${importanceClass(p.homeImportance)}">${importanceLabel(p.homeImportance)}</span>
+        </div>
+        <div class="preview-vs">
+          <span class="preview-vs-text">VS</span>
+          <span class="preview-kickoff">${p.kickoffLabel}</span>
+          <span class="preview-comp">${p.competition}</span>
+        </div>
+        <div class="preview-team preview-team-away">
+          <img class="preview-badge" src="${PL_BADGE(p.awayBadgePlId)}" alt="${p.away}" loading="lazy" onerror="this.style.display='none'">
+          <span class="preview-team-name">${p.away}</span>
+          <span class="preview-imp ${importanceClass(p.awayImportance)}">${importanceLabel(p.awayImportance)}</span>
+        </div>
+      </div>
+
+      <!-- Colour bar: split home/away colours -->
+      <div class="preview-colour-bar">
+        <div style="background:${p.homeColor};flex:1"></div>
+        <div style="background:${p.awayColor};flex:1"></div>
+      </div>
+
+      <!-- Narrative -->
+      <div class="preview-body">
+        <p class="preview-narrative">${p.narrative}</p>
+
+        <!-- Injury columns -->
+        <div class="preview-injury-grid">
+          <div class="preview-injury-col">
+            <div class="preview-injury-header" style="color:${p.homeColor === '#241f20' ? '#aaa' : p.homeColor}">
+              🩹 ${p.home} Absentees
+            </div>
+            <ul class="preview-injury-list">${homeInj}</ul>
+          </div>
+          <div class="preview-injury-col">
+            <div class="preview-injury-header" style="color:${p.awayColor}">
+              🩹 ${p.away} Absentees
+            </div>
+            <ul class="preview-injury-list">${awayInj}</ul>
+          </div>
+        </div>
+
+        ${managerHtml}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function setupPreviewFilters() {
+  document.querySelectorAll('[data-preview-filter]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-preview-filter]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderPreviews(btn.dataset.previewFilter);
+    });
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   renderInjuries();
   renderTransfers();
@@ -392,8 +487,10 @@ document.addEventListener('DOMContentLoaded', () => {
   renderRules();
   renderForm();
   renderEplTeams();
+  renderPreviews();
   updateHeroStats();
   setupFilters();
+  setupPreviewFilters();
   setupSearch();
   setupNav();
   setupLastUpdated();

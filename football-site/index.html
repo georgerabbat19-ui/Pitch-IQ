@@ -44,6 +44,7 @@
         <li><a href="#rules" data-section="rules"><span class="tab-dot"></span>Rules &amp; VAR</a></li>
         <li><a href="#form" data-section="form"><span class="tab-dot"></span>Form &amp; Stats</a></li>
         <li><a href="#epl-teams" data-section="epl-teams"><span class="tab-dot"></span>EPL Teams</a></li>
+        <li><a href="#previews" data-section="previews"><span class="tab-dot"></span>Match Previews</a></li>
       </ul>
     </nav>
 
@@ -212,6 +213,28 @@
     </div>
     <div class="epl-teams-grid" id="epl-teams-grid">
       <!-- Team cards injected by app.js -->
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ===== MATCH PREVIEWS ===== -->
+  <section class="section" id="previews">
+    <div class="section-header">
+      <div class="section-title">
+        <span class="section-icon">🔭</span>
+        Match Previews
+        <span class="section-count" id="countPreviews">—</span>
+      </div>
+      <div class="section-filters">
+        <button class="filter-btn active" data-preview-filter="all">All Fixtures</button>
+        <button class="filter-btn" data-preview-filter="title">Title Race</button>
+        <button class="filter-btn" data-preview-filter="top4">Top 4</button>
+        <button class="filter-btn" data-preview-filter="relegation">Relegation</button>
+      </div>
+    </div>
+    <div id="previews-grid" class="previews-grid">
+      <!-- Injected by app.js -->
     </div>
   </section>
 
