@@ -385,7 +385,7 @@ const FORM_DATA = [
     played: 29, wins: 16, draws: 5, losses: 8,
     gf: 49, ga: 36,
     cleanSheets: 8,
-    topScorer: 'Bryan Mbeumo — 9 PL goals',
+    topScorer: 'Erling Haaland — 22 PL goals (league top scorer)',
     nextMatch: 'GW31 TBC',
     rank: 3,
     source: 'https://www.nbcsports.com/soccer/news/premier-league-2025-26-table-teams-standings-for-the-new-season',
@@ -413,7 +413,7 @@ const FORM_DATA = [
     played: 29, wins: 13, draws: 5, losses: 11,
     gf: 44, ga: 40,
     cleanSheets: 7,
-    topScorer: 'Dango Ouattara — top contributor (Mbeumo & Wissa both departed in summer)',
+    topScorer: 'Dango Ouattara — top contributor (Bryan Mbeumo continues to be key player)',
     nextMatch: 'GW31 TBC',
     rank: 7,
     source: 'https://www.nbcsports.com/soccer/news/premier-league-2025-26-table-teams-standings-for-the-new-season',
@@ -448,7 +448,7 @@ const FORM_DATA = [
   },
   {
     team: 'Brighton',
-    badge: '🦅',
+    badge: '🌊',
     league: 'premier-league',
     leagueName: 'Premier League',
     form: ['L', 'W', 'D', 'W', 'W'],
@@ -590,8 +590,8 @@ const EPL_TEAMS = [
   { id:'brentford', name:'Brentford', badge:'🐝', news:[
     { type:'injury', title:'Six Long-Term Absentees', subtitle:'🐝 Brentford · Squad', body:'Hickey (thigh), Janelt (ankle), Rico Henry (thigh), Milambo (knee), Fabio Carvalho (ACL) and Dasilva (knee) all out. Despite injuries, Brentford are 7th with 44pts.', impact:'medium', date:'Mar 13, 2026', tag:'injury', isNew:true, source:'https://www.nbcsports.com/soccer/news/premier-league-injury-table-2025-26-season-club-by-club-injuries-suspensions-latest-updates' },
   ]},
-  { id:'brighton', name:'Brighton', badge:'🦅', news:[
-    { type:'injury', title:'Mitoma — Doubt for GW30', subtitle:'🦅 Brighton · LW', body:'Mitoma (ankle) forced off at half-time vs Arsenal on Mar 4. Doubt for Sunderland away. Webster (knee) and Tzimas (unspecified) confirmed out.', impact:'medium', date:'Mar 14, 2026', tag:'injury', isNew:true, source:'https://www.nbcsports.com/soccer/news/premier-league-injury-table-2025-26-season-club-by-club-injuries-suspensions-latest-updates' },
+  { id:'brighton', name:'Brighton', badge:'🌊', news:[
+    { type:'injury', title:'Mitoma — Doubt for GW30', subtitle:'🌊 Brighton · LW', body:'Mitoma (ankle) forced off at half-time vs Arsenal on Mar 4. Doubt for Sunderland away. Webster (knee) and Tzimas (unspecified) confirmed out.', impact:'medium', date:'Mar 14, 2026', tag:'injury', isNew:true, source:'https://www.nbcsports.com/soccer/news/premier-league-injury-table-2025-26-season-club-by-club-injuries-suspensions-latest-updates' },
   ]},
   { id:'burnley', name:'Burnley', badge:'🔵', news:[
   ]},
@@ -721,7 +721,7 @@ const PREVIEWS_DATA = [
     homeInjuries: ['Josko Gvardiol (ankle — out)', 'Mateo Kovacic (ankle — out)', 'Rico Lewis (ankle — doubt)'],
     awayInjuries: ['Eddie Nketiah (thigh — out)', 'Cheick Doucoure (knee — out)', 'Daniel Munoz (shoulder — doubt)'],
     managerNote: null,
-    flag: '⚠️ FIXTURE UNVERIFIED — listed as postponed on Sky Sports PL fixtures page but individual fixture page shows Sat 21 Mar 15:00. Treat as provisional — confirm before use.',
+    flag: '❌ POSTPONED — Man City vs Crystal Palace rescheduled due to Carabao Cup Final (Mar 22). New date TBD by Premier League. DO NOT PUBLISH in GW31 fixture list.',
   },
   {
     id: 'newcastle-sunderland',
