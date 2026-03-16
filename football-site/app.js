@@ -256,115 +256,29 @@ function renderForm(filter = 'all') {
 }
 
 function renderEplTeams(searchTerm = '') {
+  // Wrapper that applies search filter to club drill-down cards
   const grid = document.getElementById('epl-teams-grid');
   if (!grid) return;
-  const items = searchTerm
-    ? EPL_TEAMS.filter(t => t.name.toLowerCase().includes(searchTerm.toLowerCase()))
-    : EPL_TEAMS;
-  document.getElementById('countEplTeams').textContent = EPL_TEAMS.length;
-  // Build rank + form lookup from FORM_DATA — keyed by team id to avoid badge collisions
-  const idToFormKey = {
-    'arsenal': 'Arsenal', 'aston-villa': 'Aston Villa', 'bournemouth': 'Bournemouth',
-    'brentford': 'Brentford', 'brighton': 'Brighton', 'burnley': 'Burnley',
-    'chelsea': 'Chelsea', 'crystal-palace': 'Crystal Palace', 'everton': 'Everton',
-    'fulham': 'Fulham', 'liverpool': 'Liverpool', 'man-city': 'Manchester City',
-    'man-utd': 'Manchester United', 'newcastle': 'Newcastle', 'nottm-forest': 'Nottm Forest',
-    'leeds': 'Leeds United', 'spurs': 'Tottenham Hotspur', 'west-ham': 'West Ham',
-    'wolves': 'Wolves', 'sunderland': 'Sunderland'
-  };
-  const formLookup = {};
-  FORM_DATA.forEach(f => {
-    const match = EPL_TEAMS.find(t => {
-      const key = idToFormKey[t.id] || '';
-      return key.toLowerCase() === f.team.toLowerCase() || f.team.toLowerCase().includes(t.name.toLowerCase().split(' ')[0].toLowerCase());
+  
+  const cards = grid.querySelectorAll('.team-card');
+  if (searchTerm === '') {
+    // Show all
+    cards.forEach(card => card.style.display = '');
+  } else {
+    // Filter by search
+    const q = searchTerm.toLowerCase();
+    cards.forEach(card => {
+      const searchText = card.dataset.search.toLowerCase();
+      card.style.display = searchText.includes(q) ? '' : 'none';
     });
-    if (match) formLookup[match.id] = { rank: f.rank, form: f.form };
-  });
-
-  const clubMeta = {
-    'arsenal':       { color: '#ef0107', plId: 't3'  },
-    'aston-villa':   { color: '#670e36', plId: 't7'  },
-    'bournemouth':   { color: '#d71920', plId: 't91' },
-    'brentford':     { color: '#e30613', plId: 't94' },
-    'brighton':      { color: '#0057b8', plId: 't36' },
-    'burnley':       { color: '#6c1d45', plId: 't90' },
-    'chelsea':       { color: '#034694', plId: 't8'  },
-    'crystal-palace':{ color: '#1b458f', plId: 't31' },
-    'everton':       { color: '#003399', plId: 't11' },
-    'fulham':        { color: '#cc0000', plId: 't54' },
-    'liverpool':     { color: '#c8102e', plId: 't14' },
-    'man-city':      { color: '#1c86cd', plId: 't43' },
-    'man-utd':       { color: '#da291c', plId: 't1'  },
-    'newcastle':     { color: '#241f20', plId: 't4'  },
-    'nottm-forest':  { color: '#dd0000', plId: 't17' },
-    'leeds':         { color: '#1d428a', plId: 't2'  },
-    'spurs':         { color: '#132257', plId: 't6'  },
-    'west-ham':      { color: '#7a263a', plId: 't21' },
-    'wolves':        { color: '#c8a84b', plId: 't39' },
-    'sunderland':    { color: '#eb172b', plId: 't56' },
-  };
-  const PL_BADGE = id => `https://resources.premierleague.com/premierleague/badges/70/${id}.png`;
-
-  grid.innerHTML = items.map(t => {
-    const hasNew = t.news.some(n => n.isNew);
-    const stats = formLookup[t.id] || {};
-    const meta = clubMeta[t.id] || { color: '#2a2f40', plId: '' };
-    const formPips = (stats.form || []).map(r =>
-      `<span class="form-pip form-${r.toLowerCase()}">${r}</span>`
-    ).join('');
-    const newsLabel = t.news.length > 0
-      ? `<span class="team-news-count">${t.news.length} update${t.news.length !== 1 ? 's' : ''}${hasNew ? ' · <b style="color:#f44336">NEW</b>' : ''}</span>`
-      : `<span class="team-news-count no-news">No updates</span>`;
-    const badgeImg = meta.plId
-      ? `<img class="team-badge-img" src="${PL_BADGE(meta.plId)}" alt="${t.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">`
-      : '';
-    const badgeFallback = `<span class="team-badge-emoji" style="${meta.plId ? 'display:none' : ''}">${t.badge}</span>`;
-
-    return `
-    <div class="team-card" data-search="${t.name}" onclick="openTeamModal('${t.id}')">
-      <div class="team-card-header" style="background:linear-gradient(160deg,${meta.color}dd 0%,${meta.color}88 100%)">
-        <div class="tc-rank-bg">${stats.rank || ''}</div>
-        ${badgeImg}${badgeFallback}
-        ${stats.rank ? `<span class="team-rank">#${stats.rank}</span>` : ''}
-      </div>
-      <div class="team-card-accent" style="background:${meta.color}"></div>
-      <div class="team-card-body">
-        <div class="team-name">${t.name}</div>
-        ${formPips ? `<div class="team-form">${formPips}</div>` : ''}
-      </div>
-      <div class="team-card-footer">
-        ${newsLabel}
-      </div>
-    </div>`;
-  }).join('');
+  }
+  
+  document.getElementById('countEplTeams').textContent = EPL_TEAMS.length;
 }
 
 function openTeamModal(teamId) {
-  const team = EPL_TEAMS.find(t => t.id === teamId);
-  if (!team) return;
-  const overlay = document.getElementById('eplModalOverlay');
-  document.getElementById('eplModalBadge').textContent = team.badge;
-  document.getElementById('eplModalTitle').textContent = team.name;
-  document.getElementById('eplModalBody').innerHTML = team.news.length
-    ? team.news.map(n => `
-        <div class="card" style="margin-bottom:12px;">
-          <div class="card-border" style="background:${typeColor(n.type || n.tag)}"></div>
-          <div class="card-body">
-            <div class="card-top">
-              <span class="card-tag">${formatTag(n.type || n.tag)}</span>
-              <span class="impact-badge ${impactClass(n.impact)}">${impactLabel(n.impact)}</span>
-            </div>
-            <div class="card-title">${n.title}</div>
-            <div class="card-subtitle">${n.subtitle || ''}</div>
-            <div class="card-detail">${n.body}</div>
-            <div class="card-footer">
-              <span class="card-date">📅 ${n.date}</span>
-              ${n.source ? `<a class="card-source" href="${n.source}" target="_blank" rel="noopener">Source ↗</a>` : ''}
-            </div>
-          </div>
-        </div>`).join('')
-    : '<p class="empty-state">No recent news for this team.</p>';
-  overlay.classList.add('open');
+  // Legacy wrapper — now routes to club drill-down
+  openClubDrillDown(teamId);
   document.body.style.overflow = 'hidden';
 }
 
@@ -698,6 +612,150 @@ function setupLeagueFilter() {
   setupSectionChips();
 }
 
+// ─── CLUB DRILL-DOWN (Phase 4) ─────────────────────────────────────────────
+function renderClubDrillDown() {
+  const grid = document.getElementById('epl-teams-grid');
+  if (!grid) return;
+  
+  // Build unified club list from all sources (EPL_TEAMS exists)
+  const clubs = EPL_TEAMS.map(t => ({
+    id: t.id,
+    name: t.name,
+    badge: t.badge,
+    league: 'pl',
+    news: t.news || [],
+    injuries: [],
+    transfers: [],
+  }));
+  
+  // Enhance clubs with injury data
+  INJURIES_DATA.forEach(inj => {
+    const club = clubs.find(c => c.name.toLowerCase().replace(/\s+/g, '-') === inj.club.toLowerCase().replace(/\s+/g, '-'));
+    if (club) {
+      club.injuries.push(inj);
+    }
+  });
+  
+  // Enhance clubs with transfer data
+  TRANSFERS_DATA.forEach(tf => {
+    const toClub = clubs.find(c => c.name.toLowerCase().replace(/\s+/g, '-') === tf.toClub.toLowerCase().replace(/\s+/g, '-'));
+    if (toClub) {
+      toClub.transfers.push({ ...tf, direction: 'in' });
+    }
+    const fromClub = clubs.find(c => c.name.toLowerCase().replace(/\s+/g, '-') === tf.fromClub.toLowerCase().replace(/\s+/g, '-'));
+    if (fromClub) {
+      fromClub.transfers.push({ ...tf, direction: 'out' });
+    }
+  });
+  
+  // Get form data for clubs
+  const formLookup = {};
+  FORM_DATA.forEach(f => {
+    const match = clubs.find(c => c.name === f.team);
+    if (match) formLookup[match.id] = { rank: f.rank, form: f.form };
+  });
+  
+  const clubMeta = {
+    'arsenal':       { color: '#ef0107', plId: 't3'  },
+    'aston-villa':   { color: '#670e36', plId: 't7'  },
+    'bournemouth':   { color: '#d71920', plId: 't91' },
+    'brentford':     { color: '#e30613', plId: 't94' },
+    'brighton':      { color: '#0057b8', plId: 't36' },
+    'burnley':       { color: '#6c1d45', plId: 't90' },
+    'chelsea':       { color: '#034694', plId: 't8'  },
+    'crystal-palace':{ color: '#1b458f', plId: 't31' },
+    'everton':       { color: '#003399', plId: 't11' },
+    'fulham':        { color: '#cc0000', plId: 't54' },
+    'liverpool':     { color: '#c8102e', plId: 't14' },
+    'man-city':      { color: '#1c86cd', plId: 't43' },
+    'man-utd':       { color: '#da291c', plId: 't1'  },
+    'newcastle':     { color: '#241f20', plId: 't4'  },
+    'nottm-forest':  { color: '#dd0000', plId: 't17' },
+    'leeds':         { color: '#1d428a', plId: 't2'  },
+    'spurs':         { color: '#132257', plId: 't6'  },
+    'west-ham':      { color: '#7a263a', plId: 't21' },
+    'wolves':        { color: '#c8a84b', plId: 't39' },
+    'sunderland':    { color: '#eb172b', plId: 't56' },
+  };
+  const PL_BADGE = id => `https://resources.premierleague.com/premierleague/badges/70/${id}.png`;
+  
+  grid.innerHTML = clubs.map(club => {
+    const stats = formLookup[club.id] || {};
+    const meta = clubMeta[club.id] || { color: '#2a2f40', plId: '' };
+    const formPips = (stats.form || []).map(r =>
+      `<span class="form-pip form-${r.toLowerCase()}">${r}</span>`
+    ).join('');
+    const badgeImg = meta.plId
+      ? `<img class="team-badge-img" src="${PL_BADGE(meta.plId)}" alt="${club.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">`
+      : '';
+    const badgeFallback = `<span class="team-badge-emoji" style="${meta.plId ? 'display:none' : ''}">${club.badge}</span>`;
+    
+    const injuryCount = club.injuries.length;
+    const transferCount = club.transfers.length;
+    const newsCount = club.news.length;
+    const totalAlerts = injuryCount + transferCount + newsCount;
+    
+    return `
+    <div class="team-card" data-search="${club.name}" data-league="${club.league}" onclick="openClubDrillDown('${club.id}')">
+      <div class="team-card-header" style="background:linear-gradient(160deg,${meta.color}dd 0%,${meta.color}88 100%)">
+        <div class="tc-rank-bg">${stats.rank || ''}</div>
+        ${badgeImg}${badgeFallback}
+        ${stats.rank ? `<span class="team-rank">#${stats.rank}</span>` : ''}
+      </div>
+      <div class="team-card-accent" style="background:${meta.color}"></div>
+      <div class="team-card-body">
+        <div class="team-name">${club.name}</div>
+        ${formPips ? `<div class="team-form">${formPips}</div>` : ''}
+      </div>
+      <div class="team-card-footer">
+        ${totalAlerts > 0 
+          ? `<span class="team-news-count">🔔 ${totalAlerts} alert${totalAlerts !== 1 ? 's' : ''}</span>`
+          : `<span class="team-news-count no-news">✓ Quiet</span>`
+        }
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function openClubDrillDown(clubId) {
+  const club = EPL_TEAMS.find(t => t.id === clubId);
+  if (!club) return;
+  
+  const overlay = document.getElementById('eplModalOverlay');
+  document.getElementById('eplModalBadge').textContent = club.badge;
+  document.getElementById('eplModalTitle').textContent = club.name;
+  
+  // Gather all club-related data
+  const injuries = INJURIES_DATA.filter(i => i.club.toLowerCase().replace(/\s+/g, '-') === club.name.toLowerCase().replace(/\s+/g, '-'));
+  const transfers = TRANSFERS_DATA.filter(t => 
+    t.toClub.toLowerCase().replace(/\s+/g, '-') === club.name.toLowerCase().replace(/\s+/g, '-') ||
+    t.fromClub.toLowerCase().replace(/\s+/g, '-') === club.name.toLowerCase().replace(/\s+/g, '-')
+  );
+  const allNews = [
+    ...club.news,
+    ...injuries.map(i => ({ type: i.type, title: `${i.player} - ${i.detail}`, body: i.detail, impact: i.impact, isNew: false })),
+    ...transfers.map(t => ({ type: 'transfer', title: `${t.player} transfer`, body: `${t.fromClub} → ${t.toClub}`, impact: t.impact, isNew: false }))
+  ];
+  
+  document.getElementById('eplModalBody').innerHTML = allNews.length
+    ? allNews.map(n => `
+        <div class="card">
+          <div class="card-border" style="background:${typeColor(n.type || n.tag)}"></div>
+          <div class="card-body">
+            <div class="card-top">
+              <span class="card-tag">${formatTag(n.type || n.tag)}</span>
+              <span class="impact-badge ${impactClass(n.impact)}">${impactLabel(n.impact)}</span>
+            </div>
+            <div class="card-title">${n.title}</div>
+            ${n.subtitle ? `<div class="card-subtitle">${n.subtitle}</div>` : ''}
+            <div class="card-detail">${n.body}</div>
+          </div>
+        </div>`).join('')
+    : '<p class="empty-state">No recent activity for this club.</p>';
+  
+  overlay.classList.add('open');
+}
+
 // ─── HOME PAGE CURATION (Phase 3) ─────────────────────────────────────────────
 function renderHomePage() {
   // Only render home when "All Sections" chip is active AND "All Leagues" tab is active
@@ -815,7 +873,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderManagers();
   renderRules();
   renderForm();
-  renderEplTeams();
+  renderClubDrillDown();
   renderPreviews();
   updateHeroStats();
   setupFilters();
