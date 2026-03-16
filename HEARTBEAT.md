@@ -10,12 +10,12 @@ Check action items and pipeline health. Nudge agents. Flag Boss if something is 
 ### 1. Check action items (always — highest priority)
 - Use the `read` tool: `/home/ai/.openclaw/workspace/memory/action-items.md`
 - Use `sessions_history` on `agent:main:telegram:group:-5104130761` — scan for any "✅ [Agent] — [item] done." messages since last heartbeat → use the `edit` tool to mark those items `[x]` with done timestamp in action-items.md
-- For each remaining open `[ ]` item, check if it's overdue based on the thresholds in action-items.md
+- For each remaining open `[ ]` item: action immediately — do NOT wait for them to be overdue. Seeing it = nudging it.
 - Use the `read` tool on `memory/heartbeat-state.json` to check `lastNudgedAt` per agent per item
-- If overdue AND not nudged in the last 3h:
+- If open AND not nudged in the last 3h:
   1. `sessions_send` → that agent's group session with a specific, direct reminder (name the exact item)
   2. Use the `edit` tool to update `lastNudgedAt` for that agent in `memory/heartbeat-state.json`
-  3. Post in Telegram group: "⚠️ [Agent] — [item] overdue, nudged."
+  3. Post in Telegram group: "⚠️ [Agent] — [item] pending, nudged."
 - If already nudged within 3h → skip, do not repeat
 
 ### 2. Check pipeline health

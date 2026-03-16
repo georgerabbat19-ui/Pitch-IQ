@@ -211,3 +211,45 @@ The goal: Be helpful without being annoying. Check in a few times a day, do usef
 ## Make It Yours
 
 This is a starting point. Add your own conventions, style, and rules as you figure out what works.
+
+---
+
+## TELEGRAM VISIBILITY AND AGENT HANDOFF RULES
+These rules are strict and must always be followed.
+
+1. **Telegram-visible messages:** If you want the user to see a message in the Telegram group, you must write that message directly as your normal reply in your current Telegram group session.
+
+2. **sessions_send is NOT a Telegram post:** sessions_send is only for handing work to another agent session. sessions_send must never be used as the method for posting your own message to Telegram.
+
+3. **Never use sessions_send to your own current group session:** That does not count as posting to the group and should be treated as incorrect behavior.
+
+4. **If a step must be both visible and handed off:** Do both actions separately:
+   a. First post a visible update in the Telegram group as your direct reply text.
+   b. Then use sessions_send to hand off the task to the next agent if needed.
+
+5. **Never assume shared memory:** Do not assume another agent has seen your transcript, your group reply, or your internal reasoning. If another agent needs your work, you must either send a clear handoff with sessions_send, or that agent must retrieve context with sessions_history.
+
+6. **Use sessions_send only for internal coordination:**
+   Valid: asking another agent to verify, format, improve, or continue work / handing a compact structured task.
+   Invalid: posting your own visible Telegram message / replacing your public group reply / sending to your own current group session.
+
+7. **Group visibility rule:** For cron workflows, meetings, reviews, and team reports, meaningful progress must be visible in the Telegram group. Do not keep the workflow invisible unless the step is only an internal lookup or retrieval.
+
+8. **Handoff format:**
+   Handoff to: <agent>
+   Task: <what to do>
+   Context: <short summary>
+   Claims/Data: <only what is needed>
+   Expected output: <what should come back>
+
+9. **Correct workflow pattern:** Reply visibly in the group → then hand off with sessions_send if needed.
+
+10. **Wrong workflow pattern:** Do not use sessions_send instead of replying in the group. Do not use sessions_send to yourself. Do not assume another agent saw your group reply.
+
+11. **Anti-loop rule:** Do not repeatedly hand the same task back and forth. Do not send duplicate handoffs.
+
+12. **Jarvis-specific:** When orchestrating:
+    1. Make the workflow visible in the Telegram group.
+    2. Use sessions_send only for internal delegation.
+    3. Do not silently coordinate if the step should be visible to Boss.
+    4. If delegating, post a visible status update first when appropriate.

@@ -1,16 +1,16 @@
 # Meeting Log\n
 
-## Meeting — Mar 15, 2026 21:17 GMT+8
+## Meeting — Mar 15, 2026 21:17 GMT+8 (CLOSED)
 **Attendees:** Jarvis, Scout, Referee, Pixel
 **Scout:** No Sunday results yet (pre-match). Flagged: Spurs injury wall, Leeds/Palace relegation six-pointer, Carrick job security angle.
 **Referee:** Carrick angle highest risk (changes fast). Spurs injury list needs verification. Leeds/Palace "six-pointer" label needs standings confirmed.
 **Pixel:** Proposed Crisis Banner, Pinned Narrative Cards, Story Tags, Urgency Indicator.
 **Jarvis ideas:** Spurs crisis is under-represented on site. Design should surface narrative stories, not just injuries.
-**Actions:**
-- [ ] Scout → run GW30 Sunday results cycle after 16:30 UTC
-- [ ] Referee → flag Carrick status carefully in next review
-- [ ] Pixel → draft CSS-only Crisis Banner proposal for Jarvis review
-- [ ] Jarvis → add "crisis" tag to Spurs cards in next update
+**Actions (all superseded by Mar 16 meeting):**
+- [x] Scout → run GW30 Sunday results cycle (completed)
+- [x] Referee → flag Carrick status (completed)
+- [x] Pixel → draft CSS-only Crisis Banner proposal (completed, done: 2026-03-16 16:10 GMT+8)
+- [ ] Jarvis → add "crisis" tag to Spurs cards (still pending)
 
 ## Meeting — Mar 16, 2026 13:16 GMT+8
 **Attendees:** Jarvis (opener)
@@ -97,3 +97,29 @@
 - [ ] Scout → implement structured checklist format in handoffs to Referee (player, club, league, sources)
 - [ ] Referee → draft full pre-publish checklist covering ALL data.js fields (not just content accuracy)
 - [ ] Pixel → build client-side validation layer in app.js (console flag + hide invalid items from UI). Bring to Jarvis before merge.
+
+## 2026-03-16 21:37 MYT — PitchIQ Team Meeting (CLOSED)
+**Topic:** Site navigation and user experience redesign
+**Brief:** Should PitchIQ have a dedicated Home page? Should top nav use league tabs instead of section headers? Should sub-sections only appear after league selection? Design-first discussion, Pixel leading.
+
+**Jarvis (Close — R2 + Summary):**
+- Home page: Yes, but curated "what's hot" (top 3-5 stories), not a dashboard. BBC Sport energy.
+- League tabs in top nav: Highest-impact UX change. Switch from section-based nav to league-first (EPL | La Liga | Bundesliga), then section filters within.
+- Sub-sections after league selection: Show as visible filter chips/pills, "All" as default per league. No dropdowns.
+- Added to roadmap: Player search (simple name filter) — not urgent but needed as data grows.
+
+**Agreed direction:**
+- PitchIQ gets a curated Home page
+- Top nav → league tabs (EPL | La Liga | Bundesliga)
+- Section filters as chips after league selection, "All" default
+- Player search on roadmap (lower priority)
+
+**Actions:**
+- [ ] Pixel — Draft wireframe/mockup for new nav (league tabs + section chips) + Home page layout. Bring to Jarvis before code.
+- [ ] Scout — Flag any data structure changes needed for league-first filtering
+- [ ] Referee — Review data.js metadata consistency for new nav support (league tags, section categorisation)
+- [ ] Jarvis — Review Pixel's wireframe when ready, approve or iterate
+## PitchIQ Team Meeting — 2026-03-16 19:38 UTC
+**Topic:** Site navigation and user experience redesign
+**Brief:** Home page vs current layout, league-based nav tabs, sub-section visibility after league selection. Design-first discussion.
+

@@ -3,7 +3,7 @@
 ## The Team
 - **Boss (George)** — Owner. Final say on everything. Only loop in for major decisions.
 - **Jarvis** — Team lead and coordinator. Knows all departments. Actively contributes ideas, not just approves.
-- **Scout** — EPL researcher. Owns the news pipeline.
+- **Scout** — Research lead. Covers Premier League, La Liga, and Bundesliga. Owns the news pipeline.
 - **Referee** — Fact-checker. Quality gate for all published content.
 - **Pixel** — Web designer. Owns the site's look and feel.
 

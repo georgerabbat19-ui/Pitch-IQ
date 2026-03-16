@@ -28,14 +28,16 @@
 - Time: 17:53 GMT+8
 - Issues found: 6
 - Changes proposed: 6
-  1. `--text-muted` contrast fix (#5a6070 → #737d8f) — WCAG AA compliance
-  2. Logo tagline font-size (0.62rem → 0.7rem) — readability
-  3. Form stat labels (0.68rem → 0.72rem) — combined with muted fix
-  4. Add `:focus-visible` styles to interactive elements — keyboard a11y
-  5. Hero mobile padding (48px → 28px vertical) — responsive improvement
-  6. New badge font-size (0.6rem → 0.65rem) — badge visibility
-- Changes approved by Jarvis: Pending Boss review
-- Changes implemented: 0
+- **Status: Superseded by Mar 16-17 nav redesign**
+
+## Major Redesign — Nav Overhaul (2026-03-17)
+- Status: COMPLETE ✅
+- League tabs: All Leagues | Premier League | La Liga | Bundesliga
+- Section chips: Injuries, Transfers, Managers, Rules & VAR, Form & Stats, Club Drill-Downs, Match Previews
+- Home page: curated "what's hot" view (BBC Sport energy)
+- Club drill-downs: expanded for all 3 leagues
+- All bugs verified fixed by Jarvis (done: 2026-03-17 02:44 GMT+8)
+- Wireframe delivered by Pixel; full implementation complete
 
 ## Design Changelog
 _(Track all approved changes here with dates and rationale.)_

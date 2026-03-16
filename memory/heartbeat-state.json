@@ -3,53 +3,39 @@
   "lastDesignAt": 1773610260,
   "lastDesignNote": "Hero mobile padding trimmed (20px 16px 16px at max-width 640px) to bring card grid into initial viewport without scrolling.",
   "publishedStories": [
-    "Arsenal 2-0 Everton \u2014 10 Points Clear",
-    "Chelsea 0-1 Newcastle \u2014 Gordon Wins It",
-    "Brighton 1-0 Sunderland \u2014 Into Top Half",
-    "Man City 2-2 Nottm Forest \u2014 Point at the Etihad",
-    "Tudor SACKED \u2014 Four Straight Defeats",
+    "Arsenal 2-0 Everton — 10 Points Clear",
+    "Chelsea 0-1 Newcastle — Gordon Wins It",
+    "Brighton 1-0 Sunderland — Into Top Half",
+    "Man City 2-2 Nottm Forest — Point at the Etihad",
     "Man Utd Draw Up 5-Manager Shortlist for Summer",
     "Liverpool Target Barella & Gibbs-White",
-    "West Ham 1-1 Man City \u2014 Out of Drop Zone",
-    "Burnley 0-0 Bournemouth \u2014 European Push Stalls",
+    "West Ham 1-1 Man City — Out of Drop Zone",
+    "Burnley 0-0 Bournemouth — European Push Stalls",
     "Reece James Signs New 6-Year Contract",
     "Man Utd Eye Nico Williams & Ouedraogo",
-    "Hojlund to Napoli Confirmed \u2014 \u20ac50m Deal",
-    "Ratcliffe: Carrick Doing Excellent Job \u2014 No Permanent Commitment",
-    "De Zerbi \u2014 Spurs Dream Manager Target",
+    "Hojlund to Napoli Confirmed — €50m Deal",
+    "Ratcliffe: Carrick Doing Excellent Job — No Permanent Commitment",
+    "De Zerbi — Spurs Dream Manager Target",
     "De Ligt May Miss Rest of Season (Back)",
-    "Newcastle \u2014 Bruno Out Until April, Ramsey Suspended",
-    "Liverpool 1-1 Spurs (GW30) \u2014 Richarlison 90th-min equaliser",
-    "Man Utd 3-1 Aston Villa (GW30) \u2014 Casemiro, Cunha (loan), Sesko",
-    "Piero Hincapie \u2192 Arsenal \u20ac52m \u2014 Pre-agreed permanent (Romano)",
+    "Newcastle — Bruno Out Until April, Ramsey Suspended",
+    "Liverpool 1-1 Spurs (GW30) — Richarlison 90th-min equaliser",
+    "Man Utd 3-1 Aston Villa (GW30) — Casemiro, Cunha (loan), Sesko",
+    "Piero Hincapie → Arsenal €52m — Pre-agreed permanent (Romano)",
     "Spurs major injury crisis (GW30 vs Liverpool)",
-    "Barcelona 5-2 Sevilla (La Liga MD29) \u2014 Raphinha hat-trick",
-    "Real Madrid 4-1 Elche (La Liga MD29) \u2014 Mbappe absent",
-    "Rodrygo \u2014 Torn ACL, season over + World Cup doubt",
-    "Leverkusen 1-1 Bayern (Bundesliga MD26) \u2014 Nine-man Bayern",
-    "Bayern goalkeeper crisis \u2014 Neuer/Urbig/Ulreich all out",
-    "Emre Can \u2014 Torn ACL, Dortmund captain, season over",
-    "Julian Brandt (Dortmund) \u2014 Arsenal/Barcelona interest, free transfer summer",
-    "Luis Diaz (Bayern Munich) \u2014 red card, ~3 game suspension"
+    "Barcelona 5-2 Sevilla (La Liga MD29) — Raphinha hat-trick",
+    "Real Madrid 4-1 Elche (La Liga MD29) — Mbappe absent",
+    "Rodrygo — Torn ACL, season over + World Cup doubt",
+    "Leverkusen 1-1 Bayern (Bundesliga MD26) — Nine-man Bayern",
+    "Bayern goalkeeper crisis — Neuer/Urbig/Ulreich all out",
+    "Emre Can — Torn ACL, Dortmund captain, season over",
+    "Julian Brandt (Dortmund) — Arsenal/Barcelona interest, free transfer summer",
+    "Luis Diaz (Bayern Munich) — red card, ~3 game suspension"
   ],
   "lastBriefingAt": null,
   "lastNudgedAt": {
-    "scout": null,
-    "referee": null,
-    "pixel": null
+    "scout": 1773674038728,
+    "referee": 1773696480000,
+    "pixel": 1773696480000
   },
-  "pendingActions": [
-    {
-      "item": "Crisis Banner CSS",
-      "owner": "pixel",
-      "since": "2026-03-15",
-      "notes": "Pixel carry-over from Mar 15 team meeting"
-    },
-    {
-      "item": "Spurs crisis tag",
-      "owner": "jarvis",
-      "since": "2026-03-16",
-      "notes": "Flagged in Mar 16 team meeting \u2014 needs applying to data.js"
-    }
-  ]
+  "pendingActions": []
 }

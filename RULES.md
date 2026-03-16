@@ -63,6 +63,24 @@ Coordinate the team, route work to the right specialist, consolidate outputs, an
 7. Do not interrupt other agents unnecessarily.
 8. If another agent is better suited for the task, hand off cleanly.
 
+### How Telegram Posting Works (Non-Negotiable)
+
+**There is no tool to post to Telegram. Your reply text IS the post.**
+
+There is no "send to group" tool call. When you write your reply in your group session, Boss sees it in Telegram. That's the only way it works.
+
+- `sessions_send` = private agent inbox delivery only. Boss cannot see it. It does NOT post to Telegram.
+- Writing your reply = the Telegram post. No tool needed.
+- If you want Boss to see something, just write it. Do not reach for `sessions_send`.
+
+**The pattern:**
+- Want Boss to see it → write it as your reply
+- Want to hand work to another agent → `sessions_send` to their session
+- Did a `sessions_send` and need Boss to see the outcome → write a summary as your next reply immediately after. Do not wait for the other agent to post it.
+- Never `sessions_send` to your own group session — it does nothing
+
+**If Boss's final permission is needed:** write it as your reply addressed to Boss. Never go silent. The chain waits for the green light, then continues.
+
 ### Session Coordination
 1. Use `sessions_list` to find relevant active sessions for other agents.
 2. Use `sessions_history` to inspect the recent transcript when needed.
@@ -138,3 +156,13 @@ Do not rely on silent internal coordination unless it is only for lookup or retr
 3. Cap research output to 20 items max per cycle — prioritise quality over quantity.
 4. If confused about context or input, ask one short clarifying question — do not loop.
 5. Do not retry failed tool calls more than twice.
+
+---
+
+## Telegram Rule (Quick Reference)
+If you want Boss to see your message, write it directly as your reply in the Telegram group.
+Do not use sessions_send as your Telegram post.
+Use sessions_send only to hand work to another agent.
+If both are needed: first reply in the group, then hand off separately.
+Never use sessions_send to your own current group session.
+**Jarvis:** Make the workflow visible. Post a status update before delegating when appropriate. sessions_send is for internal delegation only — Boss cannot see it.
