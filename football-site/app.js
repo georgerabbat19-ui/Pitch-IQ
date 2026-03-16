@@ -913,10 +913,22 @@ document.addEventListener('DOMContentLoaded', () => {
   // Check if Home tab is active (default on startup)
   const activeTab = document.querySelector('.league-tab.active');
   if (activeTab && activeTab.dataset.league === 'home') {
-    // Home view — only render home page
+    // Home view — only render home page, hide everything else
+    document.querySelectorAll('section.section').forEach(s => {
+      if (s.id !== 'home-page') s.classList.add('hidden');
+    });
+    document.querySelector('.alert-banner')?.classList.add('hidden');
+    document.querySelector('.section-chips-wrap')?.classList.add('hidden');
+    document.querySelector('.search-bar-wrap')?.classList.add('hidden');
     renderHomePage();
   } else {
-    // All Leagues/other view — render all sections
+    // All Leagues/other view — render all sections, show UI
+    document.querySelector('.alert-banner')?.classList.remove('hidden');
+    document.querySelector('.section-chips-wrap')?.classList.remove('hidden');
+    document.querySelector('.search-bar-wrap')?.classList.remove('hidden');
+    document.querySelectorAll('section.section').forEach(s => {
+      if (s.id !== 'home-page') s.classList.remove('hidden');
+    });
     renderInjuries();
     renderTransfers();
     renderManagers();
