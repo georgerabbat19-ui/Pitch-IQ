@@ -451,6 +451,10 @@ header {
   display: none;
 }
 
+.section-divider.hidden {
+  display: none;
+}
+
 /* ===== CARDS GRID ===== */
 .cards-grid {
   display: grid;

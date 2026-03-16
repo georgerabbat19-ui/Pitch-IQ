@@ -582,6 +582,7 @@ function applyFilters(league = 'all', section = 'all', userInitiated = false) {
     document.querySelectorAll('section.section').forEach(s => {
       if (s.id !== 'home-page') s.classList.add('hidden');
     });
+    document.querySelectorAll('.section-divider').forEach(d => d.classList.add('hidden'));
     document.querySelector('.alert-banner')?.classList.add('hidden');
     document.querySelector('.section-chips-wrap')?.classList.add('hidden');
     document.querySelector('.search-bar-wrap')?.classList.add('hidden');
@@ -595,6 +596,7 @@ function applyFilters(league = 'all', section = 'all', userInitiated = false) {
   }
   
   // Not home view — show all data sections and UI
+  document.querySelectorAll('.section-divider').forEach(d => d.classList.remove('hidden'));
   document.querySelector('.alert-banner')?.classList.remove('hidden');
   document.querySelector('.section-chips-wrap')?.classList.remove('hidden');
   document.querySelector('.search-bar-wrap')?.classList.remove('hidden');
@@ -917,6 +919,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('section.section').forEach(s => {
       if (s.id !== 'home-page') s.classList.add('hidden');
     });
+    document.querySelectorAll('.section-divider').forEach(d => d.classList.add('hidden'));
     document.querySelector('.alert-banner')?.classList.add('hidden');
     document.querySelector('.section-chips-wrap')?.classList.add('hidden');
     document.querySelector('.search-bar-wrap')?.classList.add('hidden');
