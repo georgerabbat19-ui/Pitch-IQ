@@ -1050,6 +1050,49 @@ const PREVIEWS_DATA = [
   },
 ];
 
+// ─── TOP SCORERS (GW30 / MD29) — Approved by Referee (2026-03-17 03:35) ──────
+// Scout submission fact-checked against official sources. Kane/Bundesliga rejected (scope).
+const TOP_SCORERS_DATA = [
+  {
+    id: 'haaland-gw30',
+    rank: 1,
+    player: 'Erling Haaland',
+    club: 'Manchester City',
+    clubBadge: '🩵',
+    league: 'premier-league',
+    leagueName: 'Premier League',
+    position: 'ST',
+    goals: 12,
+    apps: 29,
+    goalsPerGame: (12 / 29).toFixed(2),
+    detail: 'Leads the Premier League scoring charts by a wide margin. 12 goals in 29 appearances (GW30 season snapshot). Clinical finishing and consistent game time have made him the standout striker in English football this season.',
+    avatar: '🧑',
+    tag: 'prem-topscorer',
+    date: 'Mar 17, 2026',
+    source: 'https://www.premierleague.com/stats/top-scorers',
+    kickoffLabel: 'Tue 17 Mar · GW30 (GMT+8)',
+  },
+  {
+    id: 'mbappe-gw30',
+    rank: 2,
+    player: 'Kylian Mbappé',
+    club: 'Real Madrid',
+    clubBadge: '⚪',
+    league: 'la-liga',
+    leagueName: 'La Liga',
+    position: 'ST',
+    goals: 9,
+    apps: 23,
+    goalsPerGame: (9 / 23).toFixed(2),
+    detail: '9 La Liga goals in 23 La Liga appearances (MD29 snapshot). Mbappé has been the standout attacking force for Real Madrid in La Liga play this season, despite missing recent fixtures with a knee injury (last 3 weeks).',
+    avatar: '🧑',
+    tag: 'laliga-topscorer',
+    date: 'Mar 17, 2026',
+    source: 'https://www.laliga.es/en/rankings/scorers',
+    kickoffLabel: 'Tue 17 Mar · MD29 (GMT+8)',
+  },
+];
+
 // ─── EUROPEAN RESULTS & NEWS (Mar 16, 2026) ──────────────────────────────────
 // La Liga (MD29) + Bundesliga (MD26) — Approved by Referee
 const EUROPEAN_NEWS = [
