@@ -837,19 +837,17 @@ function renderHomePage() {
 
   const now = Date.now();
 
-  // ── Hottest teams: rank ALL leagues by last-5 form score, top 6 ──
-  const ranked = [...FORM_DATA]
-    .map(f => ({ ...f, score: formScore(f) }))
-    .sort((a, b) => b.score - a.score || b.wins - a.wins)
-    .slice(0, 6);
-
+  // ── Hottest / Coldest teams: rank ALL leagues by last-5 form score ──
   const leagueLabel = { 'premier-league': 'PL', 'la-liga': 'La Liga', 'bundesliga': 'BL' };
+  const scored = [...FORM_DATA].map(f => ({ ...f, score: formScore(f) }));
+  const hottest = [...scored].sort((a, b) => b.score - a.score || b.wins - a.wins).slice(0, 6);
+  const coldest = [...scored].sort((a, b) => a.score - b.score || a.wins - b.wins).slice(0, 6);
 
-  const formHtml = ranked.length ? `
+  const renderFormGrid = (teams, emoji, title) => teams.length ? `
     <div class="home-section">
-      <div class="home-section-title">🔥 Hottest Teams Right Now</div>
+      <div class="home-section-title">${emoji} ${title}</div>
       <div class="home-form-grid">
-        ${ranked.map((f, idx) => {
+        ${teams.map((f, idx) => {
           const pips = (f.form || []).map(r => `<span class="form-pip form-${r.toLowerCase()}">${r}</span>`).join('');
           const league = leagueLabel[f.league] || '';
           return `
@@ -864,6 +862,9 @@ function renderHomePage() {
       </div>
     </div>
   ` : '';
+
+  const formHtml = renderFormGrid(hottest, '🔥', 'Hottest Teams Right Now') +
+                   renderFormGrid(coldest, '🥶', 'Coldest Teams Right Now');
 
   // ── Closest upcoming fixtures: sort by kickoff asc, show next 5 ──
   const upcoming = (PREVIEWS_DATA || [])
