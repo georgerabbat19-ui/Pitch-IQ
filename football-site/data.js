@@ -1107,5 +1107,3 @@ const EUROPEAN_NEWS = [
     impact: 'high',
   },
 ];
-,
-];
