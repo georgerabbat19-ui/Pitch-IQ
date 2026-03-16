@@ -578,23 +578,28 @@ function setupSectionChips() {
 function applyFilters(league = 'all', section = 'all', userInitiated = false) {
   // Handle "home" league filter — dedicated home page view
   if (league === 'home') {
-    // Hide all data sections
-    document.querySelectorAll('section.section').forEach(s => s.classList.add('hidden'));
-    // Create and show home page
-    let homeSection = document.getElementById('home-page');
-    if (!homeSection) {
-      const mainContent = document.querySelector('.main-content');
-      if (mainContent) {
-        homeSection = document.createElement('section');
-        homeSection.id = 'home-page';
-        homeSection.className = 'section home-page-section';
-        mainContent.insertBefore(homeSection, mainContent.firstChild);
-      }
-    }
+    // Hide all data sections, show only home page and header
+    document.querySelectorAll('section.section').forEach(s => {
+      if (s.id !== 'home-page') s.classList.add('hidden');
+    });
+    document.querySelector('.alert-banner')?.classList.add('hidden');
+    document.querySelector('.section-chips-wrap')?.classList.add('hidden');
+    document.querySelector('.search-bar-wrap')?.classList.add('hidden');
+    
+    // Show home page
+    const homeSection = document.getElementById('home-page');
     if (homeSection) homeSection.classList.remove('hidden');
+    
     renderHomePage();
     return; // Early exit — home page only
   }
+  
+  // Not home view — show all data sections and UI
+  document.querySelector('.alert-banner')?.classList.remove('hidden');
+  document.querySelector('.section-chips-wrap')?.classList.remove('hidden');
+  document.querySelector('.search-bar-wrap')?.classList.remove('hidden');
+  const homeSection = document.getElementById('home-page');
+  if (homeSection) homeSection.classList.add('hidden');
   
   // Only hide sections if user clicked a tab/chip (not on startup)
   if (userInitiated) {
@@ -810,26 +815,9 @@ function openClubDrillDown(clubId) {
 
 // ─── HOME PAGE CURATION (Phase 3) ─────────────────────────────────────────────
 function renderHomePage() {
-  // Home page renders when "Home" tab is active (or when "All Leagues" + "All Sections")
-  const activeTab = document.querySelector('.league-tab.active');
-  
-  const isHomeView = activeTab && (activeTab.dataset.league === 'home' || activeTab.dataset.league === 'all');
-  
-  if (!isHomeView) return; // Not home view, don't render
-  
-  // Create home page container (if not exists)
-  let homeSection = document.getElementById('home-page');
-  if (!homeSection) {
-    const mainContent = document.querySelector('.main-content');
-    if (!mainContent) return;
-    
-    homeSection = document.createElement('section');
-    homeSection.id = 'home-page';
-    homeSection.className = 'section home-page-section';
-    mainContent.insertBefore(homeSection, mainContent.firstChild);
-  }
-  
-  homeSection.classList.remove('hidden');
+  // Render home page content into #home-page
+  const homeSection = document.getElementById('home-page');
+  if (!homeSection) return;
   
   // Collect top 5 form teams (already sorted by rank in renderForm)
   const topForm = FORM_DATA.slice(0, 5);
