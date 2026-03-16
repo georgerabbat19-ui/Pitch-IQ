@@ -273,7 +273,8 @@ function renderEplTeams(searchTerm = '') {
     });
   }
   
-  document.getElementById('countEplTeams').textContent = EPL_TEAMS.length;
+  const totalTeams = EPL_TEAMS.length + (typeof LA_LIGA_TEAMS !== 'undefined' ? LA_LIGA_TEAMS.length : 0) + (typeof BUNDESLIGA_TEAMS !== 'undefined' ? BUNDESLIGA_TEAMS.length : 0);
+  document.getElementById('countEplTeams').textContent = totalTeams;
 }
 
 function openTeamModal(teamId) {
@@ -293,7 +294,7 @@ function updateHeroStats() {
   document.getElementById('statTransfers').textContent = TRANSFERS_DATA.length;
   document.getElementById('statManagers').textContent = MANAGERS_DATA.length;
   document.getElementById('statVar').textContent = RULES_DATA.length;
-  document.getElementById('statTeams').textContent = EPL_TEAMS.length;
+  document.getElementById('statTeams').textContent = EPL_TEAMS.length + (typeof LA_LIGA_TEAMS !== 'undefined' ? LA_LIGA_TEAMS.length : 0) + (typeof BUNDESLIGA_TEAMS !== 'undefined' ? BUNDESLIGA_TEAMS.length : 0);
 }
 
 function setupFilters() {
@@ -610,6 +611,11 @@ function applyFilters(league = 'all', section = 'all', userInitiated = false) {
       card.style.display = (cardLeague === leagueToFilter) ? '' : 'none';
     }
   });
+
+  // Re-render club cards when clubs section is visible (supports multi-league filtering)
+  if (sectionsToShow.includes('epl-teams')) {
+    renderClubDrillDown();
+  }
 }
 
 // Legacy setupLeagueFilter (kept for backward compatibility, now calls new setup)
@@ -624,17 +630,21 @@ function setupLeagueFilter() {
 function renderClubDrillDown() {
   const grid = document.getElementById('epl-teams-grid');
   if (!grid) return;
-  
-  // Build unified club list from all sources (EPL_TEAMS exists)
-  const clubs = EPL_TEAMS.map(t => ({
-    id: t.id,
-    name: t.name,
-    badge: t.badge,
-    league: 'premier-league',
-    news: t.news || [],
-    injuries: [],
-    transfers: [],
-  }));
+
+  // Determine active league filter
+  const leagueTabs = document.getElementById('leagueTabs');
+  const activeTab = leagueTabs ? leagueTabs.querySelector('.league-tab.active') : null;
+  const activeLeague = activeTab ? activeTab.dataset.league : 'all';
+
+  // Build unified club list from all three leagues
+  const allClubs = [
+    ...EPL_TEAMS.map(t => ({ id: t.id, name: t.name, badge: t.badge, league: 'premier-league', news: t.news || [], injuries: [], transfers: [] })),
+    ...(typeof LA_LIGA_TEAMS !== 'undefined' ? LA_LIGA_TEAMS.map(t => ({ id: t.id, name: t.name, badge: t.badge, league: 'la-liga', news: t.news || [], injuries: [], transfers: [] })) : []),
+    ...(typeof BUNDESLIGA_TEAMS !== 'undefined' ? BUNDESLIGA_TEAMS.map(t => ({ id: t.id, name: t.name, badge: t.badge, league: 'bundesliga', news: t.news || [], injuries: [], transfers: [] })) : []),
+  ];
+
+  // Filter by active league tab
+  const clubs = activeLeague === 'all' ? allClubs : allClubs.filter(c => c.league === activeLeague);
   
   // Enhance clubs with injury data
   INJURIES_DATA.forEach(inj => {
@@ -726,7 +736,12 @@ function renderClubDrillDown() {
 }
 
 function openClubDrillDown(clubId) {
-  const club = EPL_TEAMS.find(t => t.id === clubId);
+  const allTeams = [
+    ...EPL_TEAMS,
+    ...(typeof LA_LIGA_TEAMS !== 'undefined' ? LA_LIGA_TEAMS : []),
+    ...(typeof BUNDESLIGA_TEAMS !== 'undefined' ? BUNDESLIGA_TEAMS : []),
+  ];
+  const club = allTeams.find(t => t.id === clubId);
   if (!club) return;
   
   const overlay = document.getElementById('eplModalOverlay');

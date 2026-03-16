@@ -768,6 +768,56 @@ const EPL_TEAMS = [
   ]},
 ];
 
+// ─── LA LIGA TEAMS DATA ───────────────────────────────────────────────────────
+// Verified by Referee — 2026-03-17 (Scout research, official La Liga roster 2025-26)
+
+const LA_LIGA_TEAMS = [
+  { id:'athletic-club',         name:'Athletic Club',         badge:'⚪', news:[] },
+  { id:'atletico-madrid',       name:'Atlético Madrid',       badge:'🔴', news:[] },
+  { id:'barcelona',             name:'Barcelona',             badge:'🔵', news:[] },
+  { id:'osasuna',               name:'Osasuna',               badge:'🔴', news:[] },
+  { id:'celta-vigo',            name:'Celta Vigo',            badge:'🔵', news:[] },
+  { id:'alaves',                name:'Deportivo Alavés',      badge:'🔵', news:[] },
+  { id:'elche',                 name:'Elche',                 badge:'🤍', news:[] },
+  { id:'getafe',                name:'Getafe',                badge:'💙', news:[] },
+  { id:'girona',                name:'Girona',                badge:'🔴', news:[] },
+  { id:'levante',               name:'Levante',               badge:'💙', news:[] },
+  { id:'mallorca',              name:'Mallorca',              badge:'🔴', news:[] },
+  { id:'espanyol',              name:'Espanyol',              badge:'🔵', news:[] },
+  { id:'rayo-vallecano',        name:'Rayo Vallecano',        badge:'🔴', news:[] },
+  { id:'real-betis',            name:'Real Betis',            badge:'🟢', news:[] },
+  { id:'real-madrid',           name:'Real Madrid',           badge:'👑', news:[] },
+  { id:'real-oviedo',           name:'Real Oviedo',           badge:'💙', news:[] },
+  { id:'real-sociedad',         name:'Real Sociedad',         badge:'🔵', news:[] },
+  { id:'sevilla',               name:'Sevilla',               badge:'🔴', news:[] },
+  { id:'valencia',              name:'Valencia',              badge:'🤍', news:[] },
+  { id:'villarreal',            name:'Villarreal',            badge:'💛', news:[] },
+];
+
+// ─── BUNDESLIGA TEAMS DATA ────────────────────────────────────────────────────
+// Verified by Referee — 2026-03-17 (Scout research, official Bundesliga roster 2025-26)
+
+const BUNDESLIGA_TEAMS = [
+  { id:'augsburg',                  name:'FC Augsburg',               badge:'🔴', news:[] },
+  { id:'union-berlin',              name:'Union Berlin',              badge:'🔴', news:[] },
+  { id:'werder-bremen',             name:'Werder Bremen',             badge:'🟢', news:[] },
+  { id:'borussia-dortmund',         name:'Borussia Dortmund',         badge:'💛', news:[] },
+  { id:'eintracht-frankfurt',       name:'Eintracht Frankfurt',       badge:'🔴', news:[] },
+  { id:'sc-freiburg',               name:'SC Freiburg',               badge:'🔴', news:[] },
+  { id:'hamburger-sv',              name:'Hamburger SV',              badge:'🔴', news:[] },
+  { id:'1fc-heidenheim',            name:'1. FC Heidenheim',          badge:'🔴', news:[] },
+  { id:'hoffenheim',                name:'TSG Hoffenheim',            badge:'💙', news:[] },
+  { id:'1fc-koeln',                 name:'1. FC Köln',                badge:'🔴', news:[] },
+  { id:'rb-leipzig',                name:'RB Leipzig',                badge:'🔴', news:[] },
+  { id:'bayer-leverkusen',          name:'Bayer Leverkusen',          badge:'🔴', news:[] },
+  { id:'mainz-05',                  name:'Mainz 05',                  badge:'🔴', news:[] },
+  { id:'borussia-monchengladbach',  name:'Borussia Mönchengladbach',  badge:'🟢', news:[] },
+  { id:'bayern-munich',             name:'Bayern Munich',             badge:'🔴', news:[] },
+  { id:'fc-st-pauli',               name:'FC St. Pauli',              badge:'🤍', news:[] },
+  { id:'vfb-stuttgart',             name:'VfB Stuttgart',             badge:'🔴', news:[] },
+  { id:'vfl-wolfsburg',             name:'VfL Wolfsburg',             badge:'🟢', news:[] },
+];
+
 // ─── MATCH PREVIEWS DATA — GW31 (Mar 16–22, 2026) ────────────────────────────
 // Sources: Sky Sports fixtures, data.js injuries, NBC Sports standings
 // ⚠️ Man City vs Crystal Palace kickoff UNVERIFIED (may be postponed — check closer to date)
