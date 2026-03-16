@@ -578,8 +578,19 @@ function setupSectionChips() {
 function applyFilters(league = 'all', section = 'all', userInitiated = false) {
   // Handle "home" league filter — dedicated home page view
   if (league === 'home') {
+    // Hide all data sections
     document.querySelectorAll('section.section').forEach(s => s.classList.add('hidden'));
-    const homeSection = document.getElementById('home-page');
+    // Create and show home page
+    let homeSection = document.getElementById('home-page');
+    if (!homeSection) {
+      const mainContent = document.querySelector('.main-content');
+      if (mainContent) {
+        homeSection = document.createElement('section');
+        homeSection.id = 'home-page';
+        homeSection.className = 'section home-page-section';
+        mainContent.insertBefore(homeSection, mainContent.firstChild);
+      }
+    }
     if (homeSection) homeSection.classList.remove('hidden');
     renderHomePage();
     return; // Early exit — home page only
@@ -799,12 +810,10 @@ function openClubDrillDown(clubId) {
 
 // ─── HOME PAGE CURATION (Phase 3) ─────────────────────────────────────────────
 function renderHomePage() {
-  // Only render home when "All Sections" chip is active AND "All Leagues" tab is active
-  const activeChip = document.querySelector('.section-chip.active');
+  // Home page renders when "Home" tab is active (or when "All Leagues" + "All Sections")
   const activeTab = document.querySelector('.league-tab.active');
   
-  const isHomeView = (activeChip && activeChip.dataset.section === 'all') && 
-                     (activeTab && activeTab.dataset.league === 'all');
+  const isHomeView = activeTab && (activeTab.dataset.league === 'home' || activeTab.dataset.league === 'all');
   
   if (!isHomeView) return; // Not home view, don't render
   
