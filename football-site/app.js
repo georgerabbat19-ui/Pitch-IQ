@@ -825,52 +825,75 @@ function openClubDrillDown(clubId) {
   overlay.classList.add('open');
 }
 
-// ─── HOME PAGE CURATION (Phase 3) ─────────────────────────────────────────────
+// ─── HOME PAGE CURATION (Dynamic) ─────────────────────────────────────────────
+function formScore(team) {
+  // Score a team's last-5 form: W=3, D=1, L=0. Max 15.
+  return (team.form || []).reduce((sum, r) => sum + (r === 'W' ? 3 : r === 'D' ? 1 : 0), 0);
+}
+
 function renderHomePage() {
-  // Render home page content into #home-page
   const homeSection = document.getElementById('home-page');
   if (!homeSection) return;
-  
-  // Collect top 5 form teams (already sorted by rank in renderForm)
-  const topForm = FORM_DATA.slice(0, 5);
-  
-  // Render home page content
-  const formHtml = topForm.length ? `
+
+  const now = Date.now();
+
+  // ── Hottest teams: rank ALL leagues by last-5 form score, top 6 ──
+  const ranked = [...FORM_DATA]
+    .map(f => ({ ...f, score: formScore(f) }))
+    .sort((a, b) => b.score - a.score || b.wins - a.wins)
+    .slice(0, 6);
+
+  const leagueLabel = { 'premier-league': 'PL', 'la-liga': 'La Liga', 'bundesliga': 'BL' };
+
+  const formHtml = ranked.length ? `
     <div class="home-section">
-      <div class="home-section-title">📊 Top Form This Week</div>
+      <div class="home-section-title">🔥 Hottest Teams Right Now</div>
       <div class="home-form-grid">
-        ${topForm.map((f, idx) => {
-          const pips = f.form.map(r => `<span class="form-pip form-${r.toLowerCase()}">${r}</span>`).join('');
+        ${ranked.map((f, idx) => {
+          const pips = (f.form || []).map(r => `<span class="form-pip form-${r.toLowerCase()}">${r}</span>`).join('');
+          const league = leagueLabel[f.league] || '';
           return `
             <div class="home-form-card">
-              <div class="home-form-rank">${f.rank || idx + 1}</div>
-              <div class="home-form-team">${f.badge} ${f.team}</div>
+              <div class="home-form-rank">#${idx + 1}</div>
+              <div class="home-form-team">${f.badge} ${f.team} <span style="font-size:0.7rem;opacity:0.5">${league}</span></div>
               <div class="home-form-pips">${pips}</div>
-              <div class="home-form-pts">${f.wins * 3 + f.draws} pts</div>
+              <div class="home-form-pts">${f.score}/15 pts</div>
             </div>
           `;
         }).join('')}
       </div>
     </div>
   ` : '';
-  
-  // Top 3 previews
-  const topPreviews = PREVIEWS_DATA.slice(0, 3);
-  const previewsHtml = topPreviews.length ? `
+
+  // ── Closest upcoming fixtures: sort by kickoff asc, show next 5 ──
+  const upcoming = (PREVIEWS_DATA || [])
+    .filter(p => p.id && p.kickoff && new Date(p.kickoff).getTime() > now)
+    .sort((a, b) => new Date(a.kickoff) - new Date(b.kickoff))
+    .slice(0, 5);
+
+  const previewsHtml = upcoming.length ? `
     <div class="home-section">
-      <div class="home-section-title">🔭 Upcoming Matches</div>
+      <div class="home-section-title">🗓️ Up Next</div>
       <div class="home-previews-grid">
-        ${topPreviews.map(p => `
-          <div class="home-preview-card">
-            <div class="home-match-teams">${p.home} <span class="vs">vs</span> ${p.away}</div>
-            <div class="home-match-time">${p.kickoffLabel}</div>
-            <div class="home-match-comp">${p.competition}</div>
-          </div>
-        `).join('')}
+        ${upcoming.map(p => {
+          const ko = new Date(p.kickoff);
+          // Time until kickoff
+          const diffMs = ko - now;
+          const diffH = Math.floor(diffMs / 3600000);
+          const diffD = Math.floor(diffH / 24);
+          const timeLabel = diffD > 1 ? `in ${diffD}d` : diffH > 0 ? `in ${diffH}h` : 'soon';
+          return `
+            <div class="home-preview-card">
+              <div class="home-match-teams">${p.home} <span class="vs">vs</span> ${p.away}</div>
+              <div class="home-match-time">${p.kickoffLabel || ko.toUTCString().slice(0,16)} · ${timeLabel}</div>
+              <div class="home-match-comp">${p.competition}</div>
+            </div>
+          `;
+        }).join('')}
       </div>
     </div>
   ` : '';
-  
+
   homeSection.innerHTML = `
     <div class="home-page-content">
       ${formHtml}
