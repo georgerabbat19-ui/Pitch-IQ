@@ -597,6 +597,7 @@ function applyFilters(league = 'all', section = 'all', userInitiated = false) {
     document.querySelector('.alert-banner')?.classList.add('hidden');
     document.querySelector('.section-chips-wrap')?.classList.add('hidden');
     document.querySelector('.search-bar-wrap')?.classList.add('hidden');
+    document.querySelector('.hero')?.classList.remove('hidden');
     
     // Show home page
     const homeSection = document.getElementById('home-page');
@@ -606,11 +607,12 @@ function applyFilters(league = 'all', section = 'all', userInitiated = false) {
     return; // Early exit — home page only
   }
   
-  // Not home view — show all data sections and UI
+  // Not home view — show all data sections and UI, hide hero
   document.querySelectorAll('.section-divider').forEach(d => d.classList.remove('hidden'));
   document.querySelector('.alert-banner')?.classList.remove('hidden');
   document.querySelector('.section-chips-wrap')?.classList.remove('hidden');
   document.querySelector('.search-bar-wrap')?.classList.remove('hidden');
+  document.querySelector('.hero')?.classList.add('hidden');
   const homeSectionNotHome = document.getElementById('home-page');
   if (homeSectionNotHome) homeSectionNotHome.classList.add('hidden');
   
@@ -965,7 +967,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const activeTab = document.querySelector('.league-tab.active');
   const startLeague = activeTab ? activeTab.dataset.league : 'all';
   if (startLeague === 'home') {
-    // Home view — hide data sections and chrome
+    // Home view — show hero, hide data sections and chrome
+    document.querySelector('.hero')?.classList.remove('hidden');
     document.querySelectorAll('section.section').forEach(s => {
       if (s.id !== 'home-page') s.classList.add('hidden');
     });
@@ -976,7 +979,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const homeSection = document.getElementById('home-page');
     if (homeSection) homeSection.classList.remove('hidden');
   } else {
-    // All Leagues / league-specific view
+    // All Leagues / league-specific view — hide hero, show data
+    document.querySelector('.hero')?.classList.add('hidden');
     document.querySelector('.alert-banner')?.classList.remove('hidden');
     document.querySelector('.section-chips-wrap')?.classList.remove('hidden');
     document.querySelector('.search-bar-wrap')?.classList.remove('hidden');
