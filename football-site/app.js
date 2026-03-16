@@ -401,16 +401,13 @@ function setupSearch() {
   if (!bar) return;
   bar.addEventListener('input', () => {
     const q = bar.value.toLowerCase().trim();
-    // Filter all static data-search cards (injuries, transfers, managers, rules)
-    document.querySelectorAll('.card[data-search], .var-card[data-search]').forEach(card => {
-      card.style.display = card.dataset.search.toLowerCase().includes(q) ? '' : 'none';
+    // Filter all cards with data-search attribute (injuries, transfers, managers, rules, form, previews)
+    document.querySelectorAll('.card[data-search], .var-card[data-search], .form-stat-card[data-search], .preview-card[data-search]').forEach(card => {
+      const matches = !q || card.dataset.search.toLowerCase().includes(q);
+      card.style.display = matches ? '' : 'none';
     });
-    // Re-render dynamic sections with search filter
+    // Re-render EPL teams with search filter
     renderEplTeams(q);
-    // Filter form cards directly (they're re-rendered on filter change, so just show/hide)
-    document.querySelectorAll('.form-stat-card[data-search]').forEach(card => {
-      card.style.display = (!q || card.dataset.search.toLowerCase().includes(q)) ? '' : 'none';
-    });
   });
 }
 
@@ -488,7 +485,7 @@ function renderPreviews(filter = 'all') {
     const managerHtml = p.managerNote ? `<div class="preview-manager-note">🎙️ ${p.managerNote}</div>` : '';
 
     return `
-    <div class="preview-card" data-home="${p.homeImportance}" data-away="${p.awayImportance}" data-league="${p.league || 'all'}">
+    <div class="preview-card" data-home="${p.homeImportance}" data-away="${p.awayImportance}" data-league="${p.league || 'all'}" data-search="${p.home} ${p.away} ${p.competition}">
       ${flagHtml}
 
       <!-- Header: matchup -->
@@ -643,8 +640,22 @@ function setupSectionChips() {
 
 // ─── COMBINED FILTER LOGIC ───────────────────────────────────────────────────────────
 function applyFilters(league = 'all', section = 'all') {
-  // Hide all sections first
-  document.querySelectorAll('section.section').forEach(s => s.classList.add('hidden'));
+  // Hide all sections first (except home page)
+  document.querySelectorAll('section.section').forEach(s => {
+    if (s.id !== 'home-page') s.classList.add('hidden');
+  });
+  
+  // If "All Leagues" + "All Sections" → show home page, hide other sections
+  if (league === 'all' && section === 'all') {
+    const homeSection = document.getElementById('home-page');
+    if (homeSection) homeSection.classList.remove('hidden');
+    renderHomePage();
+    return; // Early exit — home page view only
+  }
+  
+  // Hide home page if not in home view
+  const homeSection = document.getElementById('home-page');
+  if (homeSection) homeSection.classList.add('hidden');
   
   // Map section chips to actual sections
   const sectionMap = {
@@ -685,6 +696,79 @@ function applyFilters(league = 'all', section = 'all') {
 function setupLeagueFilter() {
   setupLeagueTabs();
   setupSectionChips();
+}
+
+// ─── HOME PAGE CURATION (Phase 3) ─────────────────────────────────────────────
+function renderHomePage() {
+  // Only render home when "All Sections" chip is active AND "All Leagues" tab is active
+  const activeChip = document.querySelector('.section-chip.active');
+  const activeTab = document.querySelector('.league-tab.active');
+  
+  const isHomeView = (activeChip && activeChip.dataset.section === 'all') && 
+                     (activeTab && activeTab.dataset.league === 'all');
+  
+  if (!isHomeView) return; // Not home view, don't render
+  
+  // Create home page container (if not exists)
+  let homeSection = document.getElementById('home-page');
+  if (!homeSection) {
+    const mainContent = document.querySelector('.main-content');
+    if (!mainContent) return;
+    
+    homeSection = document.createElement('section');
+    homeSection.id = 'home-page';
+    homeSection.className = 'section home-page-section';
+    mainContent.insertBefore(homeSection, mainContent.firstChild);
+  }
+  
+  homeSection.classList.remove('hidden');
+  
+  // Collect top 5 form teams (already sorted by rank in renderForm)
+  const topForm = FORM_DATA.slice(0, 5);
+  
+  // Render home page content
+  const formHtml = topForm.length ? `
+    <div class="home-section">
+      <div class="home-section-title">📊 Top Form This Week</div>
+      <div class="home-form-grid">
+        ${topForm.map((f, idx) => {
+          const pips = f.form.map(r => `<span class="form-pip form-${r.toLowerCase()}">${r}</span>`).join('');
+          return `
+            <div class="home-form-card">
+              <div class="home-form-rank">${f.rank || idx + 1}</div>
+              <div class="home-form-team">${f.badge} ${f.team}</div>
+              <div class="home-form-pips">${pips}</div>
+              <div class="home-form-pts">${f.wins * 3 + f.draws} pts</div>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    </div>
+  ` : '';
+  
+  // Top 3 previews
+  const topPreviews = PREVIEWS_DATA.slice(0, 3);
+  const previewsHtml = topPreviews.length ? `
+    <div class="home-section">
+      <div class="home-section-title">🔭 Upcoming Matches</div>
+      <div class="home-previews-grid">
+        ${topPreviews.map(p => `
+          <div class="home-preview-card">
+            <div class="home-match-teams">${p.home} <span class="vs">vs</span> ${p.away}</div>
+            <div class="home-match-time">${p.kickoffLabel}</div>
+            <div class="home-match-comp">${p.competition}</div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  ` : '';
+  
+  homeSection.innerHTML = `
+    <div class="home-page-content">
+      ${formHtml}
+      ${previewsHtml}
+    </div>
+  `;
 }
 
 // ─── CRISIS BANNER AUTO-TRIGGER ───────────────────────────────────────────────
