@@ -912,10 +912,22 @@ document.addEventListener('DOMContentLoaded', () => {
   setupNav();
   setupLastUpdated();
   
-  // Check if Home tab is active (default on startup)
+  // Always render all data sections (rendering and visibility are separate concerns)
+  renderInjuries();
+  renderTransfers();
+  renderManagers();
+  renderRules();
+  renderForm();
+  renderClubDrillDown();
+  renderPreviews();
+  updateHeroStats();
+  renderHomePage();
+
+  // Now apply visibility based on active tab
   const activeTab = document.querySelector('.league-tab.active');
-  if (activeTab && activeTab.dataset.league === 'home') {
-    // Home view — only render home page, hide everything else
+  const startLeague = activeTab ? activeTab.dataset.league : 'all';
+  if (startLeague === 'home') {
+    // Home view — hide data sections and chrome
     document.querySelectorAll('section.section').forEach(s => {
       if (s.id !== 'home-page') s.classList.add('hidden');
     });
@@ -923,23 +935,19 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.alert-banner')?.classList.add('hidden');
     document.querySelector('.section-chips-wrap')?.classList.add('hidden');
     document.querySelector('.search-bar-wrap')?.classList.add('hidden');
-    renderHomePage();
+    const homeSection = document.getElementById('home-page');
+    if (homeSection) homeSection.classList.remove('hidden');
   } else {
-    // All Leagues/other view — render all sections, show UI
+    // All Leagues / league-specific view
     document.querySelector('.alert-banner')?.classList.remove('hidden');
     document.querySelector('.section-chips-wrap')?.classList.remove('hidden');
     document.querySelector('.search-bar-wrap')?.classList.remove('hidden');
     document.querySelectorAll('section.section').forEach(s => {
       if (s.id !== 'home-page') s.classList.remove('hidden');
     });
-    renderInjuries();
-    renderTransfers();
-    renderManagers();
-    renderRules();
-    renderForm();
-    renderClubDrillDown();
-    renderPreviews();
-    updateHeroStats();
+    document.querySelectorAll('.section-divider').forEach(d => d.classList.remove('hidden'));
+    const homeSection = document.getElementById('home-page');
+    if (homeSection) homeSection.classList.add('hidden');
   }
   
   manageCrisisBanner();
