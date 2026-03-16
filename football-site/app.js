@@ -523,7 +523,7 @@ function setupLeagueTabs() {
     const selectedSection = activeChip ? activeChip.dataset.section : 'all';
     
     // Apply both filters
-    applyFilters(selectedLeague, selectedSection);
+    applyFilters(selectedLeague, selectedSection, true); // true = user-initiated
   });
 }
 
@@ -548,23 +548,29 @@ function setupSectionChips() {
     const selectedLeague = activeTab ? activeTab.dataset.league : 'all';
     
     // Apply both filters
-    applyFilters(selectedLeague, selectedSection);
+    applyFilters(selectedLeague, selectedSection, true); // true = user-initiated
   });
 }
 
 // ─── COMBINED FILTER LOGIC ───────────────────────────────────────────────────────────
-function applyFilters(league = 'all', section = 'all') {
-  // Hide all sections first (except home page)
-  document.querySelectorAll('section.section').forEach(s => {
-    if (s.id !== 'home-page') s.classList.add('hidden');
-  });
+function applyFilters(league = 'all', section = 'all', userInitiated = false) {
+  // Only hide sections if user clicked a tab/chip (not on startup)
+  if (userInitiated) {
+    document.querySelectorAll('section.section').forEach(s => {
+      if (s.id !== 'home-page') s.classList.add('hidden');
+    });
+  }
   
   // If "All Leagues" + "All Sections" → show home page, hide other sections
-  if (league === 'all' && section === 'all') {
+  if (league === 'all' && section === 'all' && userInitiated) {
     const homeSection = document.getElementById('home-page');
     if (homeSection) homeSection.classList.remove('hidden');
     renderHomePage();
     return; // Early exit — home page view only
+  } else if (league === 'all' && section === 'all' && !userInitiated) {
+    // On startup: show all sections, don't render home page
+    document.querySelectorAll('section.section').forEach(s => s.classList.remove('hidden'));
+    return;
   }
   
   // Hide home page if not in home view
@@ -610,6 +616,8 @@ function applyFilters(league = 'all', section = 'all') {
 function setupLeagueFilter() {
   setupLeagueTabs();
   setupSectionChips();
+  // Note: applyFilters is NOT called on startup — it's only called when user clicks tabs/chips
+  // This ensures all data renders on page load, then filtering works on interaction
 }
 
 // ─── CLUB DRILL-DOWN (Phase 4) ─────────────────────────────────────────────
