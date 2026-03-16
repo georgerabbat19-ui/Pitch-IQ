@@ -598,8 +598,8 @@ function applyFilters(league = 'all', section = 'all', userInitiated = false) {
   document.querySelector('.alert-banner')?.classList.remove('hidden');
   document.querySelector('.section-chips-wrap')?.classList.remove('hidden');
   document.querySelector('.search-bar-wrap')?.classList.remove('hidden');
-  const homeSection = document.getElementById('home-page');
-  if (homeSection) homeSection.classList.add('hidden');
+  const homeSectionNotHome = document.getElementById('home-page');
+  if (homeSectionNotHome) homeSectionNotHome.classList.add('hidden');
   
   // Only hide sections if user clicked a tab/chip (not on startup)
   if (userInitiated) {
@@ -607,10 +607,6 @@ function applyFilters(league = 'all', section = 'all', userInitiated = false) {
       if (s.id !== 'home-page') s.classList.add('hidden');
     });
   }
-  
-  // Hide home page if not in home view
-  const homeSection = document.getElementById('home-page');
-  if (homeSection) homeSection.classList.add('hidden');
   
   // Map section chips to actual sections
   const sectionMap = {
