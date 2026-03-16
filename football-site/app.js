@@ -317,6 +317,24 @@ function updateHeroStats() {
   document.getElementById('statTeams').textContent = EPL_TEAMS.length + (typeof LA_LIGA_TEAMS !== 'undefined' ? LA_LIGA_TEAMS.length : 0) + (typeof BUNDESLIGA_TEAMS !== 'undefined' ? BUNDESLIGA_TEAMS.length : 0);
 }
 
+function updateSectionCounts(league) {
+  const filter = (arr) => league === 'all' ? arr : arr.filter(i => i.league === league);
+  const el = (id, val) => { const e = document.getElementById(id); if (e) e.textContent = val; };
+  el('countInjuries', filter(INJURIES_DATA).length);
+  el('countTransfers', filter(TRANSFERS_DATA).length);
+  el('countManagers', filter(MANAGERS_DATA).length);
+  el('countRules', filter(RULES_DATA).length);
+  el('countForm', filter(FORM_DATA).length);
+  el('countPreviews', filter(PREVIEWS_DATA.filter(p => p.id)).length);
+  // Teams count
+  const allClubs = [
+    ...EPL_TEAMS.map(t => ({ league: 'premier-league' })),
+    ...(typeof LA_LIGA_TEAMS !== 'undefined' ? LA_LIGA_TEAMS.map(t => ({ league: 'la-liga' })) : []),
+    ...(typeof BUNDESLIGA_TEAMS !== 'undefined' ? BUNDESLIGA_TEAMS.map(t => ({ league: 'bundesliga' })) : []),
+  ];
+  el('countEplTeams', league === 'all' ? allClubs.length : allClubs.filter(c => c.league === league).length);
+}
+
 function setupFilters() {
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -347,16 +365,9 @@ function setupSearch() {
 }
 
 function setupNav() {
-  const sections = document.querySelectorAll('section.section');
-  const navLinks = document.querySelectorAll('[data-section]');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        navLinks.forEach(l => l.classList.toggle('active', l.dataset.section === e.target.id));
-      }
-    });
-  }, { threshold: 0.3 });
-  sections.forEach(s => observer.observe(s));
+  // Note: removed IntersectionObserver — section chip active state is managed by
+  // user clicks only (setupSectionChips). Observer was causing chips to jump to
+  // "injuries" on page load since it's the first visible section.
 
   const menuBtn = document.getElementById('mobileMenuBtn');
   const navTabs = document.getElementById('navTabs');
@@ -648,6 +659,9 @@ function applyFilters(league = 'all', section = 'all', userInitiated = false) {
   if (sectionsToShow.includes('epl-teams')) {
     renderClubDrillDown();
   }
+
+  // Update section counts to reflect active league
+  updateSectionCounts(league);
 }
 
 // Legacy setupLeagueFilter (kept for backward compatibility, now calls new setup)
