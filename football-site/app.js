@@ -622,7 +622,7 @@ function renderClubDrillDown() {
     id: t.id,
     name: t.name,
     badge: t.badge,
-    league: 'pl',
+    league: 'premier-league',
     news: t.news || [],
     injuries: [],
     transfers: [],
