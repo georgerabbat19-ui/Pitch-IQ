@@ -902,20 +902,31 @@ document.addEventListener('DOMContentLoaded', () => {
     console.error('⛔ Data validation failed — some cards may be hidden from UI');
   }
   
-  renderInjuries();
-  renderTransfers();
-  renderManagers();
-  renderRules();
-  renderForm();
-  renderClubDrillDown();
-  renderPreviews();
-  updateHeroStats();
+  // Setup all event listeners first
   setupFilters();
   setupPreviewFilters();
   setupLeagueFilter();
   setupSearch();
   setupNav();
   setupLastUpdated();
+  
+  // Check if Home tab is active (default on startup)
+  const activeTab = document.querySelector('.league-tab.active');
+  if (activeTab && activeTab.dataset.league === 'home') {
+    // Home view — only render home page
+    renderHomePage();
+  } else {
+    // All Leagues/other view — render all sections
+    renderInjuries();
+    renderTransfers();
+    renderManagers();
+    renderRules();
+    renderForm();
+    renderClubDrillDown();
+    renderPreviews();
+    updateHeroStats();
+  }
+  
   manageCrisisBanner();
 
   // EPL modal close handlers
