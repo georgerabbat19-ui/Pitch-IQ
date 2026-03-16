@@ -83,6 +83,7 @@ const INJURIES_DATA = [
     player: 'Martin Odegaard',
     avatar: '🧑',
     club: 'Arsenal',
+    league: 'premier-league',
     clubBadge: '🔴',
     position: 'CAM',
     detail: 'Knock — doubt for GW30 vs Everton. Picked up after the Champions League draw at Bayer Leverkusen on Wednesday. Arteta says he will be assessed before selection. Leandro Trossard also a doubt.',
@@ -110,6 +111,7 @@ const INJURIES_DATA = [
     player: 'Micky van de Ven',
     avatar: '🧑',
     club: 'Tottenham',
+    league: 'premier-league',
     clubBadge: '⚪',
     position: 'CB',
     detail: 'Serving a one-match suspension following his red card in the 3-1 home defeat to Crystal Palace. Misses the Liverpool trip at Anfield on Sunday. Cristian Romero also suspended — Spurs travel to Anfield without two first-choice centre-backs.',
@@ -401,7 +403,7 @@ const RULES_DATA = [
     title: 'Semi-Automated Offside Technology (SAOT) — First Full PL Season',
     icon: '📏',
     category: 'Technology',
-    league: ['Premier League'],
+    league: 'premier-league',
     detail: 'SAOT was introduced at the end of 2024-25 (Apr 12, 2025) and is now in full operation for the entire 2025-26 Premier League season — the first league in the world to run it for a full campaign. Average offside decision time has dropped from over 4 minutes to under 40 seconds. Precise limb-tracking data determines marginal calls.',
     predictionNote: 'Faster offside rulings mean fewer extended stoppages. Marginally more close-range goals likely to stand — slight upward pressure on goals markets vs pre-SAOT seasons.',
     date: 'Season start Aug 2025',
@@ -473,6 +475,7 @@ const FORM_DATA = [
     badge: '⚪',
     league: 'premier-league',
     leagueName: 'Premier League',
+    tag: 'crisis',
     form: ['L', 'L', 'L', 'L', 'L'],
     played: 30, wins: 7, draws: 8, losses: 15,
     gf: 30, ga: 36,
@@ -699,69 +702,69 @@ const FORM_DATA = [
 
 const EPL_TEAMS = [
   { id:'arsenal', name:'Arsenal', badge:'🔴', news:[
-    { type:'injury', title:'Mikel Merino — OUT (Ankle)', subtitle:'🔴 Arsenal · CM', body:'Ankle injury — out for GW30 vs Everton. Odegaard (knock) and Trossard (unspecified) are doubts. Arsenal top the table with 67pts (20W-7D-3L).', impact:'medium', date:'Mar 14, 2026', tag:'injury', isNew:true, source:'https://www.nbcsports.com/soccer/news/premier-league-injury-table-2025-26-season-club-by-club-injuries-suspensions-latest-updates' },
+    { type:'injury', title:'Mikel Merino — OUT (Ankle)', subtitle:'🔴 Arsenal · CM', body:'Ankle injury — out for GW30 vs Everton. Odegaard (knock) and Trossard (unspecified) are doubts. Arsenal top the table with 67pts (20W-7D-3L).', impact:'medium', date:'Mar 14, 2026', tag:'injury', isNew:true, league:'premier-league', source:'https://www.nbcsports.com/soccer/news/premier-league-injury-table-2025-26-season-club-by-club-injuries-suspensions-latest-updates' },
   ]},
   { id:'aston-villa', name:'Aston Villa', badge:'🟣', news:[
-    { type:'injury', title:'Tielemans & Kamara — Both OUT', subtitle:'🟣 Aston Villa · CM/CDM', body:'Tielemans (ankle) and Kamara (knee) both out for GW30 vs Man United. Matty Cash (calf) a doubt. Villa 4th with 51pts. Jadon Sancho ineligible vs parent club Man United.', impact:'medium', date:'Mar 13, 2026', tag:'injury', isNew:true, source:'https://www.nbcsports.com/soccer/news/premier-league-injury-table-2025-26-season-club-by-club-injuries-suspensions-latest-updates' },
+    { type:'injury', title:'Tielemans & Kamara — Both OUT', subtitle:'🟣 Aston Villa · CM/CDM', body:'Tielemans (ankle) and Kamara (knee) both out for GW30 vs Man United. Matty Cash (calf) a doubt. Villa 4th with 51pts. Jadon Sancho ineligible vs parent club Man United.', impact:'medium', date:'Mar 13, 2026', tag:'injury', isNew:true, league:'premier-league', source:'https://www.nbcsports.com/soccer/news/premier-league-injury-table-2025-26-season-club-by-club-injuries-suspensions-latest-updates' },
   ]},
   { id:'bournemouth', name:'Bournemouth', badge:'🍒', news:[
-    { type:'injury', title:'Lewis Cook & Kluivert — OUT', subtitle:'🍒 Bournemouth · CM/LW', body:'Cook (thigh) and Kluivert (knee) both out. Ben Doak (hamstring) back in training but unlikely to feature. Bournemouth 9th, 41pts.', impact:'medium', date:'Mar 14, 2026', tag:'injury', isNew:true, source:'https://www.nbcsports.com/soccer/news/premier-league-injury-table-2025-26-season-club-by-club-injuries-suspensions-latest-updates' },
+    { type:'injury', title:'Lewis Cook & Kluivert — OUT', subtitle:'🍒 Bournemouth · CM/LW', body:'Cook (thigh) and Kluivert (knee) both out. Ben Doak (hamstring) back in training but unlikely to feature. Bournemouth 9th, 41pts.', impact:'medium', date:'Mar 14, 2026', tag:'injury', isNew:true, league:'premier-league', source:'https://www.nbcsports.com/soccer/news/premier-league-injury-table-2025-26-season-club-by-club-injuries-suspensions-latest-updates' },
   ]},
   { id:'brentford', name:'Brentford', badge:'🐝', news:[
-    { type:'injury', title:'Six Long-Term Absentees', subtitle:'🐝 Brentford · Squad', body:'Hickey (thigh), Janelt (ankle), Rico Henry (thigh), Milambo (knee), Fabio Carvalho (ACL) and Dasilva (knee) all out. Despite injuries, Brentford are 7th with 44pts.', impact:'medium', date:'Mar 13, 2026', tag:'injury', isNew:true, source:'https://www.nbcsports.com/soccer/news/premier-league-injury-table-2025-26-season-club-by-club-injuries-suspensions-latest-updates' },
+    { type:'injury', title:'Six Long-Term Absentees', subtitle:'🐝 Brentford · Squad', body:'Hickey (thigh), Janelt (ankle), Rico Henry (thigh), Milambo (knee), Fabio Carvalho (ACL) and Dasilva (knee) all out. Despite injuries, Brentford are 7th with 44pts.', impact:'medium', date:'Mar 13, 2026', tag:'injury', isNew:true, league:'premier-league', source:'https://www.nbcsports.com/soccer/news/premier-league-injury-table-2025-26-season-club-by-club-injuries-suspensions-latest-updates' },
   ]},
   { id:'brighton', name:'Brighton', badge:'🌊', news:[
-    { type:'injury', title:'Mitoma — Doubt for GW30', subtitle:'🌊 Brighton · LW', body:'Mitoma (ankle) forced off at half-time vs Arsenal on Mar 4. Doubt for Sunderland away. Webster (knee) and Tzimas (unspecified) confirmed out.', impact:'medium', date:'Mar 14, 2026', tag:'injury', isNew:true, source:'https://www.nbcsports.com/soccer/news/premier-league-injury-table-2025-26-season-club-by-club-injuries-suspensions-latest-updates' },
+    { type:'injury', title:'Mitoma — Doubt for GW30', subtitle:'🌊 Brighton · LW', body:'Mitoma (ankle) forced off at half-time vs Arsenal on Mar 4. Doubt for Sunderland away. Webster (knee) and Tzimas (unspecified) confirmed out.', impact:'medium', date:'Mar 14, 2026', tag:'injury', isNew:true, league:'premier-league', source:'https://www.nbcsports.com/soccer/news/premier-league-injury-table-2025-26-season-club-by-club-injuries-suspensions-latest-updates' },
   ]},
   { id:'burnley', name:'Burnley', badge:'🔵', news:[
   ]},
   { id:'chelsea', name:'Chelsea', badge:'💙', news:[
-    { type:'contract', title:'Reece James Signs New 6-Year Contract', subtitle:'💙 Chelsea · RB', body:"Chelsea captain Reece James committed his future to Stamford Bridge until June 2032. Described as Chelsea's most important deal of 2026 — massive boost amid defensive injury woes.", impact:'high', date:'Mar 13, 2026', tag:'contract', isNew:true, source:'https://www.footballtransfers.com/en/transfer-news/uk-premier-league/2026/03/chelsea-news-reece-james-new-contract-most-important-deal-2026' },
-    { type:'suspension', title:'Pedro Neto — 2-Match Ban & £70k Fine', subtitle:'💙 Chelsea · RW', body:'Two-match ban confirmed Mar 13. Red card for dissent vs Arsenal (Mar 1) + misconduct. Misses Newcastle (GW30) and GW31.', impact:'high', date:'Mar 13, 2026', tag:'suspension', isNew:true, source:'https://www.nbcsports.com/soccer/news/premier-league-injury-table-2025-26-season-club-by-club-injuries-suspensions-latest-updates' },
-    { type:'injury', title:'Colwill — Torn ACL, Season Over', subtitle:'💙 Chelsea · CB', body:'Season-ending ACL. Estevao (hamstring) also out. Mudryk serving doping suspension. Rosenior unlocked Joao Pedro (hat-trick GW29). Chelsea 5th, 48pts.', impact:'high', date:'Mar 13, 2026', tag:'injury', isNew:true, source:'https://www.nbcsports.com/soccer/news/premier-league-injury-table-2025-26-season-club-by-club-injuries-suspensions-latest-updates' },
+    { type:'contract', title:'Reece James Signs New 6-Year Contract', subtitle:'💙 Chelsea · RB', body:"Chelsea captain Reece James committed his future to Stamford Bridge until June 2032. Described as Chelsea's most important deal of 2026 — massive boost amid defensive injury woes.", impact:'high', date:'Mar 13, 2026', tag:'contract', isNew:true, league:'premier-league', source:'https://www.footballtransfers.com/en/transfer-news/uk-premier-league/2026/03/chelsea-news-reece-james-new-contract-most-important-deal-2026' },
+    { type:'suspension', title:'Pedro Neto — 2-Match Ban & £70k Fine', subtitle:'💙 Chelsea · RW', body:'Two-match ban confirmed Mar 13. Red card for dissent vs Arsenal (Mar 1) + misconduct. Misses Newcastle (GW30) and GW31.', impact:'high', date:'Mar 13, 2026', tag:'suspension', isNew:true, league:'premier-league', source:'https://www.nbcsports.com/soccer/news/premier-league-injury-table-2025-26-season-club-by-club-injuries-suspensions-latest-updates' },
+    { type:'injury', title:'Colwill — Torn ACL, Season Over', subtitle:'💙 Chelsea · CB', body:'Season-ending ACL. Estevao (hamstring) also out. Mudryk serving doping suspension. Rosenior unlocked Joao Pedro (hat-trick GW29). Chelsea 5th, 48pts.', impact:'high', date:'Mar 13, 2026', tag:'injury', isNew:true, league:'premier-league', source:'https://www.nbcsports.com/soccer/news/premier-league-injury-table-2025-26-season-club-by-club-injuries-suspensions-latest-updates' },
   ]},
   { id:'crystal-palace', name:'Crystal Palace', badge:'🦅', news:[
-    { type:'injury', title:'Nketiah & Doucoure — Both OUT', subtitle:'🦅 Crystal Palace · Attack/Mid', body:'Nketiah (thigh) and Doucoure (knee) both out. Munoz (shoulder) a doubt. Palace beat Spurs 3-1 last GW — Van de Ven red card was pivotal.', impact:'medium', date:'Mar 14, 2026', tag:'injury', isNew:true, source:'https://www.nbcsports.com/soccer/news/premier-league-injury-table-2025-26-season-club-by-club-injuries-suspensions-latest-updates' },
+    { type:'injury', title:'Nketiah & Doucoure — Both OUT', subtitle:'🦅 Crystal Palace · Attack/Mid', body:'Nketiah (thigh) and Doucoure (knee) both out. Munoz (shoulder) a doubt. Palace beat Spurs 3-1 last GW — Van de Ven red card was pivotal.', impact:'medium', date:'Mar 14, 2026', tag:'injury', isNew:true, league:'premier-league', source:'https://www.nbcsports.com/soccer/news/premier-league-injury-table-2025-26-season-club-by-club-injuries-suspensions-latest-updates' },
   ]},
   { id:'everton', name:'Everton', badge:'🔵', news:[
   ]},
   { id:'fulham', name:'Fulham', badge:'⬜', news:[
   ]},
   { id:'liverpool', name:'Liverpool', badge:'❤️', news:[
-    { type:'injury', title:'Isak — Broken Leg, Season Over', subtitle:'❤️ Liverpool · ST', body:'£125m summer signing out for the season. Endo (ankle), Bradley (knee) also out. Alisson and Chiesa doubts vs Spurs at Anfield.', impact:'high', date:'Mar 13, 2026', tag:'injury', isNew:true, source:'https://www.nbcsports.com/soccer/news/premier-league-injury-table-2025-26-season-club-by-club-injuries-suspensions-latest-updates' },
-    { type:'result', title:'Liverpool 1-1 Spurs (GW30)', subtitle:'❤️ Liverpool · Result', body:'Tudor\'s Spurs fought back to earn a point at Anfield — Richarlison equalised in the 90th minute. Liverpool drop points in title race. Tudor survives another day.', impact:'high', date:'Mar 15, 2026', tag:'result', isNew:true, source:'https://www.bbc.co.uk/sport/football' },
+    { type:'injury', title:'Isak — Broken Leg, Season Over', subtitle:'❤️ Liverpool · ST', body:'£125m summer signing out for the season. Endo (ankle), Bradley (knee) also out. Alisson and Chiesa doubts vs Spurs at Anfield.', impact:'high', date:'Mar 13, 2026', tag:'injury', isNew:true, league:'premier-league', source:'https://www.nbcsports.com/soccer/news/premier-league-injury-table-2025-26-season-club-by-club-injuries-suspensions-latest-updates' },
+    { type:'result', title:'Liverpool 1-1 Spurs (GW30)', subtitle:'❤️ Liverpool · Result', body:'Tudor\'s Spurs fought back to earn a point at Anfield — Richarlison equalised in the 90th minute. Liverpool drop points in title race. Tudor survives another day.', impact:'high', date:'Mar 15, 2026', tag:'result', isNew:true, league:'premier-league', source:'https://www.bbc.co.uk/sport/football' },
   ]},
   { id:'man-city', name:'Man City', badge:'🩵', news:[
-    { type:'injury', title:'Gvardiol & Kovacic — Both OUT', subtitle:'🩵 Man City · CB/CM', body:'Gvardiol (ankle) and Kovacic (ankle) both out. Rico Lewis (ankle) a doubt. City travel to West Ham — strong favourites.', impact:'medium', date:'Mar 13, 2026', tag:'injury', isNew:true, source:'https://www.nbcsports.com/soccer/news/premier-league-injury-table-2025-26-season-club-by-club-injuries-suspensions-latest-updates' },
+    { type:'injury', title:'Gvardiol & Kovacic — Both OUT', subtitle:'🩵 Man City · CB/CM', body:'Gvardiol (ankle) and Kovacic (ankle) both out. Rico Lewis (ankle) a doubt. City travel to West Ham — strong favourites.', impact:'medium', date:'Mar 13, 2026', tag:'injury', isNew:true, league:'premier-league', source:'https://www.nbcsports.com/soccer/news/premier-league-injury-table-2025-26-season-club-by-club-injuries-suspensions-latest-updates' },
   ]},
   { id:'man-utd', name:'Man United', badge:'🔴', news:[
-    { type:'transfer', title:'Hojølund to Napoli Confirmed — €50m Deal', subtitle:'🔴 Man United · Transfer', body:'Napoli confirmed they will trigger their obligation to buy Rasmous Hojølund regardless of CL qualification. Romano called it \u201ca formality.\u201d United receive €50m total (€44m buy + €6m loan fee) to fund summer spending.', impact:'high', date:'Mar 14, 2026', tag:'transfer', isNew:true, source:'https://www.football365.com/news/man-utd-hojlund-exit-confirmed-director-transfer-sealed' },
-    { type:'manager', title:'Carrick Appointed — 5W in First 6 Games', subtitle:'🔴 Man United · Manager', body:'Amorim sacked Jan 5. Carrick appointed Jan 13 — 5W in first 6 league games. Man United 3rd, 51pts. De Zerbi linked for permanent role.', impact:'high', date:'Jan 13, 2026', tag:'manager', source:'https://www.bbc.com/sport/football/articles/cpv812n1w7vo' },
-    { type:'injury', title:'De Ligt — May Miss Rest of Season (Back)', subtitle:'🔴 Man United · CB', body:'Persistent back problem puts De Ligt at serious risk of missing the rest of the season — no training since early December. Martinez (calf) and Dorgu (thigh) also out. Mazraoui (foot) and Mount (knock) doubts.', impact:'high', date:'Mar 13, 2026', tag:'injury', isNew:true, source:'https://www.nbcsports.com/soccer/news/premier-league-injury-table-2025-26-season-club-by-club-injuries-suspensions-latest-updates' },
-    { type:'result', title:'Man Utd 3-1 Aston Villa (GW30)', subtitle:'🔴 Man United · Result', body:'Brilliant home win for Carrick\'s side. Casemiro (53\'), Matheus Cunha (71\'), Benjamin Sesko (81\'). All three scorers verified. Man Utd continue top-4 push.', impact:'high', date:'Mar 15, 2026', tag:'result', isNew:true, source:'https://www.espn.com/soccer/match/_/gameId/man-utd-villa-gw30' },
+    { type:'transfer', title:'Hojølund to Napoli Confirmed — €50m Deal', subtitle:'🔴 Man United · Transfer', body:'Napoli confirmed they will trigger their obligation to buy Rasmous Hojølund regardless of CL qualification. Romano called it \u201ca formality.\u201d United receive €50m total (€44m buy + €6m loan fee) to fund summer spending.', impact:'high', date:'Mar 14, 2026', tag:'transfer', isNew:true, league:'premier-league', source:'https://www.football365.com/news/man-utd-hojlund-exit-confirmed-director-transfer-sealed' },
+    { type:'manager', title:'Carrick Appointed — 5W in First 6 Games', subtitle:'🔴 Man United · Manager', body:'Amorim sacked Jan 5. Carrick appointed Jan 13 — 5W in first 6 league games. Man United 3rd, 51pts. De Zerbi linked for permanent role.', impact:'high', date:'Jan 13, 2026', tag:'manager', league:'premier-league', source:'https://www.bbc.com/sport/football/articles/cpv812n1w7vo' },
+    { type:'injury', title:'De Ligt — May Miss Rest of Season (Back)', subtitle:'🔴 Man United · CB', body:'Persistent back problem puts De Ligt at serious risk of missing the rest of the season — no training since early December. Martinez (calf) and Dorgu (thigh) also out. Mazraoui (foot) and Mount (knock) doubts.', impact:'high', date:'Mar 13, 2026', tag:'injury', isNew:true, league:'premier-league', source:'https://www.nbcsports.com/soccer/news/premier-league-injury-table-2025-26-season-club-by-club-injuries-suspensions-latest-updates' },
+    { type:'result', title:'Man Utd 3-1 Aston Villa (GW30)', subtitle:'🔴 Man United · Result', body:'Brilliant home win for Carrick\'s side. Casemiro (53\'), Matheus Cunha (71\'), Benjamin Sesko (81\'). All three scorers verified. Man Utd continue top-4 push.', impact:'high', date:'Mar 15, 2026', tag:'result', isNew:true, league:'premier-league', source:'https://www.espn.com/soccer/match/_/gameId/man-utd-villa-gw30' },
     { type:'transfer', title:'Hincapié → Arsenal — €52m Deal Confirmed', subtitle:'🔴 Arsenal · Incoming Transfer', body:'Piero Hincapié (Bayer Leverkusen, age 23) has pre-agreed a permanent €52m move to Arsenal — structured as loan with permanent transfer announced at season end (same FFP template as David Raya). 5-year contract already signed. Confirmed by Fabrizio Romano (Mar 9, 2026).', impact:'high', date:'Mar 9, 2026', tag:'transfer', isNew:true, source:'https://www.teamtalk.com/arsenal/piero-hincapie-arsenal-confirmed-romano', league:'premier-league' },
   ]},
   { id:'newcastle', name:'Newcastle', badge:'⚫', news:[
     { type:'injury', title:'Bruno Out Until April; Ramsey Suspended', subtitle:'⚫ Newcastle · Key Players', body:'Bruno Guimaraes (thigh) out until April — longer than initially feared. Jacob Ramsey suspended until Mar 22 (accumulated yellows). Fabian Schär (ankle), Lewis Miley (knee) and Emil Krafth (thigh) also sidelined.', isNew:true, impact:'high', date:'Mar 13, 2026', tag:'injury', source:'https://www.nbcsports.com/soccer/news/premier-league-injury-table-2025-26-season-club-by-club-injuries-suspensions-latest-updates' },
   ]},
   { id:'nottm-forest', name:'Nottm Forest', badge:'🌳', news:[
-    { type:'injury', title:'Six Players OUT Including Chris Wood', subtitle:'🌳 Forest · Squad', body:'Ndoye, Ortega (calf), Boly (knee), Savona (knee), John Victor (knee) and Wood (knee) all out. Jair Cunha (ankle) a doubt.', impact:'high', date:'Mar 13, 2026', tag:'injury', isNew:true, source:'https://www.nbcsports.com/soccer/news/premier-league-injury-table-2025-26-season-club-by-club-injuries-suspensions-latest-updates' },
+    { type:'injury', title:'Six Players OUT Including Chris Wood', subtitle:'🌳 Forest · Squad', body:'Ndoye, Ortega (calf), Boly (knee), Savona (knee), John Victor (knee) and Wood (knee) all out. Jair Cunha (ankle) a doubt.', impact:'high', date:'Mar 13, 2026', tag:'injury', isNew:true, league:'premier-league', source:'https://www.nbcsports.com/soccer/news/premier-league-injury-table-2025-26-season-club-by-club-injuries-suspensions-latest-updates' },
   ]},
   { id:'leeds', name:'Leeds United', badge:'🟡', news:[
-    { type:'injury', title:'Okafor — Doubt vs Crystal Palace', subtitle:'🟡 Leeds · FW', body:'Noah Okafor fitness doubt for GW30 at Crystal Palace. Calvert-Lewin expected to be available. Leeds 3pts above relegation after 4 PL games without a win. Beat Norwich 3-0 in FA Cup last time out.', impact:'high', date:'Mar 14, 2026', tag:'injury', isNew:true, source:'https://motleedsnews.com/leeds-united/leeds-united-injuries/crystal-palace-vs-leeds-united-injury-latest-as-four-players-could-miss-out/' },
+    { type:'injury', title:'Okafor — Doubt vs Crystal Palace', subtitle:'🟡 Leeds · FW', body:'Noah Okafor fitness doubt for GW30 at Crystal Palace. Calvert-Lewin expected to be available. Leeds 3pts above relegation after 4 PL games without a win. Beat Norwich 3-0 in FA Cup last time out.', impact:'high', date:'Mar 14, 2026', tag:'injury', isNew:true, league:'premier-league', source:'https://motleedsnews.com/leeds-united/leeds-united-injuries/crystal-palace-vs-leeds-united-injury-latest-as-four-players-could-miss-out/' },
   ]},
   { id:'spurs', name:'Tottenham', badge:'⚪', news:[
-    { type:'suspension', title:'Van de Ven & Romero Suspended + 11 Others OUT', subtitle:'⚪ Spurs · Defence', body:'Both first-choice CBs suspended for Liverpool away. Plus Maddison (ACL), Palhinha, Bissouma, Odobert, Udogie, Bentancur, Kudus, Bergvall, Kulusevski, Davies all out — 13 unavailable total. The worst injury crisis at any PL club this season.', impact:'high', date:'Mar 13, 2026', tag:'suspension', isNew:true, source:'https://www.sportsmole.co.uk/football/spurs/injury-news/injuries-and-suspensions/van-de-ven-romero-palhinha-udogie-kudus-latest-spurs-injury-list-for-liverpool-clash_593655.html' },
-    { type:'result', title:'Liverpool 1-1 Spurs (GW30)', subtitle:'⚪ Spurs · Result', body:'Richarlison equalised in the 90th minute to rescue a point at Anfield — a remarkable result given Spurs\' 13-man injury crisis. Tudor survives as manager — for now.', impact:'high', date:'Mar 15, 2026', tag:'result', isNew:true, source:'https://www.bbc.co.uk/sport/football' },
+    { type:'suspension', title:'Van de Ven & Romero Suspended + 11 Others OUT', subtitle:'⚪ Spurs · Defence', body:'Both first-choice CBs suspended for Liverpool away. Plus Maddison (ACL), Palhinha, Bissouma, Odobert, Udogie, Bentancur, Kudus, Bergvall, Kulusevski, Davies all out — 13 unavailable total. The worst injury crisis at any PL club this season.', impact:'high', date:'Mar 13, 2026', tag:'suspension', isNew:true, league:'premier-league', source:'https://www.sportsmole.co.uk/football/spurs/injury-news/injuries-and-suspensions/van-de-ven-romero-palhinha-udogie-kudus-latest-spurs-injury-list-for-liverpool-clash_593655.html' },
+    { type:'result', title:'Liverpool 1-1 Spurs (GW30)', subtitle:'⚪ Spurs · Result', body:'Richarlison equalised in the 90th minute to rescue a point at Anfield — a remarkable result given Spurs\' 13-man injury crisis. Tudor survives as manager — for now.', impact:'high', date:'Mar 15, 2026', tag:'result', isNew:true, league:'premier-league', source:'https://www.bbc.co.uk/sport/football' },
   ]},
   { id:'west-ham', name:'West Ham', badge:'⚒️', news:[
-    { type:'injury', title:'Summerville & Fabianski — Both OUT vs Man City', subtitle:'⚒️ West Ham · Key Players', body:'Crysencio Summerville (lower leg) out with no return timeline. Fabianski (back) also unavailable. West Ham battling relegation — 2 points from safety.', impact:'high', date:'Mar 14, 2026', tag:'injury', isNew:true, source:'https://www.bbc.co.uk/sport/articles/clyv7dk02g2o' },
+    { type:'injury', title:'Summerville & Fabianski — Both OUT vs Man City', subtitle:'⚒️ West Ham · Key Players', body:'Crysencio Summerville (lower leg) out with no return timeline. Fabianski (back) also unavailable. West Ham battling relegation — 2 points from safety.', impact:'high', date:'Mar 14, 2026', tag:'injury', isNew:true, league:'premier-league', source:'https://www.bbc.co.uk/sport/articles/clyv7dk02g2o' },
   ]},
   { id:'wolves', name:'Wolves', badge:'🐺', news:[
-    { type:'injury', title:'Enso Medina — OUT (Knee)', subtitle:'🐺 Wolves · Forward', body:'Enso Medina (knee) out. Wolves in crisis: 19-match winless run, bottom of table with 3W-7D-20L. 9 points from safety with 8 games left.', impact:'high', date:'Mar 13, 2026', tag:'injury', isNew:true, source:'https://www.nbcsports.com/soccer/news/premier-league-injury-table-2025-26-season-club-by-club-injuries-suspensions-latest-updates' },
+    { type:'injury', title:'Enso Medina — OUT (Knee)', subtitle:'🐺 Wolves · Forward', body:'Enso Medina (knee) out. Wolves in crisis: 19-match winless run, bottom of table with 3W-7D-20L. 9 points from safety with 8 games left.', impact:'high', date:'Mar 13, 2026', tag:'injury', isNew:true, league:'premier-league', source:'https://www.nbcsports.com/soccer/news/premier-league-injury-table-2025-26-season-club-by-club-injuries-suspensions-latest-updates' },
   ]},
   { id:'sunderland', name:'Sunderland', badge:'🔴', news:[
-    { type:'injury', title:'Traore, Mundle & Ta Bi — All OUT', subtitle:'🔴 Sunderland · Attack', body:'Traore (knee), Mundle (thigh) and Ta Bi (ankle) all out. Brobbey (groin) and Cirkin (thigh) doubts. Sunderland back in PL for first time since 2017.', impact:'medium', date:'Mar 13, 2026', tag:'injury', isNew:true, source:'https://www.nbcsports.com/soccer/news/premier-league-injury-table-2025-26-season-club-by-club-injuries-suspensions-latest-updates' },
+    { type:'injury', title:'Traore, Mundle & Ta Bi — All OUT', subtitle:'🔴 Sunderland · Attack', body:'Traore (knee), Mundle (thigh) and Ta Bi (ankle) all out. Brobbey (groin) and Cirkin (thigh) doubts. Sunderland back in PL for first time since 2017.', impact:'medium', date:'Mar 13, 2026', tag:'injury', isNew:true, league:'premier-league', source:'https://www.nbcsports.com/soccer/news/premier-league-injury-table-2025-26-season-club-by-club-injuries-suspensions-latest-updates' },
   ]},
 ];
 
@@ -1050,6 +1053,17 @@ const PREVIEWS_DATA = [
 // ─── EUROPEAN RESULTS & NEWS (Mar 16, 2026) ──────────────────────────────────
 // La Liga (MD29) + Bundesliga (MD26) — Approved by Referee
 const EUROPEAN_NEWS = [
+  // ── Premier League ──
+  {
+    type: 'suspension',
+    league: 'premier-league',
+    leagueName: 'Premier League',
+    title: 'Wolves Trio on 9 Yellows — One More = 2-Match Ban',
+    detail: 'João Gomes (M), André (M), and Yerson Mosquera (D) are all on 9 yellow cards for the season. Under PL rules, reaching 10 yellows by GW32 triggers an automatic two-match suspension. Wolves are bottom (16pts) and 13 points from safety — losing key midfielders or their CB to bans would be catastrophic.',
+    date: 'Mar 16, 2026',
+    source: 'https://www.nbcsports.com/soccer/news/premier-league-injury-table-2025-26-season-club-by-club-injuries-suspensions-latest-updates',
+    impact: 'high',
+  },
   // ── La Liga Results ──
   {
     type: 'result',
@@ -1087,9 +1101,11 @@ const EUROPEAN_NEWS = [
     league: 'bundesliga',
     leagueName: 'Bundesliga',
     title: 'Leverkusen 1-1 Bayern (MD26) — Nine-Man Bayern Hold On',
-    detail: 'Aleix García (6\') opened for Leverkusen. Luis Díaz equalised (69\'). Bayern had two goals disallowed. Finished with 9 men: Nicolas Jackson (straight red, 42\') and Luis Díaz (yellow-red, 84\'). Leverkusen\'s late winner disallowed offside. Bayern face Atalanta UCL 2nd leg with a goalkeeper crisis — Neuer, Urbig, and Ulreich all out or doubtful.',
+    detail: 'Aleix García (6\') opened for Leverkusen. Luis Díaz equalised (69\'). Bayern had two goals disallowed. Finished with 9 men: Nicolas Jackson (straight red, 42\') and Luis Díaz (yellow-red, 84\'). Leverkusen\'s late winner disallowed offside. Bayern face Atalanta UCL 2nd leg with all three senior GKs out — Neuer (calf), Urbig (concussion), Ulreich (adductor tear).',
     date: 'Mar 14, 2026',
     source: 'https://www.bundesliga.com/en/bundesliga/news/leverkusen-bayern-matchday-26',
     impact: 'high',
   },
+];
+,
 ];
