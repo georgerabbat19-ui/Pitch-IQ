@@ -538,13 +538,14 @@ function setupLeagueTabs() {
     
     const selectedLeague = tab.dataset.league;
     
-    // Get currently active section chip
+    // RESET section to "All Sections" when league changes
     const sectionChips = document.getElementById('sectionChips');
-    const activeChip = sectionChips.querySelector('.section-chip.active');
-    const selectedSection = activeChip ? activeChip.dataset.section : 'all';
+    sectionChips.querySelectorAll('.section-chip').forEach(c => c.classList.remove('active'));
+    const allSectionsChip = Array.from(sectionChips.querySelectorAll('.section-chip')).find(c => c.dataset.section === 'all');
+    if (allSectionsChip) allSectionsChip.classList.add('active');
     
-    // Apply both filters
-    applyFilters(selectedLeague, selectedSection, true); // true = user-initiated
+    // Always apply with "all" sections
+    applyFilters(selectedLeague, 'all', true); // true = user-initiated
   });
 }
 
@@ -575,23 +576,20 @@ function setupSectionChips() {
 
 // ─── COMBINED FILTER LOGIC ───────────────────────────────────────────────────────────
 function applyFilters(league = 'all', section = 'all', userInitiated = false) {
+  // Handle "home" league filter — dedicated home page view
+  if (league === 'home') {
+    document.querySelectorAll('section.section').forEach(s => s.classList.add('hidden'));
+    const homeSection = document.getElementById('home-page');
+    if (homeSection) homeSection.classList.remove('hidden');
+    renderHomePage();
+    return; // Early exit — home page only
+  }
+  
   // Only hide sections if user clicked a tab/chip (not on startup)
   if (userInitiated) {
     document.querySelectorAll('section.section').forEach(s => {
       if (s.id !== 'home-page') s.classList.add('hidden');
     });
-  }
-  
-  // If "All Leagues" + "All Sections" → show home page, hide other sections
-  if (league === 'all' && section === 'all' && userInitiated) {
-    const homeSection = document.getElementById('home-page');
-    if (homeSection) homeSection.classList.remove('hidden');
-    renderHomePage();
-    return; // Early exit — home page view only
-  } else if (league === 'all' && section === 'all' && !userInitiated) {
-    // On startup: show all sections, don't render home page
-    document.querySelectorAll('section.section').forEach(s => s.classList.remove('hidden'));
-    return;
   }
   
   // Hide home page if not in home view

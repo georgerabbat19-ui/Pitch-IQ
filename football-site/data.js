@@ -991,6 +991,7 @@ const BUNDESLIGA_FORM_DATA = [
 const PREVIEWS_DATA = [
   {
     id: 'brentford-wolves',
+    league: 'premier-league',
     home: 'Brentford', homeId: 'brentford', homeBadgePlId: 't94', homeColor: '#e30613',
     away: 'Wolves',    awayId: 'wolves',    awayBadgePlId: 't39', awayColor: '#c8a84b',
     kickoff: '2026-03-16T20:00:00Z',
@@ -1047,6 +1048,7 @@ const PREVIEWS_DATA = [
   },
   {
     id: 'bournemouth-man-utd',
+    league: 'premier-league',
     home: 'Bournemouth', homeId: 'bournemouth', homeBadgePlId: 't91', homeColor: '#d71920',
     away: 'Man United',  awayId: 'man-utd',    awayBadgePlId: 't1',  awayColor: '#da291c',
     kickoff: '2026-03-20T20:00:00Z',
@@ -1078,6 +1080,7 @@ const PREVIEWS_DATA = [
   },
   {
     id: 'brighton-liverpool',
+    league: 'premier-league',
     home: 'Brighton', homeId: 'brighton', homeBadgePlId: 't36', homeColor: '#0057b8',
     away: 'Liverpool', awayId: 'liverpool', awayBadgePlId: 't14', awayColor: '#c8102e',
     kickoff: '2026-03-21T12:30:00Z',
@@ -1109,6 +1112,7 @@ const PREVIEWS_DATA = [
   },
   {
     id: 'fulham-burnley',
+    league: 'premier-league',
     home: 'Fulham',  homeId: 'fulham',  homeBadgePlId: 't54', homeColor: '#cc0000',
     away: 'Burnley', awayId: 'burnley', awayBadgePlId: 't90', awayColor: '#6c1d45',
     kickoff: '2026-03-21T15:00:00Z',
@@ -1140,6 +1144,7 @@ const PREVIEWS_DATA = [
   },
   {
     id: 'man-city-crystal-palace',
+    league: 'premier-league',
     home: 'Man City',       homeId: 'man-city',       homeBadgePlId: 't43', homeColor: '#1c86cd',
     away: 'Crystal Palace', awayId: 'crystal-palace', awayBadgePlId: 't31', awayColor: '#1b458f',
     kickoff: '2026-03-21T15:00:00Z',
@@ -1171,6 +1176,7 @@ const PREVIEWS_DATA = [
   },
   {
     id: 'newcastle-sunderland',
+    league: 'premier-league',
     home: 'Newcastle',  homeId: 'newcastle',  homeBadgePlId: 't4',  homeColor: '#241f20',
     away: 'Sunderland', awayId: 'sunderland', awayBadgePlId: 't56', awayColor: '#eb172b',
     kickoff: '2026-03-22T12:00:00Z',
@@ -1202,6 +1208,7 @@ const PREVIEWS_DATA = [
   },
   {
     id: 'aston-villa-west-ham',
+    league: 'premier-league',
     home: 'Aston Villa', homeId: 'aston-villa', homeBadgePlId: 't7',  homeColor: '#670e36',
     away: 'West Ham',    awayId: 'west-ham',    awayBadgePlId: 't21', awayColor: '#7a263a',
     kickoff: '2026-03-22T14:15:00Z',
@@ -1233,6 +1240,7 @@ const PREVIEWS_DATA = [
   },
   {
     id: 'spurs-nottm-forest',
+    league: 'premier-league',
     home: 'Tottenham',    homeId: 'spurs',        homeBadgePlId: 't6',  homeColor: '#132257',
     away: 'Nottm Forest', awayId: 'nottm-forest', awayBadgePlId: 't17', awayColor: '#dd0000',
     kickoff: '2026-03-22T14:15:00Z',
