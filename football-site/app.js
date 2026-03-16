@@ -126,7 +126,7 @@ function renderManagers() {
   document.getElementById('countManagers').textContent = MANAGERS_DATA.length;
   if (!MANAGERS_DATA.length) { grid.innerHTML = '<p class="empty-state">No recent manager changes.</p>'; return; }
   grid.innerHTML = MANAGERS_DATA.map(i => `
-    <div class="card" data-search="${i.club} ${i.newManager} ${i.previousManager}">
+    <div class="card" data-search="${i.club} ${i.newManager} ${i.previousManager}" data-league="${i.league || 'all'}">
       <div class="card-border" style="background:var(--blue)"></div>
       <div class="card-body">
         <div class="card-top">
@@ -150,7 +150,7 @@ function renderRules() {
   document.getElementById('countRules').textContent = RULES_DATA.length;
   if (!RULES_DATA.length) { grid.innerHTML = '<p class="empty-state">No recent rule changes.</p>'; return; }
   grid.innerHTML = RULES_DATA.map(i => `
-    <div class="card" data-search="${i.title} ${i.detail}">
+    <div class="card" data-search="${i.title} ${i.detail}" data-league="${i.league || 'all'}">
       <div class="card-border" style="background:var(--blue)"></div>
       <div class="card-body">
         <div class="card-top">
@@ -488,7 +488,7 @@ function renderPreviews(filter = 'all') {
     const managerHtml = p.managerNote ? `<div class="preview-manager-note">🎙️ ${p.managerNote}</div>` : '';
 
     return `
-    <div class="preview-card" data-home="${p.homeImportance}" data-away="${p.awayImportance}">
+    <div class="preview-card" data-home="${p.homeImportance}" data-away="${p.awayImportance}" data-league="${p.league || 'all'}">
       ${flagHtml}
 
       <!-- Header: matchup -->
@@ -589,34 +589,102 @@ function setupPreviewFilters() {
   });
 }
 
-function setupLeagueFilter() {
-  const leagueFilter = document.getElementById('leagueFilter');
-  if (!leagueFilter) return;
+// ─── LEAGUE TABS (NEW) ───────────────────────────────────────────────────────────
+function setupLeagueTabs() {
+  const leagueTabs = document.getElementById('leagueTabs');
+  if (!leagueTabs) return;
 
-  leagueFilter.addEventListener('click', (e) => {
-    if (e.target.classList.contains('league-filter-btn')) {
-      // Remove active class from all buttons
-      leagueFilter.querySelectorAll('.league-filter-btn').forEach(btn => btn.classList.remove('active'));
-      // Add active class to clicked button
-      e.target.classList.add('active');
-      
-      const selectedLeague = e.target.dataset.league;
-      
-      // Filter all cards across sections
-      if (selectedLeague === 'all') {
-        // Show all cards
-        document.querySelectorAll('.card[data-league], .form-stat-card[data-league]').forEach(card => {
-          card.style.display = '';
-        });
-      } else {
-        // Hide/show based on data-league attribute
-        document.querySelectorAll('.card[data-league], .form-stat-card[data-league]').forEach(card => {
-          const cardLeague = card.dataset.league;
-          card.style.display = (cardLeague === selectedLeague) ? '' : 'none';
-        });
-      }
+  leagueTabs.addEventListener('click', (e) => {
+    const tab = e.target.closest('.league-tab');
+    if (!tab) return;
+
+    e.preventDefault();
+    
+    // Update active tab
+    leagueTabs.querySelectorAll('.league-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    
+    const selectedLeague = tab.dataset.league;
+    
+    // Get currently active section chip
+    const sectionChips = document.getElementById('sectionChips');
+    const activeChip = sectionChips.querySelector('.section-chip.active');
+    const selectedSection = activeChip ? activeChip.dataset.section : 'all';
+    
+    // Apply both filters
+    applyFilters(selectedLeague, selectedSection);
+  });
+}
+
+// ─── SECTION CHIPS (NEW) ───────────────────────────────────────────────────────────
+function setupSectionChips() {
+  const sectionChips = document.getElementById('sectionChips');
+  if (!sectionChips) return;
+
+  sectionChips.addEventListener('click', (e) => {
+    const chip = e.target.closest('.section-chip');
+    if (!chip) return;
+
+    // Update active chip
+    sectionChips.querySelectorAll('.section-chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    
+    const selectedSection = chip.dataset.section;
+    
+    // Get currently active league tab
+    const leagueTabs = document.getElementById('leagueTabs');
+    const activeTab = leagueTabs.querySelector('.league-tab.active');
+    const selectedLeague = activeTab ? activeTab.dataset.league : 'all';
+    
+    // Apply both filters
+    applyFilters(selectedLeague, selectedSection);
+  });
+}
+
+// ─── COMBINED FILTER LOGIC ───────────────────────────────────────────────────────────
+function applyFilters(league = 'all', section = 'all') {
+  // Hide all sections first
+  document.querySelectorAll('section.section').forEach(s => s.classList.add('hidden'));
+  
+  // Map section chips to actual sections
+  const sectionMap = {
+    'all': ['injuries', 'transfers', 'managers', 'rules', 'form', 'epl-teams', 'previews'],
+    'injuries': ['injuries'],
+    'transfers': ['transfers'],
+    'managers': ['managers'],
+    'rules': ['rules'],
+    'form': ['form'],
+    'previews': ['previews'],
+    'clubs': ['epl-teams']
+  };
+  
+  const sectionsToShow = sectionMap[section] || sectionMap['all'];
+  
+  // Show relevant sections
+  sectionsToShow.forEach(sectionId => {
+    const section = document.getElementById(sectionId);
+    if (section) section.classList.remove('hidden');
+  });
+  
+  // Apply league filter to all cards
+  const leagueToFilter = league === 'all' ? null : league;
+  document.querySelectorAll('.card[data-league], .form-stat-card[data-league], .preview-card').forEach(card => {
+    const cardLeague = card.dataset.league;
+    
+    if (leagueToFilter === null) {
+      // All leagues — show all
+      card.style.display = '';
+    } else {
+      // Filter by specific league
+      card.style.display = (cardLeague === leagueToFilter) ? '' : 'none';
     }
   });
+}
+
+// Legacy setupLeagueFilter (kept for backward compatibility, now calls new setup)
+function setupLeagueFilter() {
+  setupLeagueTabs();
+  setupSectionChips();
 }
 
 // ─── CRISIS BANNER AUTO-TRIGGER ───────────────────────────────────────────────
