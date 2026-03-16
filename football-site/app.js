@@ -77,7 +77,7 @@ function renderInjuries(filter = 'all') {
   document.getElementById('countInjuries').textContent = INJURIES_DATA.length;
   if (!items.length) { grid.innerHTML = '<p class="empty-state">No items match this filter.</p>'; return; }
   grid.innerHTML = items.map(i => `
-    <div class="card" data-search="${i.player} ${i.club} ${i.detail}" data-type="${i.type}" data-league="${i.league || 'all'}">
+    <div class="card" data-search="${i.player} ${i.club} ${i.detail}" data-type="${i.type}" data-league="${i.league}">
       <div class="card-border" style="background:${typeColor(i.type)}"></div>
       <div class="card-body">
         <div class="card-top">
@@ -102,7 +102,7 @@ function renderTransfers(filter = 'all') {
   document.getElementById('countTransfers').textContent = TRANSFERS_DATA.length;
   if (!items.length) { grid.innerHTML = '<p class="empty-state">No items match this filter.</p>'; return; }
   grid.innerHTML = items.map(i => `
-    <div class="card" data-search="${i.player} ${i.toClub} ${i.fromClub} ${i.detail}" data-type="${i.type}" data-league="${i.league || 'all'}">
+    <div class="card" data-search="${i.player} ${i.toClub} ${i.fromClub} ${i.detail}" data-type="${i.type}" data-league="${i.league}">
       <div class="card-border" style="background:${typeColor(i.type)}"></div>
       <div class="card-body">
         <div class="card-top">
@@ -126,7 +126,7 @@ function renderManagers() {
   document.getElementById('countManagers').textContent = MANAGERS_DATA.length;
   if (!MANAGERS_DATA.length) { grid.innerHTML = '<p class="empty-state">No recent manager changes.</p>'; return; }
   grid.innerHTML = MANAGERS_DATA.map(i => `
-    <div class="card" data-search="${i.club} ${i.newManager} ${i.previousManager}" data-league="${i.league || 'all'}">
+    <div class="card" data-search="${i.club} ${i.newManager} ${i.previousManager}" data-league="${i.league}">
       <div class="card-border" style="background:var(--blue)"></div>
       <div class="card-body">
         <div class="card-top">
@@ -150,7 +150,7 @@ function renderRules() {
   document.getElementById('countRules').textContent = RULES_DATA.length;
   if (!RULES_DATA.length) { grid.innerHTML = '<p class="empty-state">No recent rule changes.</p>'; return; }
   grid.innerHTML = RULES_DATA.map(i => `
-    <div class="card" data-search="${i.title} ${i.detail}" data-league="${i.league || 'all'}">
+    <div class="card" data-search="${i.title} ${i.detail}" data-league="${i.league}">
       <div class="card-border" style="background:var(--blue)"></div>
       <div class="card-body">
         <div class="card-top">
@@ -214,7 +214,7 @@ function renderForm(filter = 'all') {
     const badgeFallback = `<span style="${meta.plId ? 'display:none' : ''};font-size:2.2rem">${i.badge}</span>`;
 
     return `
-    <div class="form-stat-card" data-search="${i.team} ${i.leagueName}" data-league="${i.league || 'all'}">
+    <div class="form-stat-card" data-search="${i.team} ${i.leagueName}" data-league="${i.league}">
       <div class="form-stat-header" style="background:linear-gradient(135deg,${meta.color}ee 0%,${meta.color}88 100%)">
         <div class="form-stat-header-left">
           ${badgeImg}${badgeFallback}
@@ -399,7 +399,7 @@ function renderPreviews(filter = 'all') {
     const managerHtml = p.managerNote ? `<div class="preview-manager-note">🎙️ ${p.managerNote}</div>` : '';
 
     return `
-    <div class="preview-card" data-home="${p.homeImportance}" data-away="${p.awayImportance}" data-league="${p.league || 'all'}" data-search="${p.home} ${p.away} ${p.competition}">
+    <div class="preview-card" data-home="${p.homeImportance}" data-away="${p.awayImportance}" data-league="${p.league}" data-search="${p.home} ${p.away} ${p.competition}">
       ${flagHtml}
 
       <!-- Header: matchup -->
