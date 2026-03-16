@@ -14,6 +14,57 @@ function typeColor(type) {
     'transfer-in':'var(--green)', 'transfer-out':'var(--purple)', manager:'var(--blue)', var:'var(--blue)' };
   return map[type] || 'var(--accent)';
 }
+
+// ─── DATA VALIDATION ───────────────────────────────────────────────────────────
+function validateLeagueTag(item, arrayName) {
+  const validLeagues = ['premier-league', 'la-liga', 'bundesliga', 'all'];
+  const league = item.league;
+  
+  if (!league) {
+    console.warn(`⚠️  Missing league tag in ${arrayName}:`, item);
+    return false;
+  }
+  if (!validLeagues.includes(league)) {
+    console.warn(`⚠️  Invalid league tag "${league}" in ${arrayName}:`, item);
+    return false;
+  }
+  return true;
+}
+
+function validateAllData() {
+  console.log('🔍 Validating data integrity...');
+  const validationErrors = [];
+  
+  // Validate injuries
+  INJURIES_DATA.forEach((item, idx) => {
+    if (!validateLeagueTag(item, `INJURIES_DATA[${idx}]`)) {
+      validationErrors.push(`INJURIES_DATA[${idx}] - missing/invalid league`);
+    }
+  });
+  
+  // Validate transfers
+  TRANSFERS_DATA.forEach((item, idx) => {
+    if (!validateLeagueTag(item, `TRANSFERS_DATA[${idx}]`)) {
+      validationErrors.push(`TRANSFERS_DATA[${idx}] - missing/invalid league`);
+    }
+  });
+  
+  // Validate form
+  FORM_DATA.forEach((item, idx) => {
+    if (!validateLeagueTag(item, `FORM_DATA[${idx}]`)) {
+      validationErrors.push(`FORM_DATA[${idx}] - missing/invalid league`);
+    }
+  });
+  
+  if (validationErrors.length > 0) {
+    console.error(`❌ ${validationErrors.length} validation error(s) found:`);
+    validationErrors.forEach(err => console.error(`  • ${err}`));
+    return false;
+  }
+  
+  console.log('✅ All data validated successfully');
+  return true;
+}
 function formatTag(type) {
   const map = { injury:'Injury', suspension:'Suspension', doubt:'Doubt',
     'transfer-in':'Signing', 'transfer-out':'Departure', manager:'Manager', var:'VAR/Rule' };
@@ -26,7 +77,7 @@ function renderInjuries(filter = 'all') {
   document.getElementById('countInjuries').textContent = INJURIES_DATA.length;
   if (!items.length) { grid.innerHTML = '<p class="empty-state">No items match this filter.</p>'; return; }
   grid.innerHTML = items.map(i => `
-    <div class="card" data-search="${i.player} ${i.club} ${i.detail}" data-type="${i.type}">
+    <div class="card" data-search="${i.player} ${i.club} ${i.detail}" data-type="${i.type}" data-league="${i.league || 'all'}">
       <div class="card-border" style="background:${typeColor(i.type)}"></div>
       <div class="card-body">
         <div class="card-top">
@@ -51,7 +102,7 @@ function renderTransfers(filter = 'all') {
   document.getElementById('countTransfers').textContent = TRANSFERS_DATA.length;
   if (!items.length) { grid.innerHTML = '<p class="empty-state">No items match this filter.</p>'; return; }
   grid.innerHTML = items.map(i => `
-    <div class="card" data-search="${i.player} ${i.toClub} ${i.fromClub} ${i.detail}" data-type="${i.type}">
+    <div class="card" data-search="${i.player} ${i.toClub} ${i.fromClub} ${i.detail}" data-type="${i.type}" data-league="${i.league || 'all'}">
       <div class="card-border" style="background:${typeColor(i.type)}"></div>
       <div class="card-body">
         <div class="card-top">
@@ -122,6 +173,8 @@ function renderForm(filter = 'all') {
   const items = filter === 'all' ? FORM_DATA : FORM_DATA.filter(i => i.league === filter);
   document.getElementById('countForm').textContent = FORM_DATA.length;
   if (!items.length) { grid.innerHTML = '<p class="empty-state">No items match this filter.</p>'; return; }
+  
+  const currentLeagueFilter = document.querySelector('.league-filter-btn.active')?.dataset.league || 'all';
 
   // reuse same club meta from EPL teams section
   const formClubMeta = {
@@ -161,7 +214,7 @@ function renderForm(filter = 'all') {
     const badgeFallback = `<span style="${meta.plId ? 'display:none' : ''};font-size:2.2rem">${i.badge}</span>`;
 
     return `
-    <div class="form-stat-card" data-search="${i.team} ${i.leagueName}">
+    <div class="form-stat-card" data-search="${i.team} ${i.leagueName}" data-league="${i.league || 'all'}">
       <div class="form-stat-header" style="background:linear-gradient(135deg,${meta.color}ee 0%,${meta.color}88 100%)">
         <div class="form-stat-header-left">
           ${badgeImg}${badgeFallback}
@@ -382,10 +435,29 @@ function setupNav() {
 
 function setupLastUpdated() {
   const el = document.getElementById('lastUpdated');
-  if (el) el.textContent = 'Updated ' + new Date().toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' });
+  const now = new Date();
+    const datePart = now.toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' });
+    const timePart = now.toLocaleTimeString('en-GB', { hour:'2-digit', minute:'2-digit' });
+    if (el) el.textContent = 'Updated ' + datePart + ' · ' + timePart;
 }
 
 // ─── MATCH PREVIEWS ───────────────────────────────────────────────────────────
+
+// Last match helpers
+function hoursAgoLabel(isoDate) {
+  const hours = (Date.now() - new Date(isoDate)) / 3600000;
+  if (hours < 24) return `${Math.round(hours)}h ago`;
+  return `${Math.round(hours / 24)}d ago`;
+}
+
+function resultColor(result) {
+  return { 'W': 'win', 'D': 'draw', 'L': 'loss' }[result] || '';
+}
+
+function renderLastMatchLineup(lineup) {
+  if (!lineup || !lineup.length) return '<span style="color:var(--text-muted);font-size:0.75rem;">No lineup data</span>';
+  return lineup.map(p => `<div class="lineup-player"><span class="lineup-number">${p.number}</span><span class="lineup-name">${p.name}</span></div>`).join('');
+}
 
 function importanceLabel(key) {
   return { title: '🏆 Title Race', top4: '⭐ Top 5', top5: '⭐ Top 5', europa: '🌍 European Push', relegation: '🔥 Relegation Battle', low: '— Mid-table' }[key] || key;
@@ -448,6 +520,43 @@ function renderPreviews(filter = 'all') {
       <div class="preview-body">
         <p class="preview-narrative">${p.narrative}</p>
 
+        <!-- LAST MATCH SECTION (NEW) -->
+        ${(p.homeLastMatch || p.awayLastMatch) ? `
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <!-- HOME LAST MATCH -->
+          ${p.homeLastMatch ? `
+          <div class="preview-last-match">
+            <div class="preview-last-match-header">
+              <span class="preview-last-match-title">Last match</span>
+              <span class="preview-last-match-meta">${hoursAgoLabel(p.homeLastMatch.lastMatchDate)}</span>
+            </div>
+            <div style="margin-bottom:8px;">
+              <span class="preview-last-match-result ${resultColor(p.homeLastMatch.result)}">${p.homeLastMatch.result} ${p.homeLastMatch.score}</span>
+              <span style="font-size:0.75rem;color:var(--text-muted);">vs ${p.homeLastMatch.opponent}</span>
+            </div>
+            <div class="preview-lineup">${renderLastMatchLineup(p.homeLastMatch.lineup)}</div>
+            <div class="preview-changes">${p.homeLastMatch.changes}</div>
+          </div>
+          ` : ''}
+          
+          <!-- AWAY LAST MATCH -->
+          ${p.awayLastMatch ? `
+          <div class="preview-last-match">
+            <div class="preview-last-match-header">
+              <span class="preview-last-match-title">Last match</span>
+              <span class="preview-last-match-meta">${hoursAgoLabel(p.awayLastMatch.lastMatchDate)}</span>
+            </div>
+            <div style="margin-bottom:8px;">
+              <span class="preview-last-match-result ${resultColor(p.awayLastMatch.result)}">${p.awayLastMatch.result} ${p.awayLastMatch.score}</span>
+              <span style="font-size:0.75rem;color:var(--text-muted);">vs ${p.awayLastMatch.opponent}</span>
+            </div>
+            <div class="preview-lineup">${renderLastMatchLineup(p.awayLastMatch.lineup)}</div>
+            <div class="preview-changes">${p.awayLastMatch.changes}</div>
+          </div>
+          ` : ''}
+        </div>
+        ` : ''}
+
         <!-- Injury columns -->
         <div class="preview-injury-grid">
           <div class="preview-injury-col">
@@ -480,7 +589,75 @@ function setupPreviewFilters() {
   });
 }
 
+function setupLeagueFilter() {
+  const leagueFilter = document.getElementById('leagueFilter');
+  if (!leagueFilter) return;
+
+  leagueFilter.addEventListener('click', (e) => {
+    if (e.target.classList.contains('league-filter-btn')) {
+      // Remove active class from all buttons
+      leagueFilter.querySelectorAll('.league-filter-btn').forEach(btn => btn.classList.remove('active'));
+      // Add active class to clicked button
+      e.target.classList.add('active');
+      
+      const selectedLeague = e.target.dataset.league;
+      
+      // Filter all cards across sections
+      if (selectedLeague === 'all') {
+        // Show all cards
+        document.querySelectorAll('.card[data-league], .form-stat-card[data-league]').forEach(card => {
+          card.style.display = '';
+        });
+      } else {
+        // Hide/show based on data-league attribute
+        document.querySelectorAll('.card[data-league], .form-stat-card[data-league]').forEach(card => {
+          const cardLeague = card.dataset.league;
+          card.style.display = (cardLeague === selectedLeague) ? '' : 'none';
+        });
+      }
+    }
+  });
+}
+
+// ─── CRISIS BANNER AUTO-TRIGGER ───────────────────────────────────────────────
+function manageCrisisBanner() {
+  const banner = document.getElementById('crisisBanner');
+  if (!banner) return;
+  
+  // Count high-impact stories across all sections
+  let highImpactCount = 0;
+  
+  // Count high-impact injuries
+  highImpactCount += INJURIES_DATA.filter(i => i.impact === 'high').length;
+  
+  // Count high-impact transfers
+  highImpactCount += TRANSFERS_DATA.filter(t => t.impact === 'high').length;
+  
+  // Count high-impact managers
+  highImpactCount += MANAGERS_DATA.filter(m => m.impact === 'high').length;
+  
+  // Count high-impact previews (flagged matches)
+  highImpactCount += PREVIEWS_DATA.filter(p => p.flag).length;
+  
+  // Auto-show if 3+ high-impact stories
+  if (highImpactCount >= 3) {
+    banner.classList.remove('hidden');
+    console.log(`🚨 Crisis banner auto-triggered: ${highImpactCount} high-impact stories detected`);
+  } else {
+    // Only hide if not manually dismissed
+    if (!sessionStorage.getItem('crisisBannerDismissed')) {
+      banner.classList.add('hidden');
+    }
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  // Validate data before rendering
+  const isValid = validateAllData();
+  if (!isValid) {
+    console.error('⛔ Data validation failed — some cards may be hidden from UI');
+  }
+  
   renderInjuries();
   renderTransfers();
   renderManagers();
@@ -491,9 +668,11 @@ document.addEventListener('DOMContentLoaded', () => {
   updateHeroStats();
   setupFilters();
   setupPreviewFilters();
+  setupLeagueFilter();
   setupSearch();
   setupNav();
   setupLastUpdated();
+  manageCrisisBanner();
 
   // EPL modal close handlers
   const closeBtn = document.getElementById('eplModalClose');

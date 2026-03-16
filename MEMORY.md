@@ -12,10 +12,12 @@
 ## PitchIQ Business
 - Football news/analysis site — Premier League, La Liga, Bundesliga
 - Pipeline: Scout → Referee → Pixel → Jarvis (fixed, no exceptions)
+- **UCL rule:** We do NOT cover UCL as a league. UCL is only relevant when it affects player/club status in PL, La Liga, or Bundesliga (e.g. injuries picked up in a UCL match, suspensions carrying over to league games). No UCL standings, results, or UCL-specific narratives.
 - Telegram group (-5104130761) is the team's visible workspace
 - Every bot always posts from their own account
 - Crons: team meeting (6h), pipeline check (3h), match preview update (3 days)
 - match-previews.md lives at /home/ai/.openclaw/workspace/football-site/match-previews.md
+- Match preview pipeline (every 3 days): Jarvis kickoff → Scout (research + last game + previous lineup) → Referee (fact-check all incl. lineups) → Pixel (quick visual review — sanity check only once structure is established)
 - Model rule: Haiku for simple/casual group tasks, Sonnet for analysis, Opus for critical
 
 ## mentionPatterns Config (Lessons Learned)

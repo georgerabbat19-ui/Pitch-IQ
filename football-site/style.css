@@ -806,6 +806,54 @@ header {
 .alert-banner p { font-size: 0.85rem; color: var(--text-secondary); }
 .alert-banner p strong { color: var(--accent-green); }
 
+/* ===== LEAGUE FILTER ===== */
+.league-filter-wrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.league-filter-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.league-filter-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.league-filter-btn {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.league-filter-btn:hover {
+  border-color: var(--border-accent);
+  color: var(--text-primary);
+  background: var(--bg-card);
+}
+
+.league-filter-btn.active {
+  background: rgba(0, 230, 118, 0.1);
+  border-color: rgba(0, 230, 118, 0.35);
+  color: var(--accent-green);
+}
+
 /* ===== SEARCH BAR ===== */
 .search-bar-wrap {
   position: relative;
@@ -1318,6 +1366,94 @@ footer p {
   font-weight: 600;
 }
 
+/* ── LAST MATCH SECTION ── */
+.preview-last-match {
+  background: rgba(0,230,118,0.04);
+  border: 1px solid rgba(0,230,118,0.12);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.preview-last-match-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.preview-last-match-title {
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--accent-green);
+}
+
+.preview-last-match-meta {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.preview-last-match-result {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: var(--text-primary);
+  margin-right: 8px;
+}
+
+.preview-last-match-result.win {
+  color: var(--accent-green);
+}
+
+.preview-last-match-result.loss {
+  color: var(--accent-red);
+}
+
+.preview-last-match-result.draw {
+  color: var(--accent-yellow);
+}
+
+/* ── Lineup display ── */
+.preview-lineup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.lineup-player {
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(0,230,118,0.2);
+  border-radius: 6px;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.7rem;
+}
+
+.lineup-number {
+  font-weight: 800;
+  color: var(--accent-green);
+  min-width: 14px;
+}
+
+.lineup-name {
+  color: var(--text-secondary);
+  font-size: 0.65rem;
+  white-space: nowrap;
+}
+
+/* ── Changes summary ── */
+.preview-changes {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  font-style: italic;
+}
+
 /* ── responsive ── */
 @media (max-width: 640px) {
   .preview-header {
@@ -1383,6 +1519,7 @@ footer p {
 }
 
 @media (max-width: 640px) {
+  .hero { padding: 20px 16px 16px; }
   .hero h1 { font-size: 1.5rem; }
   .hero-stats { gap: 16px; }
   .cards-grid { grid-template-columns: 1fr; }

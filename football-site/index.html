@@ -98,6 +98,17 @@
     <p><strong>GW29 Tip:</strong> Three top-six clubs are missing key strikers this weekend. Bookmakers haven't fully adjusted. See injury section for details.</p>
   </div>
 
+  <!-- League Filter -->
+  <div class="league-filter-wrap">
+    <span class="league-filter-label">League:</span>
+    <div class="league-filter-buttons" id="leagueFilter">
+      <button class="league-filter-btn active" data-league="all">🌍 All Leagues</button>
+      <button class="league-filter-btn" data-league="premier-league">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League</button>
+      <button class="league-filter-btn" data-league="la-liga">🇪🇸 La Liga</button>
+      <button class="league-filter-btn" data-league="bundesliga">🇩🇪 Bundesliga</button>
+    </div>
+  </div>
+
   <!-- Search -->
   <div class="search-bar-wrap">
     <span class="search-icon">🔍</span>
@@ -235,8 +246,83 @@
       </div>
     </div>
     <div id="previews-grid" class="previews-grid">
-      <!-- Injected by app.js -->
+      <!-- Injected by app.js - includes last match data -->
     </div>
+    
+    <!-- LAST MATCH TEMPLATE (injected by app.js) -->
+    <template id="preview-card-template">
+      <div class="preview-card">
+        <div class="preview-colour-bar" style="background: linear-gradient(90deg, var(--home-color), var(--away-color));"></div>
+        <div class="preview-header">
+          <div class="preview-team">
+            <div class="preview-badge" style="font-size: 2.5rem;">🏴󠁧󠁢󠁥󠁮󠁧󠁿</div>
+            <div class="preview-team-name" data-home-name>Home</div>
+            <span class="preview-imp" data-home-imp>Low</span>
+          </div>
+          <div class="preview-vs">
+            <div class="preview-vs-text">VS</div>
+            <div class="preview-kickoff" data-kickoff>20:00</div>
+            <div class="preview-comp" data-competition>PL</div>
+          </div>
+          <div class="preview-team">
+            <div class="preview-badge" style="font-size: 2.5rem;">🐺</div>
+            <div class="preview-team-name" data-away-name>Away</div>
+            <span class="preview-imp" data-away-imp>Low</span>
+          </div>
+        </div>
+        <div class="preview-body">
+          <p class="preview-narrative" data-narrative>Match narrative here</p>
+          <!-- LAST MATCH SECTION (NEW) -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <!-- HOME LAST MATCH -->
+            <div class="preview-last-match">
+              <div class="preview-last-match-header">
+                <span class="preview-last-match-title" data-home-last-label>Last match</span>
+                <span class="preview-last-match-meta" data-home-last-ago>216 hrs ago</span>
+              </div>
+              <div style="margin-bottom: 8px;">
+                <span class="preview-last-match-result win" data-home-last-result>W 2-1</span>
+                <span style="font-size: 0.75rem; color: var(--text-muted);" data-home-last-opponent>vs Fulham</span>
+              </div>
+              <div class="preview-lineup" data-home-last-lineup>
+                <!-- Players injected here -->
+              </div>
+              <div class="preview-changes" data-home-last-changes>Changes: Norgaard → Lewis</div>
+            </div>
+            <!-- AWAY LAST MATCH -->
+            <div class="preview-last-match">
+              <div class="preview-last-match-header">
+                <span class="preview-last-match-title" data-away-last-label>Last match</span>
+                <span class="preview-last-match-meta" data-away-last-ago>192 hrs ago</span>
+              </div>
+              <div style="margin-bottom: 8px;">
+                <span class="preview-last-match-result loss" data-away-last-result>L 1-3</span>
+                <span style="font-size: 0.75rem; color: var(--text-muted);" data-away-last-opponent>vs Leeds</span>
+              </div>
+              <div class="preview-lineup" data-away-last-lineup>
+                <!-- Players injected here -->
+              </div>
+              <div class="preview-changes" data-away-last-changes>Changes: Medina OUT</div>
+            </div>
+          </div>
+          <!-- INJURIES & FLAGS -->
+          <div class="preview-injury-grid">
+            <div class="preview-injury-col">
+              <div class="preview-injury-header" data-home-name>Home</div>
+              <ul class="preview-injury-list" data-home-injuries>
+                <li class="no-issues">✓ No major concerns</li>
+              </ul>
+            </div>
+            <div class="preview-injury-col">
+              <div class="preview-injury-header" data-away-name>Away</div>
+              <ul class="preview-injury-list" data-away-injuries>
+                <li class="no-issues">✓ No major concerns</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
   </section>
 
 </main>
