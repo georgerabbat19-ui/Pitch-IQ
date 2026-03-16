@@ -170,14 +170,21 @@ function renderRules() {
 
 function renderForm(filter = 'all') {
   const grid = document.getElementById('form-grid');
-  const items = filter === 'all' ? FORM_DATA : FORM_DATA.filter(i => i.league === filter);
-  document.getElementById('countForm').textContent = FORM_DATA.length;
+  // Merge EPL, La Liga, and Bundesliga form data
+  const allFormData = [
+    ...FORM_DATA,
+    ...(typeof LA_LIGA_FORM_DATA !== 'undefined' ? LA_LIGA_FORM_DATA : []),
+    ...(typeof BUNDESLIGA_FORM_DATA !== 'undefined' ? BUNDESLIGA_FORM_DATA : [])
+  ];
+  const items = filter === 'all' ? allFormData : allFormData.filter(i => i.league === filter);
+  document.getElementById('countForm').textContent = allFormData.length;
   if (!items.length) { grid.innerHTML = '<p class="empty-state">No items match this filter.</p>'; return; }
   
   const currentLeagueFilter = document.querySelector('.league-filter-btn.active')?.dataset.league || 'all';
 
-  // reuse same club meta from EPL teams section
+  // Club metadata: EPL, La Liga, Bundesliga
   const formClubMeta = {
+    // Premier League
     'Arsenal':           { color: '#ef0107', plId: 't3'  },
     'Manchester City':   { color: '#1c86cd', plId: 't43' },
     'Chelsea':           { color: '#034694', plId: 't8'  },
@@ -198,6 +205,19 @@ function renderForm(filter = 'all') {
     'West Ham':          { color: '#7a263a', plId: 't21' },
     'Nottm Forest':      { color: '#dd0000', plId: 't17' },
     'Burnley':           { color: '#6c1d45', plId: 't90' },
+    // La Liga
+    'Barcelona':         { color: '#004494', plId: '' },
+    'Real Madrid':       { color: '#FFFFFF', plId: '' },
+    'Atlético Madrid':   { color: '#eb172b', plId: '' },
+    'Villarreal':        { color: '#f4b400', plId: '' },
+    'Real Betis':        { color: '#146b3a', plId: '' },
+    // Bundesliga
+    'Bayern Munich':     { color: '#c91c1f', plId: '' },
+    'Borussia Dortmund': { color: '#ffd700', plId: '' },
+    'TSG Hoffenheim':    { color: '#0050a0', plId: '' },
+    'VfB Stuttgart':     { color: '#c41e3a', plId: '' },
+    'RB Leipzig':        { color: '#cc0000', plId: '' },
+    'Bayer Leverkusen':  { color: '#c41c1f', plId: '' },
   };
   const PL_BADGE = id => `https://resources.premierleague.com/premierleague/badges/70/${id}.png`;
 
