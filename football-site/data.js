@@ -1228,18 +1228,18 @@ const PREVIEWS_DATA =
       lastMatchDate: '2026-03-14T15:30:00Z',
       lineup: [
         { number: 1, name: 'Ramsdale' },
-        { number: 24, name: 'Trippier' },
-        { number: 3, name: 'Botman' },
-        { number: 14, name: 'Thiaw' },
-        { number: 33, name: 'Livramento' },
-        { number: 18, name: 'Ramsey' },
-        { number: 8, name: 'Tonali' },
-        { number: 9, name: 'Isak' },
-        { number: 10, name: 'Gordon' },
+        { number: 21, name: 'Livramento' },
+        { number: 12, name: 'Thiaw' },
+        { number: 4, name: 'Botman' },
+        { number: 3, name: 'Hall' },
+        { number: 28, name: 'Willock' },
+        { number: 41, name: 'Ramsey' },
         { number: 23, name: 'Murphy' },
-        { number: 21, name: 'Barnes' },
+        { number: 27, name: 'Woltemade' },
+        { number: 11, name: 'Barnes' },
+        { number: 10, name: 'Gordon' },
       ],
-      changes: 'Ramsey suspended (red card). Guimarães out. Tonali and Miley doubtful. Willock may start if fit. Livramento expected at right-back.',
+      changes: 'Ramsey suspended (red card). Guimarães out. Isak out since Dec 22 (broken fibula/ankle). Gordon scored the goal. Livramento continues at right-back.',
     },
     awayLastMatch: {
       opponent: 'Brighton',
@@ -1351,7 +1351,7 @@ const PREVIEWS_DATA =
     league: 'premier-league',
     homeImportance: 'low',
     awayImportance: 'relegation',
-    narrative: 'Tottenham (16th, 30 pts) host Nottingham Forest (17th, 29 pts) in a must-not-lose clash for both sides hovering above the relegation zone. Spurs had Richarlison miss out through suspension in GW30 and drew 1-1 with Liverpool. Micky van de Ven serves suspension. Forest drew 0-0 with Fulham last time out but have multiple defensive absences.',
+    narrative: 'Tottenham (16th, 30 pts) host Nottingham Forest (17th, 29 pts) in a must-not-lose clash for both sides hovering above the relegation zone. Spurs drew 1-1 with Liverpool in GW30. Forest drew 0-0 with Fulham last time out but have multiple defensive absences.',
     homeInjuries: [
       'Rodrigo Bentancur (thigh — out)',
       'Lucas Bergvall (ankle — out)',
@@ -1365,7 +1365,7 @@ const PREVIEWS_DATA =
       'Conor Gallagher (illness — doubt)',
       'Joao Palhinha (concussion — doubt)',
       'Cristian Romero (head — doubt)',
-      'Richarlison (suspension — out)',
+
     ],
     awayInjuries: [
       'Chris Wood (knee — out)',
@@ -1867,7 +1867,6 @@ const PREVIEWS_DATA =
     awayImportance: 'low',
     narrative: 'Barcelona (1st, 70 pts) host Rayo Vallecano (15th, 31 pts) at Spotify Camp Nou looking to extend their 4-point lead at the top. Barça demolished Sevilla 5-2 in GW28 with Raphinha netting a hat-trick. Lewandowski is out with an eye socket fracture, Balde and Kounde remain injured. Rayo drew 1-1 with Levante last time.',
     homeInjuries: [
-      'Robert Lewandowski (eye socket fracture — out)',
       'Alejandro Balde (thigh — out)',
       'Jules Kounde (thigh — out)',
       'Frenkie de Jong (hamstring — out)',
@@ -1883,19 +1882,19 @@ const PREVIEWS_DATA =
       result: 'W',
       lastMatchDate: '2026-03-15T15:15:00Z',
       lineup: [
-        { number: 1, name: 'ter Stegen' },
-        { number: 23, name: 'Kounde' },
-        { number: 3, name: 'Cubarsi' },
-        { number: 24, name: 'Martinez' },
-        { number: 18, name: 'Cancelo' },
-        { number: 6, name: 'Gavi' },
+        { number: 1, name: 'García' },
+        { number: 2, name: 'Espart' },
+        { number: 5, name: 'Cubarsí' },
+        { number: 3, name: 'Martín' },
+        { number: 19, name: 'Cancelo' },
+        { number: 4, name: 'Bernal' },
         { number: 8, name: 'Pedri' },
-        { number: 10, name: 'Dani Olmo' },
+        { number: 26, name: 'Olmo' },
         { number: 11, name: 'Raphinha' },
         { number: 9, name: 'Lewandowski' },
-        { number: 19, name: 'Yamal' },
+        { number: 27, name: 'Bardghji' },
       ],
-      changes: 'Lewandowski out with eye fracture. Kounde and Balde injured. De Jong still out. Flick will need to reshuffle front line — likely Fermin or Torre to feature more prominently.',
+      changes: 'Lewandowski out with eye fracture. Kounde and Balde injured. De Jong still out. García confirmed GK (ter Stegen at Girona — not Barcelona). Actual starters confirmed from FotMob/365scores vs Sevilla MD28.',
     },
     awayLastMatch: {
       opponent: 'Levante',
@@ -2783,7 +2782,8 @@ const PREVIEWS_DATA =
       changes: '⚠️ Lineup unverified — jersey numbers approximate. Stuttgart near full strength. Flag for Referee.',
     },
   },
-];
+]
+
 
 // ─── EUROPEAN RESULTS & NEWS (Mar 16, 2026) ──────────────────────────────────
 // La Liga (MD29) + Bundesliga (MD26) — Approved by Referee
