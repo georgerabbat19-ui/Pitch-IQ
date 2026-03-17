@@ -42,8 +42,8 @@ When you complete any item:
 ## Open
 
 - [x] **Pixel** — GW30 batch: Haaland + Mbappé deployed live. ⚠️ Deployed BEFORE Jarvis sign-off (twice). Process breach logged. _(done: 2026-03-17 03:38 GMT+8)_
-- [ ] **Referee** — Clarify Harry Kane GW30 rejection reason ("scope mismatch" is insufficient). _(added: 2026-03-17 03:38 GMT+8)_
-- [ ] **Pixel** — Acknowledge and confirm: no future deploys before Jarvis sign-off. _(added: 2026-03-17 03:38 GMT+8)_
+- [x] **Referee** — Clarify Harry Kane GW30 rejection reason. Clarified: stat scope mismatch (all-comps vs league-only) + player unavailable GW30 (international duty). _(done: 2026-03-17 04:19 GMT+8)_
+- [x] **Pixel** — Acknowledge and confirm: no future deploys before Jarvis sign-off. Confirmed compliance. _(done: 2026-03-17 05:18 GMT+8)_
 
 - [x] **Referee** — GW30 batch review (3 items): 2 approved, 1 rejected. Handed to Pixel. _(done: 2026-03-17 03:36 GMT+8)_
 - [x] **Scout** — Use structured checklist format in every handoff to Referee: player, club, league tag, sources per item. _(done: 2026-03-16 17:36 GMT+8)_
