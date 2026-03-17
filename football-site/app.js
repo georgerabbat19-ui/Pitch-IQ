@@ -847,8 +847,8 @@ function renderHomePage() {
     ...(typeof BUNDESLIGA_FORM_DATA !== 'undefined' ? BUNDESLIGA_FORM_DATA : []),
   ];
   const scored = allFormTeams.map(f => ({ ...f, score: formScore(f) }));
-  const hottest = [...scored].sort((a, b) => b.score - a.score || b.wins - a.wins).slice(0, 6);
-  const coldest = [...scored].sort((a, b) => a.score - b.score || a.wins - b.wins).slice(0, 6);
+  const hottest = [...scored].sort((a, b) => b.score - a.score || b.wins - a.wins).slice(0, 10);
+  const coldest = [...scored].sort((a, b) => a.score - b.score || a.wins - b.wins).slice(0, 10);
 
   const renderFormGrid = (teams, emoji, title) => teams.length ? `
     <div class="home-section">
@@ -877,7 +877,7 @@ function renderHomePage() {
   const upcoming = (PREVIEWS_DATA || [])
     .filter(p => p.id && p.kickoff && new Date(p.kickoff).getTime() > now)
     .sort((a, b) => new Date(a.kickoff) - new Date(b.kickoff))
-    .slice(0, 5);
+    .slice(0, 10);
 
   const previewsHtml = upcoming.length ? `
     <div class="home-section">
