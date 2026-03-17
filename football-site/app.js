@@ -841,7 +841,12 @@ function renderHomePage() {
 
   // ── Hottest / Coldest teams: rank ALL leagues by last-5 form score ──
   const leagueLabel = { 'premier-league': 'PL', 'la-liga': 'La Liga', 'bundesliga': 'BL' };
-  const scored = [...FORM_DATA].map(f => ({ ...f, score: formScore(f) }));
+  const allFormTeams = [
+    ...FORM_DATA,
+    ...(typeof LA_LIGA_FORM_DATA !== 'undefined' ? LA_LIGA_FORM_DATA : []),
+    ...(typeof BUNDESLIGA_FORM_DATA !== 'undefined' ? BUNDESLIGA_FORM_DATA : []),
+  ];
+  const scored = allFormTeams.map(f => ({ ...f, score: formScore(f) }));
   const hottest = [...scored].sort((a, b) => b.score - a.score || b.wins - a.wins).slice(0, 6);
   const coldest = [...scored].sort((a, b) => a.score - b.score || a.wins - b.wins).slice(0, 6);
 
