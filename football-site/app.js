@@ -898,16 +898,20 @@ function renderClubDrillDown() {
 
 function openClubDrillDown(clubId) {
   const allTeams = [
-    ...EPL_TEAMS,
-    ...(typeof LA_LIGA_TEAMS !== 'undefined' ? LA_LIGA_TEAMS : []),
-    ...(typeof BUNDESLIGA_TEAMS !== 'undefined' ? BUNDESLIGA_TEAMS : []),
+    ...EPL_TEAMS.map(t => ({ ...t, league: 'premier-league' })),
+    ...(typeof LA_LIGA_TEAMS !== 'undefined' ? LA_LIGA_TEAMS.map(t => ({ ...t, league: 'la-liga' })) : []),
+    ...(typeof BUNDESLIGA_TEAMS !== 'undefined' ? BUNDESLIGA_TEAMS.map(t => ({ ...t, league: 'bundesliga' })) : []),
   ];
   const club = allTeams.find(t => t.id === clubId);
   if (!club) return;
   
+  const leagueLabel = { 'premier-league': 'Premier League · 2025/26', 'la-liga': 'La Liga · 2025/26', 'bundesliga': 'Bundesliga · 2025/26' };
+  
   const overlay = document.getElementById('eplModalOverlay');
   document.getElementById('eplModalBadge').textContent = club.badge;
   document.getElementById('eplModalTitle').textContent = club.name;
+  const subtitleEl = document.getElementById('eplModalSubtitle');
+  if (subtitleEl) subtitleEl.textContent = leagueLabel[club.league] || 'Football · 2025/26';
   
   // Gather all club-related data
   const injuries = INJURIES_DATA.filter(i => i.club.toLowerCase().replace(/\s+/g, '-') === club.name.toLowerCase().replace(/\s+/g, '-'));
