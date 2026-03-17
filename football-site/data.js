@@ -1365,7 +1365,7 @@ const PREVIEWS_DATA =
       'Conor Gallagher (illness — doubt)',
       'Joao Palhinha (concussion — doubt)',
       'Cristian Romero (head — doubt)',
-
+      'Richarlison (hamstring injury — out)',
     ],
     awayInjuries: [
       'Chris Wood (knee — out)',
@@ -1375,7 +1375,7 @@ const PREVIEWS_DATA =
       'Stefan Ortega (calf — doubt)',
       'Jair Cunha (other — doubt)',
     ],
-    managerNote: 'Tottenham face a massive squad crisis. Van de Ven suspended. Richarlison suspended. Romero and Palhinha in concussion protocols. Tudor has very limited personnel.',
+    managerNote: 'Tottenham face a massive squad crisis. Richarlison out with hamstring injury (was not suspended — hamstring). Micky van de Ven is AVAILABLE for GW31. Romero and Palhinha in concussion protocols. Tudor has very limited personnel.',
     flag: '⚠️ Tottenham squad crisis — multiple injuries and suspensions. Starting XI unconfirmed.',
     homeLastMatch: {
       opponent: 'Liverpool',
@@ -1395,7 +1395,7 @@ const PREVIEWS_DATA =
         { number: 19, name: 'Richarlison' },
         { number: 9, name: 'Solanke' },
       ],
-      changes: 'Van de Ven suspended. Richarlison suspended. Romero and Palhinha in concussion protocols. Bissouma, Gallagher doubts. Severely depleted XI expected.',
+      changes: 'Van de Ven is AVAILABLE for GW31 (not suspended). Richarlison out with hamstring injury. Romero and Palhinha in concussion protocols. Bissouma, Gallagher doubts. Severely depleted XI expected.',
     },
     awayLastMatch: {
       opponent: 'Fulham',
@@ -1485,7 +1485,7 @@ const PREVIEWS_DATA =
         { number: 24, name: 'Zubeldia' },
         { number: 20, name: 'Munoz' },
         { number: 14, name: 'Zubimendi' },
-        { number: 24, name: 'Merino' },
+        { number: 24, name: 'Grillitsch' },
         { number: 22, name: 'Oyarzabal' },
         { number: 10, name: 'Guedes' },
         { number: 7, name: 'Barrenetxea' },
@@ -2095,7 +2095,7 @@ const PREVIEWS_DATA =
       'Alexander Sorloth (hamstring — out)',
       'Nico Gonzalez (thigh — out)',
     ],
-    managerNote: 'Real Madrid face a defensive crisis: Militao, Mendy, Carreras, and Alaba all out. Carvajal expected back (per betinf.com). Atlético starting GK Oblak doubtful — Jan Oblak out with muscle strain, backup likely to start.',
+    managerNote: 'Real Madrid face a defensive crisis: Militao, Mendy, Carreras, and Alaba all out. Carvajal expected back (per betinf.com). Atlético GK Oblak confirmed OUT (muscle strain) — Musso to start. Molina suspension cleared, AVAILABLE for Derby.',
     flag: '⚠️ Real Madrid significant defensive absences — Referee to verify confirmed teamsheets.',
     homeLastMatch: {
       opponent: 'Elche',
@@ -2135,7 +2135,7 @@ const PREVIEWS_DATA =
         { number: 11, name: 'Morata' },
         { number: 9, name: 'Alvarez' },
       ],
-      changes: 'Oblak doubtful. Barrios out injured. Molina suspended (per action network — confirm). De Paul and Griezmann expected to continue. Axel Witsel likely to start at CB given Gimenez out.',
+      changes: 'Oblak confirmed OUT (muscle strain). Barrios out injured. Molina suspension CLEARED — AVAILABLE for Derby. De Paul and Griezmann expected to continue. Axel Witsel likely to start at CB given Gimenez out.',
     },
   },
 
