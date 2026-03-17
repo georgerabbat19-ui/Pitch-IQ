@@ -74,7 +74,7 @@ Stack: Pure HTML + CSS + JS. No frameworks. No build step.
 - Dark theme — `#0d0f14` background, `#00e676` accent green
 - Card grid: auto-fill, min 300px (wide variant 360px for manager/VAR cards)
 - CSS variables throughout — easy to retheme if needed
-- All data lives in `app.js` as JS arrays — no backend, no API yet
+- All data lives in `data.js` as JS arrays — no backend, no API yet
 
 ---
 
@@ -88,13 +88,17 @@ Stack: Pure HTML + CSS + JS. No frameworks. No build step.
 | 2026-03-15 | Hero stats and section counts made dynamic (no more hardcoded numbers) | Jarvis |
 | 2026-03-15 | Split data.js (data only) from app.js (rendering engine) — prevents sub-agents breaking the UI | Jarvis |
 | 2026-03-15 | Added EPL Teams section — 20 team cards, team news modal, nav item, CSS, search integration | subagent |
+| 2026-03-16 | League filter tabs (All/PL/La Liga/Bundesliga), section chips, league-first data tagging | Pixel/Jarvis |
+| 2026-03-16 | Client-side validator in app.js: catches missing/invalid league tags, flags in console | Pixel |
+| 2026-03-16 | Crisis Banner CSS: sticky strip, amber/red, triggers at 3+ high-impact stories | Pixel |
+| 2026-03-17 | Nav redesign complete: league tabs, section chips, home page, club drill-downs (all 3 leagues) — all bugs fixed and verified | Pixel/Jarvis |
 
 ---
 
 ## Pending / Planned
+- [x] League filter for all sections — DONE (2026-03-17)
 - [ ] Replace placeholder content with real scraped data (football-scraper skill, TBD)
-- [ ] Add league filter to Injuries section
-- [ ] Potentially: real-time data feed via API
+- [ ] Real-time data feed via API (future)
 
 ---
 

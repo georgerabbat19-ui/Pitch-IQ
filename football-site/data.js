@@ -1,5 +1,5 @@
 // ===== PitchIQ — app.js =====
-// Data last updated: Mar 17, 2026 (18:38 GMT+8) — Cycle 12 — Sources: NBC Sports, BBC Sport, The Athletic, Sky Sports, Wikipedia, Marca, AS, Kicker, Bundesliga.com, Fabrizio Romano, ActionNetwork, betinf.com, LaLiga.com
+// Data last updated: Mar 18, 2026 (03:36 GMT+8) — Cycle 14 — Sources: NBC Sports, BBC Sport, The Athletic, Sky Sports, ESPN, Wikipedia, Marca, AS, Kicker, Bundesliga.com, Fabrizio Romano, ActionNetwork, betinf.com, LaLiga.com
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
@@ -180,6 +180,37 @@ const INJURIES_DATA = [
     matchAffected: 'All remaining fixtures + World Cup 2026',
     source: 'https://www.espn.com/soccer/story/_/id/emre-can-dortmund-acl',
     league: 'bundesliga',
+  },
+  // ── Cycle 14 Updates (Mar 18, 2026 03:36 GMT+8) ──
+  {
+    type: 'injury',
+    player: 'Stefan Bajcetic',
+    avatar: '🧑',
+    club: 'Liverpool',
+    league: 'premier-league',
+    clubBadge: '❤️',
+    position: 'CM',
+    detail: 'Hamstring injury — OUT. Another midfield blow for Liverpool alongside Endo (ankle) and Bradley (knee) already sidelined.',
+    impact: 'medium',
+    date: 'Mar 17, 2026',
+    matchAffected: 'GW32+',
+    source: 'https://www.sportsgambler.com/football/injuries/',
+    isNew: true,
+  },
+  {
+    type: 'injury',
+    player: 'Reece James',
+    avatar: '🧑',
+    club: 'Chelsea',
+    league: 'premier-league',
+    clubBadge: '💙',
+    position: 'RB',
+    detail: 'Thigh injury — OUT until ~Apr 12. Just signed a new 6-year contract to 2032. Blow for Rosenior as Chelsea fight for top-four and UCL last-16 vs PSG.',
+    impact: 'medium',
+    date: 'Mar 17, 2026',
+    matchAffected: 'GW32-GW34',
+    source: 'https://www.sportsmole.co.uk/football/chelsea/',
+    isNew: true,
   },
   // ── Cycle 13 Updates (Mar 17, 2026 21:30 GMT+8) ──
   {
@@ -432,6 +463,10 @@ const TRANSFERS_DATA = [
 ];
 
 // MANAGER CHANGES — Real EPL 2025-26 managerial changes (most recent/impactful 4)
+// ── Cycle 14 Transfer Notes (Mar 18, 2026) ──
+// Chelsea: £10.75m fine + suspended transfer ban + 9-month academy ban confirmed by Premier League (financial rule breaches Mar 16)
+// Contract extensions: Reece James → Chelsea (2032), Gravenberch → Liverpool (2032), Hinshelwood → Brighton (2029), Ballard → Sunderland (2029)
+
 const MANAGERS_DATA = [
   {
     club: 'Manchester United',
@@ -512,13 +547,13 @@ const RULES_DATA = [
 
 // FORM & STATS — Real EPL 2025-26 standings (as of GW29, source: NBC Sports Mar 13, 2026)
 const FORM_DATA = [
-  { team: 'Arsenal',            badge: '🔴', league: 'premier-league', leagueName: 'Premier League', form: ['W','W','D','W','W'], played: 31, wins: 21, draws: 7,  losses: 3,  gf: 61, ga: 22, cleanSheets: 12, topScorer: 'Bukayo Saka',                             nextMatch: 'GW32 — Fri 20 Mar', rank: 1,  source: 'https://www.skysports.com/premier-league-table' },
+  { team: 'Arsenal',            badge: '🔴', league: 'premier-league', leagueName: 'Premier League', form: ['W','W','D','W','W'], played: 31, wins: 21, draws: 7,  losses: 3,  gf: 61, ga: 22, cleanSheets: 12, topScorer: 'Viktor Gyökeres — 11 PL goals',                             nextMatch: 'GW32 — Fri 20 Mar', rank: 1,  source: 'https://www.skysports.com/premier-league-table' },
   { team: 'Manchester City',    badge: '🩵', league: 'premier-league', leagueName: 'Premier League', form: ['W','D','W','W','D'], played: 30, wins: 18, draws: 7,  losses: 5,  gf: 60, ga: 28, cleanSheets: 10, topScorer: 'Erling Haaland — 22 goals',               nextMatch: 'GW32 TBC',          rank: 2,  source: 'https://www.skysports.com/premier-league-table' },
   { team: 'Manchester United',  badge: '🔴', league: 'premier-league', leagueName: 'Premier League', form: ['W','W','W','D','W'], played: 30, wins: 15, draws: 9,  losses: 6,  gf: 54, ga: 41, cleanSheets: 8,  topScorer: 'Bruno Fernandes — 16 assists',            nextMatch: 'GW32 — Fri 20 Mar', rank: 3,  source: 'https://www.skysports.com/premier-league-table' },
   { team: 'Aston Villa',        badge: '🟣', league: 'premier-league', leagueName: 'Premier League', form: ['W','D','W','L','W'], played: 30, wins: 15, draws: 6,  losses: 9,  gf: 40, ga: 37, cleanSheets: 9,  topScorer: 'Ollie Watkins — 8+ goals',               nextMatch: 'GW32 — Sun 22 Mar', rank: 4,  source: 'https://www.skysports.com/premier-league-table' },
   { team: 'Liverpool',          badge: '❤️', league: 'premier-league', leagueName: 'Premier League', form: ['W','D','L','W','D'], played: 30, wins: 14, draws: 7,  losses: 9,  gf: 49, ga: 40, cleanSheets: 7,  topScorer: 'Florian Wirtz — 6 goals',                nextMatch: 'GW32 — Sat 21 Mar', rank: 5,  source: 'https://www.skysports.com/premier-league-table' },
   { team: 'Chelsea',            badge: '💙', league: 'premier-league', leagueName: 'Premier League', form: ['W','W','L','D','L'], played: 30, wins: 13, draws: 9,  losses: 8,  gf: 53, ga: 35, cleanSheets: 9,  topScorer: 'Joao Pedro',                            nextMatch: 'GW32 — Sat 21 Mar', rank: 6,  source: 'https://www.skysports.com/premier-league-table' },
-  { team: 'Brentford',          badge: '🐝', league: 'premier-league', leagueName: 'Premier League', form: ['W','D','D','D','W'], played: 31, wins: 13, draws: 7,  losses: 11, gf: 46, ga: 42, cleanSheets: 7,  topScorer: 'Dango Ouattara',                       nextMatch: 'GW32 — Sat 21 Mar', rank: 7,  source: 'https://www.skysports.com/premier-league-table' },
+  { team: 'Brentford',          badge: '🐝', league: 'premier-league', leagueName: 'Premier League', form: ['W','D','D','D','W'], played: 31, wins: 13, draws: 7,  losses: 11, gf: 46, ga: 42, cleanSheets: 7,  topScorer: 'Igor Thiago — 19 PL goals',                       nextMatch: 'GW32 — Sat 21 Mar', rank: 7,  source: 'https://www.skysports.com/premier-league-table' },
   { team: 'Everton',            badge: '🔵', league: 'premier-league', leagueName: 'Premier League', form: ['L','D','L','W','L'], played: 30, wins: 12, draws: 7,  losses: 11, gf: 34, ga: 35, cleanSheets: 6,  topScorer: 'Kiernan Dewsbury-Hall — 6 goals',        nextMatch: 'GW32 — Sat 21 Mar', rank: 8,  source: 'https://www.skysports.com/premier-league-table' },
   { team: 'Newcastle',          badge: '⚫', league: 'premier-league', leagueName: 'Premier League', form: ['W','D','W','L','W'], played: 30, wins: 12, draws: 6,  losses: 12, gf: 43, ga: 43, cleanSheets: 7,  topScorer: 'Anthony Gordon — 5 goals',               nextMatch: 'GW32 — Sun 22 Mar', rank: 9,  source: 'https://www.skysports.com/premier-league-table' },
   { team: 'Bournemouth',        badge: '🍒', league: 'premier-league', leagueName: 'Premier League', form: ['W','D','W','D','D'], played: 30, wins: 9,  draws: 14, losses: 7,  gf: 44, ga: 46, cleanSheets: 8,  topScorer: 'Evanilson — 6 goals',                   nextMatch: 'GW32 — Fri 20 Mar', rank: 10, source: 'https://www.skysports.com/premier-league-table' },

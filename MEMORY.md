@@ -16,6 +16,7 @@
 - Telegram group (-5104130761) is the team's visible workspace
 - Every bot always posts from their own account
 - Crons: pipeline check (6h), match preview update (3 days) — team meeting crons permanently deleted 2026-03-17, do NOT recreate
+- Team communication rules meeting (2026-03-17): COMPLETE. All agents confirmed Telegram + sessions_send rules. Live test case run. Rules embedded in all agents' RULES.md and MEMORY.md.
 - match-previews.md lives at /home/ai/.openclaw/workspace/football-site/match-previews.md
 - Match preview pipeline (every 3 days): Jarvis kickoff → Scout (research + last game + previous lineup) → Referee (fact-check all incl. lineups) → Pixel (quick visual review — sanity check only once structure is established)
 - Model rule: Sonnet for all agent sessions (group + heartbeat), Opus for critical decisions
@@ -104,6 +105,9 @@ This is in: all RULES.md files, all cron prompts, action-items.md, and all MEMOR
 - Client-side validator in app.js: catches missing/invalid league tags, flags in console, hides from UI
 - Crisis Banner CSS: implemented (triggers at 3+ high-impact stories)
 - Git push required after every site change — Vercel deploys on push
+
+## Known File Gaps
+- `memory/pipeline-log.md` — referenced in HEARTBEAT.md (token usage check) but does not exist. Low impact — heartbeat skips gracefully. Create if pipeline logging becomes useful.
 
 ## Known Stale / Redundant Files (Noted, Not Deleted)
 - `SUPERVISOR.md` (Jarvis workspace) — describes old single-agent model (Researcher/Designer). Superseded by current Scout/Referee/Pixel team structure. Safe to archive but kept for reference.
