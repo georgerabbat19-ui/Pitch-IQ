@@ -18,7 +18,7 @@
 - Crons: pipeline check (6h), match preview update (3 days) — team meeting crons permanently deleted 2026-03-17, do NOT recreate
 - match-previews.md lives at /home/ai/.openclaw/workspace/football-site/match-previews.md
 - Match preview pipeline (every 3 days): Jarvis kickoff → Scout (research + last game + previous lineup) → Referee (fact-check all incl. lineups) → Pixel (quick visual review — sanity check only once structure is established)
-- Model rule: Haiku for simple/casual group tasks, Sonnet for analysis, Opus for critical
+- Model rule: Sonnet for all agent sessions (group + heartbeat), Opus for critical decisions
 
 ## Session Types (Lessons Learned)
 - Each agent has multiple session types — do NOT confuse them when checking health:
