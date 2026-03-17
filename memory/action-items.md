@@ -22,7 +22,7 @@ Both are always required. One without the other is not enough.
 - Jarvis nudges overdue agents every heartbeat (max once per item per 3h)
 
 ## Overdue thresholds
-- Scout items: 6h (2 research cycles)
+- Scout items: 12h (2 research cycles)
 - Referee items: 6h (2 review cycles)
 - Pixel items (needs approval): 24h
 - Pixel items (approved, pending implementation): 12h

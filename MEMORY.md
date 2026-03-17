@@ -15,7 +15,7 @@
 - **UCL rule:** We do NOT cover UCL as a league. UCL is only relevant when it affects player/club status in PL, La Liga, or Bundesliga (e.g. injuries picked up in a UCL match, suspensions carrying over to league games). No UCL standings, results, or UCL-specific narratives.
 - Telegram group (-5104130761) is the team's visible workspace
 - Every bot always posts from their own account
-- Crons: team meeting (6h), pipeline check (3h), match preview update (3 days)
+- Crons: pipeline check (6h), match preview update (3 days) — team meeting crons permanently deleted 2026-03-17, do NOT recreate
 - match-previews.md lives at /home/ai/.openclaw/workspace/football-site/match-previews.md
 - Match preview pipeline (every 3 days): Jarvis kickoff → Scout (research + last game + previous lineup) → Referee (fact-check all incl. lineups) → Pixel (quick visual review — sanity check only once structure is established)
 - Model rule: Haiku for simple/casual group tasks, Sonnet for analysis, Opus for critical
@@ -27,6 +27,7 @@
   - `agent:<id>:cron:<job-id>` → isolated cron job session (one-shot, per cron run)
 - **Always check `agent:<id>:main` for heartbeat recency** — the group chat session timestamp is NOT the heartbeat timestamp
 - Heartbeat intervals: Referee=30min, Scout=1h, Jarvis=1h, Pixel=2h
+- Scout research cron: every 6h (changed from 3h on 2026-03-17)
 
 ## Timezone — Malaysian Time (Non-Negotiable)
 - **All times must be displayed in MYT (Malaysia Time) = UTC+8** — logs, memory files, group posts, meeting logs, preview labels, timestamps, everything

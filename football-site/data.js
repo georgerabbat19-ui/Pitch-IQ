@@ -1,5 +1,5 @@
 // ===== PitchIQ — app.js =====
-// Data last updated: Mar 17, 2026 (11:30 GMT+8) — Cycle 11 — Sources: NBC Sports, BBC Sport, The Athletic, Sky Sports, Wikipedia, Marca, AS, Kicker, Bundesliga.com, Fabrizio Romano, ActionNetwork, betinf.com
+// Data last updated: Mar 17, 2026 (18:13 GMT+8) — Cycle 12 — Sources: NBC Sports, BBC Sport, The Athletic, Sky Sports, Wikipedia, Marca, AS, Kicker, Bundesliga.com, Fabrizio Romano, ActionNetwork, betinf.com, LaLiga.com
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
@@ -459,8 +459,8 @@ const FORM_DATA = [
     played: 31, wins: 21, draws: 7, losses: 3,
     gf: 61, ga: 22,
     cleanSheets: 12,
-    topScorer: 'Bukayo Saka (16 shots since Jan, top 2 at club)',
-    nextMatch: 'GW31 TBC',
+    topScorer: 'Bukayo Saka',
+    nextMatch: 'GW32 TBC',
     rank: 1,
     source: 'https://www.nbcsports.com/soccer/news/premier-league-2025-26-table-teams-standings-for-the-new-season',
   },
