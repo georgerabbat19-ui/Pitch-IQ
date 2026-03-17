@@ -1546,10 +1546,27 @@ footer p {
   transition: var(--transition);
 }
 
+.home-form-card--clickable {
+  cursor: pointer;
+}
+
 .home-form-card:hover {
   background: var(--bg-card-hover);
   border-color: var(--border-accent);
   transform: translateY(-2px);
+}
+
+.home-form-cta {
+  font-size: 0.72rem;
+  color: var(--accent-green);
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity var(--transition);
+  margin-top: 2px;
+}
+
+.home-form-card:hover .home-form-cta {
+  opacity: 1;
 }
 
 .home-form-rank {
@@ -1598,11 +1615,28 @@ footer p {
   transition: var(--transition);
 }
 
+.home-preview-card--clickable {
+  cursor: pointer;
+}
+
 .home-preview-card:hover {
   background: var(--bg-card-hover);
   border-color: var(--border-accent);
   box-shadow: var(--shadow-card);
   transform: translateY(-2px);
+}
+
+.home-preview-cta {
+  font-size: 0.72rem;
+  color: var(--accent-green);
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity var(--transition);
+  margin-top: 2px;
+}
+
+.home-preview-card:hover .home-preview-cta {
+  opacity: 1;
 }
 
 .home-match-teams {

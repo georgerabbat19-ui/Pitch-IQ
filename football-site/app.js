@@ -574,6 +574,34 @@ function setupPreviewFilters() {
   });
 }
 
+// ─── NAVIGATE FROM HOME PAGE CARDS ──────────────────────────────────────────────
+// Used by home page form/preview cards so clicking them goes to the right section.
+function navigateToSection(league, section, scrollId) {
+  // 1. Activate the correct league tab
+  const leagueTabs = document.getElementById('leagueTabs');
+  if (leagueTabs) {
+    leagueTabs.querySelectorAll('.league-tab').forEach(t => t.classList.remove('active'));
+    const targetTab = Array.from(leagueTabs.querySelectorAll('.league-tab'))
+      .find(t => t.dataset.league === league);
+    if (targetTab) targetTab.classList.add('active');
+  }
+  // 2. Activate the correct section chip
+  const sectionChips = document.getElementById('sectionChips');
+  if (sectionChips) {
+    sectionChips.querySelectorAll('.section-chip').forEach(c => c.classList.remove('active'));
+    const targetChip = Array.from(sectionChips.querySelectorAll('.section-chip'))
+      .find(c => c.dataset.section === section);
+    if (targetChip) targetChip.classList.add('active');
+  }
+  // 3. Apply filters (shows/hides sections + filters cards)
+  applyFilters(league, section, true);
+  // 4. Scroll to section after a brief tick to let DOM update
+  if (scrollId) {
+    const el = document.getElementById(scrollId);
+    if (el) setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
+  }
+}
+
 // ─── LEAGUE TABS (NEW) ───────────────────────────────────────────────────────────
 function setupLeagueTabs() {
   const leagueTabs = document.getElementById('leagueTabs');
@@ -976,12 +1004,14 @@ function renderHomePage() {
           const badgeHtml = badgeUrl
             ? `<img src="${badgeUrl}" alt="${f.team}" style="width:32px;height:32px;object-fit:contain;border-radius:4px;" loading="lazy" onerror="this.style.display='none'">`
             : `<span style="font-size:1.4rem">${f.badge}</span>`;
+          const leagueKey = f.league || 'all';
           return `
-            <div class="home-form-card">
+            <div class="home-form-card home-form-card--clickable" onclick="navigateToSection('${leagueKey}','form','form')">
               <div class="home-form-rank">#${idx + 1}</div>
               <div class="home-form-team">${badgeHtml} ${f.team} <span style="font-size:0.7rem;opacity:0.5">${league}</span></div>
               <div class="home-form-pips">${pips}</div>
               <div class="home-form-pts">${f.score}/15</div>
+              <div class="home-form-cta">View all form →</div>
             </div>
           `;
         }).join('')}
@@ -1009,11 +1039,13 @@ function renderHomePage() {
           const diffH = Math.floor(diffMs / 3600000);
           const diffD = Math.floor(diffH / 24);
           const timeLabel = diffD > 1 ? `in ${diffD}d` : diffH > 0 ? `in ${diffH}h` : 'soon';
+          const pLeague = p.league || 'all';
           return `
-            <div class="home-preview-card">
+            <div class="home-preview-card home-preview-card--clickable" onclick="navigateToSection('${pLeague}','previews','previews')">
               <div class="home-match-teams">${p.home} <span class="vs">vs</span> ${p.away}</div>
               <div class="home-match-time">${p.kickoffLabel || ko.toUTCString().slice(0,16)} · ${timeLabel}</div>
               <div class="home-match-comp">${p.competition}</div>
+              <div class="home-preview-cta">Read preview →</div>
             </div>
           `;
         }).join('')}
