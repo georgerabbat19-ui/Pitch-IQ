@@ -443,11 +443,22 @@ function importanceClass(key) {
 function renderPreviews(filter = 'all') {
   const grid = document.getElementById('previews-grid');
   if (!grid || typeof PREVIEWS_DATA === 'undefined') return;
-  const items = filter === 'all'
-    ? PREVIEWS_DATA.filter(p => p.id)
-    : PREVIEWS_DATA.filter(p => p.id && (p.homeImportance === filter || p.awayImportance === filter));
 
-  document.getElementById('countPreviews').textContent = PREVIEWS_DATA.filter(p => p.id).length;
+  // Get active league tab so we can pre-filter by league
+  const activeLeagueTab = document.querySelector('.league-tab.active');
+  const activeLeague = activeLeagueTab ? activeLeagueTab.dataset.league : 'all';
+  const leagueFilter = (activeLeague && activeLeague !== 'all' && activeLeague !== 'home') ? activeLeague : null;
+
+  const items = (filter === 'all'
+    ? PREVIEWS_DATA.filter(p => p.id)
+    : PREVIEWS_DATA.filter(p => p.id && (p.homeImportance === filter || p.awayImportance === filter))
+  ).filter(p => !leagueFilter || p.league === leagueFilter);
+
+  // Count reflects active league
+  const leagueCount = leagueFilter
+    ? PREVIEWS_DATA.filter(p => p.id && p.league === leagueFilter).length
+    : PREVIEWS_DATA.filter(p => p.id).length;
+  document.getElementById('countPreviews').textContent = leagueCount;
 
   const PL_BADGE = id => `https://resources.premierleague.com/premierleague/badges/70/${id}.png`;
 
