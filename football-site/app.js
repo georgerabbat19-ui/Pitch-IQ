@@ -207,46 +207,46 @@ function renderForm(filter = 'all') {
     'Nottm Forest':         { color: '#dd0000', plId: 't17', espnId: '374'  },
     'Burnley':              { color: '#6c1d45', plId: 't90', espnId: '336'  },
     // La Liga — ESPN CDN IDs
-    'Barcelona':            { color: '#004494', plId: '', fdoId: '81'   },
-    'Real Madrid':          { color: '#003087', plId: '', fdoId: '86'   },
-    'Atlético Madrid':      { color: '#eb172b', plId: '', fdoId: '78'   },
-    'Atletico Madrid':      { color: '#eb172b', plId: '', fdoId: '78'   },
-    'Villarreal':           { color: '#f4b400', plId: '', fdoId: '94'   },
-    'Real Betis':           { color: '#146b3a', plId: '', fdoId: '90'   },
-    'Celta Vigo':           { color: '#78bee9', plId: '', fdoId: '558'  },
-    'Real Sociedad':        { color: '#004d9e', plId: '', fdoId: '92'   },
-    'Espanyol':             { color: '#0050a0', plId: '', fdoId: '80'   },
-    'Getafe':               { color: '#0068a8', plId: '', fdoId: '95'   },
-    'Athletic Club':        { color: '#cc0000', plId: '', fdoId: '77'   },
-    'Osasuna':              { color: '#cc0000', plId: '', fdoId: '79'   },
-    'Girona':               { color: '#cc0000', plId: '', fdoId: '298'  },
-    'Valencia':             { color: '#f4b400', plId: '', fdoId: '532'  },
-    'Sevilla':              { color: '#cc0000', plId: '', fdoId: '559'  },
-    'Mallorca':             { color: '#cc0000', plId: '', fdoId: '89'   },
-    'Alaves':               { color: '#004ca8', plId: '', fdoId: '263'  },
-    'Elche':                { color: '#00843d', plId: '', fdoId: '275'  },
-    'Levante':              { color: '#004ca8', plId: '', fdoId: '553'  },
-    'Real Oviedo':          { color: '#004ca8', plId: '', fdoId: '1049' },
-    'Rayo Vallecano':       { color: '#cc0000', plId: '', fdoId: '399'  },
+    'Barcelona':            { color: '#004494', plId: '', espnId: '83'  },
+    'Real Madrid':          { color: '#003087', plId: '', espnId: '86'  },
+    'Atlético Madrid':      { color: '#eb172b', plId: '', espnId: '1068'},
+    'Atletico Madrid':      { color: '#eb172b', plId: '', espnId: '1068'},
+    'Villarreal':           { color: '#f4b400', plId: '', espnId: '102' },
+    'Real Betis':           { color: '#146b3a', plId: '', espnId: '244' },
+    'Celta Vigo':           { color: '#78bee9', plId: '', espnId: '85'  },
+    'Real Sociedad':        { color: '#004d9e', plId: '', espnId: '89'  },
+    'Espanyol':             { color: '#0050a0', plId: '', espnId: '88'  },
+    'Getafe':               { color: '#0068a8', plId: '', espnId: '2922'},
+    'Athletic Club':        { color: '#cc0000', plId: '', espnId: '93'  },
+    'Osasuna':              { color: '#cc0000', plId: '', espnId: '97'  },
+    'Girona':               { color: '#cc0000', plId: '', espnId: '9812'},
+    'Valencia':             { color: '#f4b400', plId: '', espnId: '94'  },
+    'Sevilla':              { color: '#cc0000', plId: '', espnId: '243' },
+    'Mallorca':             { color: '#cc0000', plId: '', espnId: '84'  },
+    'Alaves':               { color: '#004ca8', plId: '', espnId: '96'  },
+    'Elche':                { color: '#00843d', plId: '', espnId: '3751'},
+    'Levante':              { color: '#004ca8', plId: '', espnId: '1538'},
+    'Real Oviedo':          { color: '#004ca8', plId: '', espnId: '92'  },
+    'Rayo Vallecano':       { color: '#cc0000', plId: '', espnId: '101' },
     // Bundesliga — ESPN CDN IDs
-    'Bayern Munich':        { color: '#c91c1f', plId: '', fdoId: '5'    },
-    'Borussia Dortmund':    { color: '#ffd700', plId: '', fdoId: '4'    },
-    'TSG Hoffenheim':       { color: '#0050a0', plId: '', fdoId: '7'    },
-    'VfB Stuttgart':        { color: '#c41e3a', plId: '', fdoId: '10'   },
-    'RB Leipzig':           { color: '#cc0000', plId: '', fdoId: '721'  },
-    'Bayer Leverkusen':     { color: '#c41c1f', plId: '', fdoId: '3'    },
-    'Eintracht Frankfurt':  { color: '#cc0000', plId: '', fdoId: '19'   },
-    'SC Freiburg':          { color: '#cc0000', plId: '', fdoId: '17'   },
-    'Union Berlin':         { color: '#cc0000', plId: '', fdoId: '28'   },
-    'FC Augsburg':          { color: '#cc0000', plId: '', fdoId: '16'   },
-    'Hamburger SV':         { color: '#cc0000', plId: '', fdoId: '1868' },
-    "Borussia M'gladbach":  { color: '#009a44', plId: '', fdoId: '18'   },
-    'Mainz 05':             { color: '#cc0000', plId: '', fdoId: '15'   },
-    '1. FC Köln':           { color: '#cc0000', plId: '', fdoId: '1'    },
-    'Werder Bremen':        { color: '#009a44', plId: '', fdoId: '12'   },
-    'FC St. Pauli':         { color: '#cc0000', plId: '', fdoId: ''     },
-    'VfL Wolfsburg':        { color: '#009a44', plId: '', fdoId: '11'   },
-    '1. FC Heidenheim':     { color: '#cc0000', plId: '', fdoId: ''     },
+    'Bayern Munich':        { color: '#c91c1f', plId: '', espnId: '132' },
+    'Borussia Dortmund':    { color: '#ffd700', plId: '', espnId: '124' },
+    'TSG Hoffenheim':       { color: '#0050a0', plId: '', espnId: '7911'},
+    'VfB Stuttgart':        { color: '#c41e3a', plId: '', espnId: '134' },
+    'RB Leipzig':           { color: '#cc0000', plId: '', espnId: '11420'},
+    'Bayer Leverkusen':     { color: '#c41c1f', plId: '', espnId: '131' },
+    'Eintracht Frankfurt':  { color: '#cc0000', plId: '', espnId: '125' },
+    'SC Freiburg':          { color: '#cc0000', plId: '', espnId: '126' },
+    'Union Berlin':         { color: '#cc0000', plId: '', espnId: '598' },
+    'FC Augsburg':          { color: '#cc0000', plId: '', espnId: '3841'},
+    'Hamburger SV':         { color: '#cc0000', plId: '', espnId: '127' },
+    "Borussia M'gladbach":  { color: '#009a44', plId: '', espnId: '268' },
+    'Mainz 05':             { color: '#cc0000', plId: '', espnId: '2950'},
+    '1. FC Köln':           { color: '#cc0000', plId: '', espnId: '122' },
+    'Werder Bremen':        { color: '#009a44', plId: '', espnId: '137' },
+    'FC St. Pauli':         { color: '#cc0000', plId: '', espnId: '270' },
+    'VfL Wolfsburg':        { color: '#009a44', plId: '', espnId: '138' },
+    '1. FC Heidenheim':     { color: '#cc0000', plId: '', espnId: '6418'},
   };
   const PL_BADGE   = id => `https://resources.premierleague.com/premierleague/badges/70/${id}.png`;
   const ESPN_BADGE = id => `https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/${id}.png&w=80&h=80`;
@@ -258,8 +258,7 @@ function renderForm(filter = 'all') {
     const formPips = i.form.map(r => `<span class="form-pip form-${r.toLowerCase()}">${r}</span>`).join('');
     const meta = formClubMeta[i.team] || { color: '#2a2f40', plId: '', espnId: '' };
     const pts = i.wins * 3 + i.draws;
-    const FDO_BADGE_F = id => `https://crests.football-data.org/${id}.png`;
-    const badgeUrl = meta.plId ? PL_BADGE(meta.plId) : (meta.fdoId ? FDO_BADGE_F(meta.fdoId) : (meta.espnId ? ESPN_BADGE(meta.espnId) : ''));
+    const badgeUrl = meta.plId ? PL_BADGE(meta.plId) : (meta.espnId ? ESPN_BADGE(meta.espnId) : '');
     const badgeImg = badgeUrl
       ? `<img class="form-card-badge-img" src="${badgeUrl}" alt="${i.team}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">`
       : '';
@@ -825,8 +824,7 @@ function renderClubDrillDown() {
     const formPips = (stats.form || []).map(r =>
       `<span class="form-pip form-${r.toLowerCase()}">${r}</span>`
     ).join('');
-    const FDO_BADGE_F = id => `https://crests.football-data.org/${id}.png`;
-    const badgeUrl = meta.plId ? PL_BADGE(meta.plId) : (meta.fdoId ? FDO_BADGE_F(meta.fdoId) : (meta.espnId ? ESPN_BADGE(meta.espnId) : ''));
+    const badgeUrl = meta.plId ? PL_BADGE(meta.plId) : (meta.espnId ? ESPN_BADGE(meta.espnId) : '');
     const badgeImg = badgeUrl
       ? `<img class="team-badge-img" src="${badgeUrl}" alt="${club.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">`
       : '';
@@ -928,7 +926,7 @@ function renderHomePage() {
 
   // Badge helpers for homepage
   const ESPN_BADGE_HOME = id => `https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/${id}.png&w=40&h=40`;
-  const FDO_HOME = id => `https://crests.football-data.org/${id}.png`;
+
   const PL_BADGE_HOME   = id => `https://resources.premierleague.com/premierleague/badges/70/${id}.png`;
   const HOME_BADGE_MAP = {
     // PL
@@ -939,21 +937,21 @@ function renderHomePage() {
     'Brighton': PL_BADGE_HOME('t36'), 'Newcastle': PL_BADGE_HOME('t4'), 'Crystal Palace': PL_BADGE_HOME('t31'),
     'Everton': PL_BADGE_HOME('t11'), 'Sunderland': PL_BADGE_HOME('t56'), 'Leeds United': PL_BADGE_HOME('t2'),
     'West Ham': PL_BADGE_HOME('t21'), 'Nottm Forest': PL_BADGE_HOME('t17'), 'Burnley': PL_BADGE_HOME('t90'),
-    // La Liga — football-data.org crests (verified)
-    'Barcelona': FDO_HOME('81'), 'Real Madrid': FDO_HOME('86'), 'Atlético Madrid': FDO_HOME('78'),
-    'Atletico Madrid': FDO_HOME('78'), 'Villarreal': FDO_HOME('94'), 'Real Betis': FDO_HOME('90'),
-    'Celta Vigo': FDO_HOME('558'), 'Real Sociedad': FDO_HOME('92'), 'Espanyol': FDO_HOME('80'),
-    'Getafe': FDO_HOME('95'), 'Athletic Club': FDO_HOME('77'), 'Osasuna': FDO_HOME('79'),
-    'Girona': FDO_HOME('298'), 'Valencia': FDO_HOME('532'), 'Sevilla': FDO_HOME('559'),
-    'Mallorca': FDO_HOME('89'), 'Alaves': FDO_HOME('263'), 'Elche': FDO_HOME('275'),
-    'Levante': FDO_HOME('553'), 'Real Oviedo': FDO_HOME('1049'), 'Rayo Vallecano': FDO_HOME('399'),
-    // Bundesliga — football-data.org crests (verified)
-    'Bayern Munich': FDO_HOME('5'), 'Borussia Dortmund': FDO_HOME('4'), 'TSG Hoffenheim': FDO_HOME('7'),
-    'VfB Stuttgart': FDO_HOME('10'), 'RB Leipzig': FDO_HOME('721'), 'Bayer Leverkusen': FDO_HOME('3'),
-    'Eintracht Frankfurt': FDO_HOME('19'), 'SC Freiburg': FDO_HOME('17'), 'Union Berlin': FDO_HOME('28'),
-    'FC Augsburg': FDO_HOME('16'), 'Hamburger SV': FDO_HOME('1868'), "Borussia M'gladbach": FDO_HOME('18'),
-    'Mainz 05': FDO_HOME('15'), '1. FC Köln': FDO_HOME('1'), 'Werder Bremen': FDO_HOME('12'),
-    'VfL Wolfsburg': FDO_HOME('11'),
+    // La Liga — verified ESPN IDs from ESPN standings API
+    'Barcelona': ESPN_BADGE_HOME('83'), 'Real Madrid': ESPN_BADGE_HOME('86'), 'Atlético Madrid': ESPN_BADGE_HOME('1068'),
+    'Atletico Madrid': ESPN_BADGE_HOME('1068'), 'Villarreal': ESPN_BADGE_HOME('102'), 'Real Betis': ESPN_BADGE_HOME('244'),
+    'Celta Vigo': ESPN_BADGE_HOME('85'), 'Real Sociedad': ESPN_BADGE_HOME('89'), 'Espanyol': ESPN_BADGE_HOME('88'),
+    'Getafe': ESPN_BADGE_HOME('2922'), 'Athletic Club': ESPN_BADGE_HOME('93'), 'Osasuna': ESPN_BADGE_HOME('97'),
+    'Girona': ESPN_BADGE_HOME('9812'), 'Valencia': ESPN_BADGE_HOME('94'), 'Sevilla': ESPN_BADGE_HOME('243'),
+    'Mallorca': ESPN_BADGE_HOME('84'), 'Alaves': ESPN_BADGE_HOME('96'), 'Elche': ESPN_BADGE_HOME('3751'),
+    'Levante': ESPN_BADGE_HOME('1538'), 'Real Oviedo': ESPN_BADGE_HOME('92'), 'Rayo Vallecano': ESPN_BADGE_HOME('101'),
+    // Bundesliga — verified ESPN IDs from ESPN standings API
+    'Bayern Munich': ESPN_BADGE_HOME('132'), 'Borussia Dortmund': ESPN_BADGE_HOME('124'), 'TSG Hoffenheim': ESPN_BADGE_HOME('7911'),
+    'VfB Stuttgart': ESPN_BADGE_HOME('134'), 'RB Leipzig': ESPN_BADGE_HOME('11420'), 'Bayer Leverkusen': ESPN_BADGE_HOME('131'),
+    'Eintracht Frankfurt': ESPN_BADGE_HOME('125'), 'SC Freiburg': ESPN_BADGE_HOME('126'), 'Union Berlin': ESPN_BADGE_HOME('598'),
+    'FC Augsburg': ESPN_BADGE_HOME('3841'), 'Hamburger SV': ESPN_BADGE_HOME('127'), "Borussia M'gladbach": ESPN_BADGE_HOME('268'),
+    'Mainz 05': ESPN_BADGE_HOME('2950'), '1. FC Köln': ESPN_BADGE_HOME('122'), 'Werder Bremen': ESPN_BADGE_HOME('137'),
+    'FC St. Pauli': ESPN_BADGE_HOME('270'), 'VfL Wolfsburg': ESPN_BADGE_HOME('138'), '1. FC Heidenheim': ESPN_BADGE_HOME('6418'),
   };
 
   const renderFormGrid = (teams, emoji, title) => teams.length ? `
