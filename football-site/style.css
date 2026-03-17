@@ -416,6 +416,20 @@ header {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.section-filters::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .section-filters {
+    flex-wrap: nowrap;
+    padding-bottom: 2px;
+  }
 }
 
 .filter-btn {
