@@ -401,9 +401,21 @@ function setupNav() {
   // "injuries" on page load since it's the first visible section.
 
   const menuBtn = document.getElementById('mobileMenuBtn');
-  const navTabs = document.getElementById('navTabs');
-  if (menuBtn && navTabs) {
-    menuBtn.addEventListener('click', () => navTabs.classList.toggle('open'));
+  const leagueTabs = document.getElementById('leagueTabs');
+  if (menuBtn && leagueTabs) {
+    menuBtn.addEventListener('click', () => {
+      const isOpen = leagueTabs.classList.toggle('mobile-open');
+      menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      menuBtn.textContent = isOpen ? '✕' : '☰';
+    });
+    // Close mobile nav when a league tab is clicked
+    leagueTabs.addEventListener('click', e => {
+      if (e.target.closest('.league-tab') && window.innerWidth <= 900) {
+        leagueTabs.classList.remove('mobile-open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuBtn.textContent = '☰';
+      }
+    });
   }
 }
 
