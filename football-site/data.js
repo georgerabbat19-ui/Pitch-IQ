@@ -587,8 +587,10 @@ const EPL_TEAMS = [
   ]},
   { id:'brighton', name:'Brighton', badge:'🌊', news:[
     { type:'injury', title:'Mitoma — Doubt for GW30', subtitle:'🌊 Brighton · LW', body:'Mitoma (ankle) forced off at half-time vs Arsenal on Mar 4. Doubt for Sunderland away. Webster (knee) and Tzimas (unspecified) confirmed out.', impact:'medium', date:'Mar 14, 2026', tag:'injury', isNew:true, league:'premier-league', source:'https://www.nbcsports.com/soccer/news/premier-league-injury-table-2025-26-season-club-by-club-injuries-suspensions-latest-updates' },
+    { type:'result', title:'Sunderland 0-1 Brighton (GW30)', subtitle:'🌊 Brighton · Result', body:'Yankuba Minteh (58\') won it for Brighton away at Sunderland. Composed performance on the road. Brighton 12th, 40pts.', impact:'medium', date:'Mar 15, 2026', tag:'result', isNew:true, league:'premier-league', source:'https://www.espn.com/soccer' },
   ]},
   { id:'burnley', name:'Burnley', badge:'🔵', news:[
+    { type:'result', title:'Burnley 0-0 Bournemouth (GW30)', subtitle:'🔵 Burnley · Result', body:'Goalless draw at Turf Moor. A point that does little to help Burnley\'s relegation fight — still 19th, 20pts. Bournemouth drew level on 41pts with Fulham.', impact:'medium', date:'Mar 15, 2026', tag:'result', isNew:true, league:'premier-league', source:'https://www.espn.com/soccer' },
   ]},
   { id:'chelsea', name:'Chelsea', badge:'💙', news:[
     { type:'contract', title:'Reece James Signs New 6-Year Contract', subtitle:'💙 Chelsea · RB', body:"Chelsea captain Reece James committed his future to Stamford Bridge until June 2032. Described as Chelsea's most important deal of 2026 — massive boost amid defensive injury woes.", impact:'high', date:'Mar 13, 2026', tag:'contract', isNew:true, league:'premier-league', source:'https://www.footballtransfers.com/en/transfer-news/uk-premier-league/2026/03/chelsea-news-reece-james-new-contract-most-important-deal-2026' },
@@ -637,6 +639,7 @@ const EPL_TEAMS = [
   ]},
   { id:'sunderland', name:'Sunderland', badge:'🔴', news:[
     { type:'injury', title:'Traore, Mundle & Ta Bi — All OUT', subtitle:'🔴 Sunderland · Attack', body:'Traore (knee), Mundle (thigh) and Ta Bi (ankle) all out. Brobbey (groin) and Cirkin (thigh) doubts. Sunderland back in PL for first time since 2017.', impact:'medium', date:'Mar 13, 2026', tag:'injury', isNew:true, league:'premier-league', source:'https://www.nbcsports.com/soccer/news/premier-league-injury-table-2025-26-season-club-by-club-injuries-suspensions-latest-updates' },
+    { type:'result', title:'Sunderland 0-1 Brighton (GW30)', subtitle:'🔴 Sunderland · Result', body:'Minteh\'s 58th-minute goal settled it. Sunderland unable to find a breakthrough at home — 13th, 40pts.', impact:'medium', date:'Mar 15, 2026', tag:'result', isNew:true, league:'premier-league', source:'https://www.espn.com/soccer' },
   ]},
 ];
 
