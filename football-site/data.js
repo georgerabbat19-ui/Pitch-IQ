@@ -1,5 +1,5 @@
 // ===== PitchIQ — app.js =====
-// Data last updated: Mar 18, 2026 (09:00 GMT+8) — Cycle 14 / Staleness Audit — Sources: NBC Sports, BBC Sport, The Athletic, Sky Sports, ESPN, Wikipedia, Marca, AS, Kicker, Bundesliga.com, Fabrizio Romano, ActionNetwork, betinf.com, LaLiga.com
+// Data last updated: Mar 18, 2026 (20:45 GMT+8) — Cycle 17 — Sources: NBC Sports, BBC Sport, The Athletic, Sky Sports, ESPN, Wikipedia, Marca, AS, Kicker, Bundesliga.com, Fabrizio Romano, ActionNetwork, betinf.com, LaLiga.com, beinsports.com
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
@@ -21,7 +21,7 @@ const CLUB_LEAGUE_MAP = {
   'Leverkusen': 'bundesliga', 'Frankfurt': 'bundesliga',
 };
 
-// INJURIES & SUSPENSIONS — Real EPL GW30 data (Mar 14–15, 2026)
+// INJURIES & SUSPENSIONS — Updated Cycle 17 (Mar 18, 2026 20:45 MYT)
 const INJURIES_DATA = [
   {
     type: 'injury',
@@ -31,10 +31,10 @@ const INJURIES_DATA = [
     league: 'premier-league',
     clubBadge: '❤️',
     position: 'ST',
-    detail: 'Broken fibula and ankle — surgery successful Dec 22. Slot confirmed Mar 17: targeting return late March/early April. Not yet training with the group but progressing well outdoors in running shoes. Will not be ready to play immediately upon return.',
+    detail: 'Broken fibula (lower leg) — surgery successful Dec 22. Return targeting Apr 11 (NBC Sports Tier 1, Mar 13). Progressing well in running but not yet back with the group.',
     impact: 'high',
     date: 'Mar 17, 2026',
-    matchAffected: 'GW31 out — return targeting late Mar/early Apr',
+    matchAffected: 'GW31 out — return targeting Apr 11',
     source: 'https://www.nbcsports.com/soccer/news/premier-league-injury-table-2025-26-season-club-by-club-injuries-suspensions-latest-updates',
   },
   {
@@ -131,10 +131,10 @@ const INJURIES_DATA = [
     club: 'Real Madrid',
     clubBadge: '⚪',
     position: 'ST',
-    detail: 'Left knee lateral collateral ligament sprain — returned for UCL 2nd leg vs Man City (Mar 17). Confirmed available by Arbeloa Mar 17: "Mbappe is already available." Available for Madrid Derby (Mar 22) — fitness/starting role to be assessed.',
+    detail: 'Left knee lateral collateral ligament sprain — RETURNED. Came off bench vs Man City UCL 2nd leg Mar 17. Arbeloa confirmed fit. Derby availability (Mar 22) likely — fitness management ongoing. (Source: ESPN, Fox Sports, SportsMole Mar 17 — Tier 1)',
     impact: 'medium',
-    date: 'Mar 17, 2026',
-    matchAffected: 'Madrid Derby MD29 (Mar 22) — AVAILABLE',
+    date: 'Mar 18, 2026',
+    matchAffected: 'Madrid Derby MD29 (Mar 22) — likely AVAILABLE (fitness managed)',
     source: 'https://www.goal.com/en-gb/lists/real-madrid-both-kylian-mbappe-jude-bellingham-return-champions-league-man-city/bltc5f2a38664493498',
     league: 'la-liga',
   },
@@ -145,10 +145,10 @@ const INJURIES_DATA = [
     club: 'Real Madrid',
     clubBadge: '⚪',
     position: 'AM',
-    detail: 'Hamstring injury — back available. In Real Madrid travelling squad for UCL 2nd leg vs Man City (Mar 17) and confirmed fit by club. Real Madrid won 1-2 at Etihad (5-1 agg), advancing to UCL QF. Targeting full return for Atlético Madrid derby (Mar 22) — availability to be confirmed.',
-    impact: 'medium',
-    date: 'Mar 17, 2026',
-    matchAffected: 'Madrid Derby MD29 (Mar 22) — targeting return, fitness to confirm',
+    detail: 'Hamstring injury (since Feb 1) — traveled with squad to Etihad for UCL 2nd leg (Mar 17) but DID NOT play. Club "hoping" he features in Madrid Derby (Mar 22). Not confirmed. (Source: ESPN, SportsMole Mar 17 — Tier 1)',
+    impact: 'high',
+    date: 'Mar 18, 2026',
+    matchAffected: 'Madrid Derby MD29 (Mar 22) — DOUBTFUL',
     source: 'https://www.goal.com/en-gb/lists/real-madrid-both-kylian-mbappe-jude-bellingham-return-champions-league-man-city/bltc5f2a38664493498',
     league: 'la-liga',
   },
@@ -160,10 +160,10 @@ const INJURIES_DATA = [
     club: 'Bayern Munich',
     clubBadge: '🔴',
     position: 'GK',
-    detail: 'Calf injury (muscle fibre tear, second occurrence this season) — out for several weeks. Combined with Urbig (concussion) and Ulreich (adductor/groin strain confirmed by Bayern official), Bayern face an unprecedented three-GK crisis. Coach Kompany may be forced to use teenage goalkeepers for MD27 vs Union Berlin.',
+    detail: 'Calf muscle tear (out for coming weeks, Tier 1: bundesliga.com/foxsports Mar 8). Combined with Urbig (concussion — doubtful MD27) and Ulreich (thigh muscle — out 1-2 weeks, Tier 1: betinf Mar 15), Bayern face a triple GK crisis for MD27 vs Union Berlin. Teenager keepers may be called up. Luis Díaz also SUSPENDED MD27 (DFB). Jonathan Tah SUSPENDED MD27 (yellow cards). Kane expected to return per Kompany Mar 14.',
     impact: 'high',
-    date: 'Mar 2026',
-    matchAffected: 'Multiple upcoming fixtures',
+    date: 'Mar 18, 2026',
+    matchAffected: 'MD27 vs Union Berlin (Mar 21) + upcoming',
     source: 'https://www.fcbinside.com/en/neuer-urbig-ulreich-goalkeeper-crisis',
     league: 'bundesliga',
   },
@@ -180,6 +180,52 @@ const INJURIES_DATA = [
     matchAffected: 'All remaining fixtures + World Cup 2026',
     source: 'https://www.espn.com/soccer/story/_/id/emre-can-dortmund-acl',
     league: 'bundesliga',
+  },
+  // ── Cycle 17 Updates (Mar 18, 2026 20:45 GMT+8) ──
+  {
+    type: 'suspension',
+    player: 'Ryan Gravenberch',
+    avatar: '🧑',
+    club: 'Liverpool',
+    league: 'premier-league',
+    clubBadge: '❤️',
+    position: 'CM',
+    detail: 'Red card suspension — OUT for GW31 vs Brighton (Mar 21). Significant absence for Slot with Isak still injured and Endo also unavailable.',
+    impact: 'high',
+    date: 'Mar 18, 2026',
+    matchAffected: 'GW31 vs Brighton (Mar 21)',
+    source: 'https://www.sportsgambler.com/football/injuries/',
+    isNew: true,
+  },
+  {
+    type: 'injury',
+    player: 'Koke',
+    avatar: '🧑',
+    club: 'Atlético Madrid',
+    league: 'la-liga',
+    clubBadge: '🔴',
+    position: 'CM',
+    detail: 'Hamstring injury — OUT. Adds to Atlético\'s significant absences heading into the Madrid Derby (Mar 22). Oblak, Barrios, and Gimenez also out.',
+    impact: 'high',
+    date: 'Mar 18, 2026',
+    matchAffected: 'Madrid Derby MD29 (Mar 22)',
+    source: 'https://actionnetwork.com/atletico-madrid-injuries',
+    isNew: true,
+  },
+  {
+    type: 'suspension',
+    player: 'Luis Díaz',
+    avatar: '🧑',
+    club: 'Bayern Munich',
+    league: 'bundesliga',
+    clubBadge: '🔴',
+    position: 'LW',
+    detail: 'SUSPENDED for MD27 vs Union Berlin (DFB appeal rejected — red card carry-over). 15 Bundesliga goals this season. Suspension compounds Bayern\'s problems alongside triple GK crisis.',
+    impact: 'high',
+    date: 'Mar 18, 2026',
+    matchAffected: 'MD27 vs Union Berlin (Mar 21)',
+    source: 'https://betinf.com/bundesliga-suspensions',
+    isNew: true,
   },
   // ── Cycle 14 Updates (Mar 18, 2026 03:36 GMT+8) ──
   {
@@ -492,9 +538,9 @@ const MANAGERS_DATA = [
     previousManager: 'Thomas Frank',
     reason: 'Frank sacked Feb 11, 2026 after just 2 wins in 17 league games. Club sat 16th. Frank had joined from Brentford earlier in the season.',
     style: 'Defensive, counter-attack, rigid positional play',
-    detail: 'Tudor appointed Feb 14, 2026 — 0 Premier League wins across 5 games. Romano (Mar 14): "Tudor\'s departure is confirmed — it\'s only a matter of when." Ornstein confirmed Spurs actively working on replacements. Drew 1-1 vs Liverpool (GW30) — Richarlison 90th min equaliser. Still officially in charge as of Mar 18. Replacement candidates: De Zerbi, Pochettino (summer), Keane (interim). Spurs 16th, 30pts — 1pt above relegation zone.',
+    detail: 'Tudor appointed Feb 14, 2026 — 0 Premier League wins across 5 games. Romano and Ornstein (Mar 14): "Departure confirmed — it\'s only a matter of when. Already decided." Still officially listed as Spurs manager as of Mar 18; no caretaker appointed yet. Who manages GW31 vs Forest (Mar 22) is UNCONFIRMED. Replacement candidates: De Zerbi (summer), Pochettino, interim TBC. Spurs 16th, 30pts — 1pt above relegation zone.',
     impact: 'high',
-    date: 'Feb 14, 2026',
+    date: 'Mar 18, 2026',
     matchesInCharge: 5,
     source: 'https://www.footballinsider247.com/igor-tudor-is-to-do-something-no-premier-league-manager-has-ever-done-amid-tottenham-decision/',
   },
@@ -553,7 +599,7 @@ const FORM_DATA = [
   { team: 'Aston Villa',        badge: '🟣', league: 'premier-league', leagueName: 'Premier League', form: ['W','D','W','L','W'], played: 30, wins: 15, draws: 6,  losses: 9,  gf: 40, ga: 37, cleanSheets: 9,  topScorer: 'Ollie Watkins — 8+ goals',               nextMatch: 'GW31 — Sun 22 Mar', rank: 4,  source: 'https://www.skysports.com/premier-league-table' },
   { team: 'Liverpool',          badge: '❤️', league: 'premier-league', leagueName: 'Premier League', form: ['W','D','L','W','D'], played: 30, wins: 14, draws: 7,  losses: 9,  gf: 49, ga: 40, cleanSheets: 7,  topScorer: 'Florian Wirtz — 6 goals',                nextMatch: 'GW31 — Sat 21 Mar', rank: 5,  source: 'https://www.skysports.com/premier-league-table' },
   { team: 'Chelsea',            badge: '💙', league: 'premier-league', leagueName: 'Premier League', form: ['W','W','L','D','L'], played: 30, wins: 13, draws: 9,  losses: 8,  gf: 53, ga: 35, cleanSheets: 9,  topScorer: 'Joao Pedro',                            nextMatch: 'GW31 — Sat 21 Mar', rank: 6,  source: 'https://www.skysports.com/premier-league-table' },
-  { team: 'Brentford',          badge: '🐝', league: 'premier-league', leagueName: 'Premier League', form: ['W','D','D','D','W'], played: 31, wins: 13, draws: 7,  losses: 11, gf: 46, ga: 42, cleanSheets: 7,  topScorer: 'Igor Thiago — 19 PL goals',                       nextMatch: 'GW31 — Sat 21 Mar', rank: 7,  source: 'https://www.skysports.com/premier-league-table' },
+  { team: 'Brentford',          badge: '🐝', league: 'premier-league', leagueName: 'Premier League', form: ['W','D','D','D','D'], played: 31, wins: 13, draws: 7,  losses: 11, gf: 48, ga: 44, cleanSheets: 7,  topScorer: 'Igor Thiago — 19 PL goals',                       nextMatch: 'GW31 — Sat 21 Mar', rank: 7,  source: 'https://www.skysports.com/premier-league-table' },
   { team: 'Everton',            badge: '🔵', league: 'premier-league', leagueName: 'Premier League', form: ['L','D','L','W','L'], played: 30, wins: 12, draws: 7,  losses: 11, gf: 34, ga: 35, cleanSheets: 6,  topScorer: 'Kiernan Dewsbury-Hall — 6 goals',        nextMatch: 'GW31 — Sat 21 Mar', rank: 8,  source: 'https://www.skysports.com/premier-league-table' },
   { team: 'Newcastle',          badge: '⚫', league: 'premier-league', leagueName: 'Premier League', form: ['W','D','W','L','W'], played: 30, wins: 12, draws: 6,  losses: 12, gf: 43, ga: 43, cleanSheets: 7,  topScorer: 'Anthony Gordon — 5 goals',               nextMatch: 'GW31 — Sun 22 Mar', rank: 9,  source: 'https://www.skysports.com/premier-league-table' },
   { team: 'Bournemouth',        badge: '🍒', league: 'premier-league', leagueName: 'Premier League', form: ['W','D','W','D','D'], played: 30, wins: 9,  draws: 14, losses: 7,  gf: 44, ga: 46, cleanSheets: 8,  topScorer: 'Evanilson — 6 goals',                   nextMatch: 'GW31 — Fri 20 Mar', rank: 10, source: 'https://www.skysports.com/premier-league-table' },
@@ -566,7 +612,7 @@ const FORM_DATA = [
   { team: 'Nottm Forest',       badge: '🌳', league: 'premier-league', leagueName: 'Premier League', form: ['L','D','D','L','D'], played: 30, wins: 7,  draws: 8,  losses: 15, gf: 28, ga: 43, cleanSheets: 4,  topScorer: 'Morgan Gibbs-White — 7 goals',           nextMatch: 'GW31 — Sun 22 Mar (vs Spurs)', rank: 17, source: 'https://www.skysports.com/premier-league-table' },
   { team: 'West Ham',           badge: '⚒️', league: 'premier-league', leagueName: 'Premier League', form: ['L','L','D','L','D'], played: 30, wins: 7,  draws: 8,  losses: 15, gf: 36, ga: 55, cleanSheets: 4,  topScorer: 'Crysencio Summerville — 5 goals',        nextMatch: 'GW31 — Sun 22 Mar', rank: 18, source: 'https://www.skysports.com/premier-league-table' },
   { team: 'Burnley',            badge: '🔵', league: 'premier-league', leagueName: 'Premier League', form: ['L','D','L','L','D'], played: 30, wins: 4,  draws: 8,  losses: 18, gf: 32, ga: 58, cleanSheets: 3,  topScorer: 'Lyle Foster — 5+ goals',                 nextMatch: 'GW31 TBC',          rank: 19, source: 'https://www.skysports.com/premier-league-table' },
-  { team: 'Wolverhampton',      badge: '🐺', league: 'premier-league', leagueName: 'Premier League', form: ['L','D','L','L','D'], played: 31, wins: 3,  draws: 9,  losses: 19, gf: 26, ga: 56, cleanSheets: 4,  topScorer: 'Adam Armstrong — late equaliser vs Brentford', nextMatch: 'GW31 — Sat 21 Mar', rank: 20, source: 'https://www.skysports.com/premier-league-table' },
+  { team: 'Wolverhampton',      badge: '🐺', league: 'premier-league', leagueName: 'Premier League', form: ['L','D','L','L','D'], played: 31, wins: 3,  draws: 8,  losses: 20, gf: 24, ga: 54, cleanSheets: 4,  topScorer: 'Adam Armstrong',                               nextMatch: 'GW31 — Sat 21 Mar', rank: 20, source: 'https://www.skysports.com/premier-league-table' },
 ];
 
 // ─── EPL TEAMS DATA ──────────────────────────────────────────────────────────
@@ -672,8 +718,8 @@ const LA_LIGA_TEAMS = [
 // ─── LA LIGA FORM DATA (APPENDED) ─────────────────────────────────────────
 // Matchday 28, as of March 15, 2026 — Verified by Referee (Cycle 9)
 const LA_LIGA_FORM_DATA = [
-  { team: 'Barcelona',      badge: '🔵', league: 'la-liga', leagueName: 'La Liga', form: ['W','W','W','W','W'], played: 28, wins: 23, draws: 1, losses: 4,  gf: 77, ga: 28, cleanSheets: 8,  topScorer: 'Robert Lewandowski — 11+ goals',  nextMatch: 'MD29 — Sun 22 Mar', rank: 1,  source: 'https://www.laliga.es/en/standings' },
-  { team: 'Real Madrid',    badge: '👑', league: 'la-liga', leagueName: 'La Liga', form: ['L','W','D','W','W'], played: 28, wins: 21, draws: 3, losses: 4,  gf: 60, ga: 24, cleanSheets: 7,  topScorer: 'Kylian Mbappé — 23 La Liga goals (⚠️ injured, MD29 TBC)', nextMatch: 'MD29 — Sun 22 Mar', rank: 2,  source: 'https://www.laliga.es/en/standings' },
+  { team: 'Barcelona',      badge: '🔵', league: 'la-liga', leagueName: 'La Liga', form: ['W','W','W','W','W'], played: 28, wins: 23, draws: 1, losses: 4,  gf: 77, ga: 28, cleanSheets: 8,  topScorer: 'Raphinha — 11 goals (hat-trick MD28) · Lewandowski 11 goals (FIT)',  nextMatch: 'MD29 — Sun 22 Mar', rank: 1,  source: 'https://www.laliga.es/en/standings' },
+  { team: 'Real Madrid',    badge: '👑', league: 'la-liga', leagueName: 'La Liga', form: ['L','W','D','W','W'], played: 28, wins: 21, draws: 3, losses: 4,  gf: 60, ga: 24, cleanSheets: 7,  topScorer: 'Kylian Mbappé — 23 La Liga goals (returned UCL Mar 17, derby likely available)', nextMatch: 'MD29 — Mon 23 Mar', rank: 2,  source: 'https://www.laliga.es/en/standings' },
   { team: 'Atlético Madrid',badge: '🔴', league: 'la-liga', leagueName: 'La Liga', form: ['W','W','D','W','W'], played: 28, wins: 17, draws: 6, losses: 5,  gf: 47, ga: 25, cleanSheets: 8,  topScorer: 'Antoine Griezmann — 6 goals',      nextMatch: 'MD29 — Sun 22 Mar', rank: 3,  source: 'https://www.laliga.es/en/standings' },
   { team: 'Villarreal',     badge: '💛', league: 'la-liga', leagueName: 'La Liga', form: ['D','W','W','D','W'], played: 28, wins: 17, draws: 4, losses: 7,  gf: 51, ga: 33, cleanSheets: 5,  topScorer: 'Alexander Sorloth — top scorer',   nextMatch: 'MD29 TBC',          rank: 4,  source: 'https://www.laliga.es/en/standings' },
   { team: 'Real Betis',     badge: '🟢', league: 'la-liga', leagueName: 'La Liga', form: ['W','D','D','D','W'], played: 28, wins: 11, draws: 11,losses: 6,  gf: 43, ga: 35, cleanSheets: 5,  topScorer: 'Isco — top scorer',               nextMatch: 'MD29 TBC',          rank: 5,  source: 'https://www.laliga.es/en/standings' },
@@ -722,7 +768,7 @@ const BUNDESLIGA_TEAMS = [
 // Matchday 26, as of March 15, 2026 — Verified by Referee (Cycle 9)
 const BUNDESLIGA_FORM_DATA = [
   { team: 'Bayern Munich',         badge: '🔴', league: 'bundesliga', leagueName: 'Bundesliga', form: ['W','W','D','W','D'], played: 26, wins: 21, draws: 4, losses: 1,  gf: 93, ga: 25, cleanSheets: 14, topScorer: 'Harry Kane — 30 Bundesliga goals ✅',            nextMatch: 'MD27 — Sat 21 Mar', rank: 1,  source: 'https://www.bundesliga.com/en/bundesliga/standings' },
-  { team: 'Borussia Dortmund',     badge: '🟡', league: 'bundesliga', leagueName: 'Bundesliga', form: ['W','W','W','L','W'], played: 26, wins: 17, draws: 7, losses: 2,  gf: 55, ga: 26, cleanSheets: 6,  topScorer: 'Serhou Guirassy — 12 goals',                nextMatch: 'MD27 TBC',          rank: 2,  source: 'https://www.bundesliga.com/en/bundesliga/standings' },
+  { team: 'Borussia Dortmund',     badge: '🟡', league: 'bundesliga', leagueName: 'Bundesliga', form: ['W','W','W','L','W'], played: 26, wins: 17, draws: 7, losses: 2,  gf: 55, ga: 26, cleanSheets: 6,  topScorer: 'Serhou Guirassy — 11 goals',                nextMatch: 'MD27 TBC',          rank: 2,  source: 'https://www.bundesliga.com/en/bundesliga/standings' },
   { team: 'TSG Hoffenheim',        badge: '💙', league: 'bundesliga', leagueName: 'Bundesliga', form: ['W','W','D','L','W'], played: 26, wins: 15, draws: 5, losses: 6,  gf: 54, ga: 34, cleanSheets: 4,  topScorer: 'Andrej Kramarić — 10 goals',                nextMatch: 'MD27 TBC',          rank: 3,  source: 'https://www.bundesliga.com/en/bundesliga/standings' },
   { team: 'VfB Stuttgart',         badge: '🔴', league: 'bundesliga', leagueName: 'Bundesliga', form: ['W','D','L','W','W'], played: 26, wins: 15, draws: 5, losses: 6,  gf: 51, ga: 34, cleanSheets: 4,  topScorer: 'Deniz Undav — 16 goals',                    nextMatch: 'MD27 TBC',          rank: 4,  source: 'https://www.bundesliga.com/en/bundesliga/standings' },
   { team: 'RB Leipzig',            badge: '🔴', league: 'bundesliga', leagueName: 'Bundesliga', form: ['W','D','W','L','L'], played: 26, wins: 14, draws: 5, losses: 7,  gf: 48, ga: 35, cleanSheets: 3,  topScorer: 'Christoph Baumgartner — 10 goals',          nextMatch: 'MD27 TBC',          rank: 5,  source: 'https://www.bundesliga.com/en/bundesliga/standings' },
@@ -854,6 +900,7 @@ const PREVIEWS_DATA =
       'Alexander Isak (lower leg — out)',
       'Conor Bradley (knee — out)',
       'Stefan Bajcetic (hamstring — out)',
+      'Ryan Gravenberch (red card suspension — out)',
     ],
     managerNote: null,
     flag: null,
@@ -895,7 +942,7 @@ const PREVIEWS_DATA =
         { number: 20, name: 'Salah' },
         { number: 18, name: 'Gakpo' },
       ],
-      changes: 'Isak remains out. Endo and Bradley still unavailable. Slot may rotate with UCL fixtures in mind. Gravenberch suspension risk per reports.',
+      changes: 'Isak, Endo, Bradley still unavailable. Gravenberch SUSPENDED (red card). Slot needs to rebuild midfield for Brighton.',
     },
   },
 
@@ -1868,7 +1915,7 @@ const PREVIEWS_DATA =
     league: 'la-liga',
     homeImportance: 'top5',
     awayImportance: 'low',
-    narrative: 'Barcelona (1st, 70 pts) host Rayo Vallecano (15th, 31 pts) at Spotify Camp Nou looking to extend their 4-point lead at the top. Barça demolished Sevilla 5-2 in GW28 with Raphinha netting a hat-trick. Lewandowski is out with an eye socket fracture, Balde and Kounde remain injured. Rayo drew 1-1 with Levante last time.',
+    narrative: 'Barcelona (1st, 70 pts) host Rayo Vallecano (13th, 32 pts) at Spotify Camp Nou looking to extend their 4-point lead at the top. Barça demolished Sevilla 5-2 in GW28 with Raphinha netting a hat-trick. Lewandowski is FIT — started vs Sevilla after recovering from eye socket fracture. Raphinha is AVAILABLE (no red card issued). Balde and Kounde remain injured. Rayo drew 1-1 with Levante last time.',
     homeInjuries: [
       'Alejandro Balde (thigh — out)',
       'Jules Kounde (thigh — out)',
@@ -1897,7 +1944,7 @@ const PREVIEWS_DATA =
         { number: 9, name: 'Lewandowski' },
         { number: 27, name: 'Bardghji' },
       ],
-      changes: 'Lewandowski out with eye fracture. Kounde and Balde injured. De Jong still out. García confirmed GK (ter Stegen at Girona — not Barcelona). Actual starters confirmed from FotMob/365scores vs Sevilla MD28.',
+      changes: 'Lewandowski FIT — recovered from eye socket fracture, started vs Sevilla MD28. Raphinha AVAILABLE (no red card MD28 per ESPN Tier 1). Kounde and Balde injured. De Jong still out. García confirmed GK.',
     },
     awayLastMatch: {
       opponent: 'Levante',
@@ -2094,7 +2141,7 @@ const PREVIEWS_DATA =
       'Pablo Barrios (hamstring — out)',
       'Rodrigo Mendoza (ankle — out)',
       'Jose Gimenez (knock — out)',
-      'Koke (hamstring — out)',
+      'Koke (hamstring — out, Cycle 17)',
       'Alexander Sorloth (hamstring — out)',
       'Nico Gonzalez (thigh — out)',
     ],
@@ -2308,13 +2355,16 @@ const PREVIEWS_DATA =
     league: 'bundesliga',
     homeImportance: 'top5',
     awayImportance: 'low',
-    narrative: 'Bayern Munich (1st, 67 pts) host Union Berlin (9th, 31 pts) at Allianz Arena. Bayern clinched the Bundesliga title (X in table) and are in dominant form — 93 goals in 26 games. They drew 1-1 with Leverkusen in GW26. Bayern face multiple goalkeeper issues (Neuer, Urbig both out/doubtful) and are without Musiala, Davies, and Ito through injury.',
+    narrative: 'Bayern Munich (1st, 67 pts) host Union Berlin (9th, 31 pts) at Allianz Arena. Bayern are in dominant form — 93 goals in 26 games — but face a triple GK crisis (Neuer out, Urbig doubtful, Ulreich thigh) and may use teenage goalkeepers. Luis Díaz is SUSPENDED (DFB) and Jonathan Tah is SUSPENDED (yellow cards). Harry Kane is expected to return per Kompany (Mar 14). A massive test of squad depth.',
     homeInjuries: [
       'Manuel Neuer (calf — out)',
       'Jonas Urbig (concussion — doubt)',
+      'Sven Ulreich (thigh — out)',
       'Jamal Musiala (ankle — out)',
       'Alphonso Davies (hamstring — out)',
       'Hiroki Ito (thigh — out)',
+      'Luis Díaz (suspension — out)',
+      'Jonathan Tah (suspension — out)',
     ],
     awayInjuries: [
       'Leopold Querfeld (suspension — out)',
@@ -2323,8 +2373,8 @@ const PREVIEWS_DATA =
       'Oliver Burke (ankle — out)',
       'Alex Kral (back — out)',
     ],
-    managerNote: 'Bayern have goalkeeper crisis — Neuer out, Urbig concussed/doubtful. Could be forced to use teenage backup GK.',
-    flag: '⚠️ Bayern goalkeeper situation uncertain. Referee to verify GK availability.',
+    managerNote: 'Bayern TRIPLE GK CRISIS: Neuer (out), Urbig (concussion, doubtful), Ulreich (thigh, out). Teenage GKs may feature. Díaz and Tah both SUSPENDED. Kane expected to return. (Tier 1: bundesliga.com, beinsports, betinf Mar 14-15)',
+    flag: '⚠️ Bayern goalkeeper crisis + two suspensions for MD27. Teenager keepers likely called up.',
     homeLastMatch: {
       opponent: 'Bayer Leverkusen',
       score: '1-1',
@@ -2843,8 +2893,5 @@ const EUROPEAN_NEWS = [
     date: 'Mar 14, 2026',
     source: 'https://www.bundesliga.com/en/bundesliga/news/leverkusen-bayern-matchday-26',
     impact: 'high',
-  },
-];
-: 'high',
   },
 ];
