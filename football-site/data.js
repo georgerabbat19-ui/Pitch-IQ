@@ -1,5 +1,5 @@
-// ===== PitchIQ — app.js =====
-// Data last updated: Mar 18, 2026 (20:45 GMT+8) — Cycle 17 — Sources: NBC Sports, BBC Sport, The Athletic, Sky Sports, ESPN, Wikipedia, Marca, AS, Kicker, Bundesliga.com, Fabrizio Romano, ActionNetwork, betinf.com, LaLiga.com, beinsports.com
+// ===== PitchIQ — data.js =====
+// Data last updated: Mar 18, 2026 (20:46 GMT+8) — Cycle 17 — Sources: NBC Sports, BBC Sport, The Athletic, Sky Sports, ESPN, Wikipedia, Marca, AS, Kicker, Bundesliga.com, Fabrizio Romano, ActionNetwork, betinf.com, LaLiga.com, beinsports.com, Scout Research
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
@@ -380,6 +380,112 @@ const INJURIES_DATA = [
     source: 'https://www.actionnetwork.com/bundesliga/jonathan-tah-yellow-card-suspension',
     isNew: true,
   },
+  // ── Cycle 17 Critical Updates (Mar 18, 2026 20:46 MYT) ──
+  {
+    type: 'doubt',
+    player: 'Harry Kane',
+    avatar: '🧑',
+    club: 'Bayern Munich',
+    league: 'bundesliga',
+    clubBadge: '🔴',
+    position: 'ST',
+    detail: 'Calf injury (Mar 5) — READY to return for MD27 vs Union Berlin per Kompany (Mar 14, Tier 1: beinsports.com). Kane has 30 Bundesliga goals in 24 games — on pace to challenge Lewandowski record (41 goals).',
+    impact: 'medium',
+    date: 'Mar 18, 2026',
+    matchAffected: 'MD27 vs Union Berlin (Mar 21) — EXPECTED AVAILABLE',
+    source: 'https://www.beinsports.com/soccer/bayern-munich-harry-kane-ready-return',
+    isNew: true,
+  },
+  {
+    type: 'injury',
+    player: 'Koke',
+    avatar: '🧑',
+    club: 'Atlético Madrid',
+    league: 'la-liga',
+    clubBadge: '🔴',
+    position: 'CM',
+    detail: 'Hamstring injury — OUT. Adds to Atlético\'s absences ahead of Madrid Derby (Mar 22). Joins Oblak (muscle), Barrios (hamstring), Gimenez (knock) on sidelines.',
+    impact: 'high',
+    date: 'Mar 18, 2026',
+    matchAffected: 'Madrid Derby MD29 (Mar 22)',
+    source: 'https://actionnetwork.com/atletico-madrid-injuries',
+    isNew: true,
+  },
+  {
+    type: 'injury',
+    player: 'Jonas Omlin',
+    avatar: '🧑',
+    club: 'Bayer Leverkusen',
+    league: 'bundesliga',
+    clubBadge: '🔴',
+    position: 'GK',
+    detail: 'Thigh muscle injury — OUT indefinitely. Leverkusen goalkeeper crisis: Omlin out, Flekken back in training (knee). Marc-André ter Stegen (Girona GK) also unavailable. Leverkusen likely to rotate GKs for MD27.',
+    impact: 'medium',
+    date: 'Mar 18, 2026',
+    matchAffected: 'MD27+ TBC',
+    source: 'https://actionnetwork.com/bayer-leverkusen-jonas-omlin',
+    isNew: true,
+  },
+  {
+    type: 'injury',
+    player: 'Mikel Merino',
+    avatar: '🧑',
+    club: 'Arsenal',
+    league: 'premier-league',
+    clubBadge: '🔴',
+    position: 'CM',
+    detail: 'Foot injury — OUT until ~Jun 1 (Tier 1: NBC Sports Mar 13). Arsenal are 70pts, 9-point title lead. Merino\'s absence significant but squad depth allows continued title race.',
+    impact: 'medium',
+    date: 'Mar 18, 2026',
+    matchAffected: 'GW31+ (return targeting Jun 1)',
+    source: 'https://www.nbcsports.com/soccer/news/premier-league-injury-table-2025-26-season-club-by-club-injuries-suspensions-latest-updates',
+    isNew: true,
+  },
+  {
+    type: 'injury',
+    player: 'Leandro Trossard',
+    avatar: '🧑',
+    club: 'Arsenal',
+    league: 'premier-league',
+    clubBadge: '🔴',
+    position: 'LW',
+    detail: 'Knock — OUT until ~Mar 22 (Tier 2: Sportsgambler Mar 17). Expected to return soon for critical GW31 fixtures.',
+    impact: 'medium',
+    date: 'Mar 18, 2026',
+    matchAffected: 'GW31 — expected return ~Mar 22',
+    source: 'https://www.sportsgambler.com/football/injuries/',
+    isNew: true,
+  },
+  {
+    type: 'doubt',
+    player: 'Micky van de Ven',
+    avatar: '🧑',
+    club: 'Tottenham',
+    league: 'premier-league',
+    clubBadge: '⚪',
+    position: 'CB',
+    detail: 'Red card ban SERVED (GW30). AVAILABLE for GW31 vs Forest (Mar 22). Romero and Palhinha remain in concussion protocols but expected available pending final medical clearance.',
+    impact: 'medium',
+    date: 'Mar 18, 2026',
+    matchAffected: 'GW31 vs Forest (Mar 22) — AVAILABLE',
+    source: 'https://www.standard.co.uk/sport/football/tottenham-van-de-ven-available-forest',
+    isNew: true,
+  },
+  {
+    type: 'injury',
+    player: 'Edmond Tapsoba',
+    avatar: '🧑',
+    club: 'Bayer Leverkusen',
+    league: 'bundesliga',
+    clubBadge: '🔴',
+    position: 'CB',
+    detail: 'SUSPENDED for MD27 vs Heidenheim (Tier 1: Action Network Mar 14). DFB appeal rejected. Returned from previous red card with suspension carry-over.',
+    impact: 'high',
+    date: 'Mar 18, 2026',
+    matchAffected: 'MD27 vs Heidenheim (Mar 21)',
+    source: 'https://actionnetwork.com/bayer-leverkusen-edmond-tapsoba-suspension',
+    isNew: true,
+  },
 
 ];
 
@@ -593,13 +699,13 @@ const RULES_DATA = [
 
 // FORM & STATS — Real EPL 2025-26 standings (as of GW29, source: NBC Sports Mar 13, 2026)
 const FORM_DATA = [
-  { team: 'Arsenal',            badge: '🔴', league: 'premier-league', leagueName: 'Premier League', form: ['W','W','D','W','W'], played: 31, wins: 21, draws: 7,  losses: 3,  gf: 61, ga: 22, cleanSheets: 12, topScorer: 'Viktor Gyökeres — 11 PL goals',                             nextMatch: 'GW31 — Fri 20 Mar', rank: 1,  source: 'https://www.skysports.com/premier-league-table' },
-  { team: 'Manchester City',    badge: '🩵', league: 'premier-league', leagueName: 'Premier League', form: ['W','D','W','W','D'], played: 30, wins: 18, draws: 7,  losses: 5,  gf: 60, ga: 28, cleanSheets: 10, topScorer: 'Erling Haaland — 22 goals',               nextMatch: 'GW31 TBC',          rank: 2,  source: 'https://www.skysports.com/premier-league-table' },
+  { team: 'Arsenal',            badge: '🔴', league: 'premier-league', leagueName: 'Premier League', form: ['W','W','D','W','W'], played: 31, wins: 21, draws: 7,  losses: 3,  gf: 61, ga: 22, cleanSheets: 12, topScorer: 'Erling Haaland — 22 PL goals (Man City) ⚠️ Updated',                             nextMatch: 'GW31 — Fri 20 Mar', rank: 1,  source: 'https://www.skysports.com/premier-league-table' },
+  { team: 'Manchester City',    badge: '🩵', league: 'premier-league', leagueName: 'Premier League', form: ['W','D','W','W','D'], played: 30, wins: 18, draws: 7,  losses: 5,  gf: 60, ga: 28, cleanSheets: 10, topScorer: 'Erling Haaland — 22 goals (POSTPONED GW31)',               nextMatch: 'GW31 POSTPONED',          rank: 2,  source: 'https://www.skysports.com/premier-league-table' },
   { team: 'Manchester United',  badge: '🔴', league: 'premier-league', leagueName: 'Premier League', form: ['W','W','W','D','W'], played: 30, wins: 15, draws: 9,  losses: 6,  gf: 54, ga: 41, cleanSheets: 8,  topScorer: 'Bruno Fernandes — 16 assists',            nextMatch: 'GW31 — Fri 20 Mar', rank: 3,  source: 'https://www.skysports.com/premier-league-table' },
   { team: 'Aston Villa',        badge: '🟣', league: 'premier-league', leagueName: 'Premier League', form: ['W','D','W','L','W'], played: 30, wins: 15, draws: 6,  losses: 9,  gf: 40, ga: 37, cleanSheets: 9,  topScorer: 'Ollie Watkins — 8+ goals',               nextMatch: 'GW31 — Sun 22 Mar', rank: 4,  source: 'https://www.skysports.com/premier-league-table' },
   { team: 'Liverpool',          badge: '❤️', league: 'premier-league', leagueName: 'Premier League', form: ['W','D','L','W','D'], played: 30, wins: 14, draws: 7,  losses: 9,  gf: 49, ga: 40, cleanSheets: 7,  topScorer: 'Florian Wirtz — 6 goals',                nextMatch: 'GW31 — Sat 21 Mar', rank: 5,  source: 'https://www.skysports.com/premier-league-table' },
   { team: 'Chelsea',            badge: '💙', league: 'premier-league', leagueName: 'Premier League', form: ['W','W','L','D','L'], played: 30, wins: 13, draws: 9,  losses: 8,  gf: 53, ga: 35, cleanSheets: 9,  topScorer: 'Joao Pedro',                            nextMatch: 'GW31 — Sat 21 Mar', rank: 6,  source: 'https://www.skysports.com/premier-league-table' },
-  { team: 'Brentford',          badge: '🐝', league: 'premier-league', leagueName: 'Premier League', form: ['W','D','D','D','D'], played: 31, wins: 13, draws: 7,  losses: 11, gf: 48, ga: 44, cleanSheets: 7,  topScorer: 'Igor Thiago — 19 PL goals',                       nextMatch: 'GW31 — Sat 21 Mar', rank: 7,  source: 'https://www.skysports.com/premier-league-table' },
+  { team: 'Brentford',          badge: '🐝', league: 'premier-league', leagueName: 'Premier League', form: ['W','D','D','D','D'], played: 31, wins: 13, draws: 7,  losses: 11, gf: 48, ga: 44, cleanSheets: 7,  topScorer: 'Igor Thiago — 19 PL goals (Cycle 17: Updated from 18)',                       nextMatch: 'GW31 — Sat 21 Mar', rank: 7,  source: 'https://www.skysports.com/premier-league-table' },
   { team: 'Everton',            badge: '🔵', league: 'premier-league', leagueName: 'Premier League', form: ['L','D','L','W','L'], played: 30, wins: 12, draws: 7,  losses: 11, gf: 34, ga: 35, cleanSheets: 6,  topScorer: 'Kiernan Dewsbury-Hall — 6 goals',        nextMatch: 'GW31 — Sat 21 Mar', rank: 8,  source: 'https://www.skysports.com/premier-league-table' },
   { team: 'Newcastle',          badge: '⚫', league: 'premier-league', leagueName: 'Premier League', form: ['W','D','W','L','W'], played: 30, wins: 12, draws: 6,  losses: 12, gf: 43, ga: 43, cleanSheets: 7,  topScorer: 'Anthony Gordon — 5 goals',               nextMatch: 'GW31 — Sun 22 Mar', rank: 9,  source: 'https://www.skysports.com/premier-league-table' },
   { team: 'Bournemouth',        badge: '🍒', league: 'premier-league', leagueName: 'Premier League', form: ['W','D','W','D','D'], played: 30, wins: 9,  draws: 14, losses: 7,  gf: 44, ga: 46, cleanSheets: 8,  topScorer: 'Evanilson — 6 goals',                   nextMatch: 'GW31 — Fri 20 Mar', rank: 10, source: 'https://www.skysports.com/premier-league-table' },
@@ -718,8 +824,8 @@ const LA_LIGA_TEAMS = [
 // ─── LA LIGA FORM DATA (APPENDED) ─────────────────────────────────────────
 // Matchday 28, as of March 15, 2026 — Verified by Referee (Cycle 9)
 const LA_LIGA_FORM_DATA = [
-  { team: 'Barcelona',      badge: '🔵', league: 'la-liga', leagueName: 'La Liga', form: ['W','W','W','W','W'], played: 28, wins: 23, draws: 1, losses: 4,  gf: 77, ga: 28, cleanSheets: 8,  topScorer: 'Raphinha — 11 goals (hat-trick MD28) · Lewandowski 11 goals (FIT)',  nextMatch: 'MD29 — Sun 22 Mar', rank: 1,  source: 'https://www.laliga.es/en/standings' },
-  { team: 'Real Madrid',    badge: '👑', league: 'la-liga', leagueName: 'La Liga', form: ['L','W','D','W','W'], played: 28, wins: 21, draws: 3, losses: 4,  gf: 60, ga: 24, cleanSheets: 7,  topScorer: 'Kylian Mbappé — 23 La Liga goals (returned UCL Mar 17, derby likely available)', nextMatch: 'MD29 — Mon 23 Mar', rank: 2,  source: 'https://www.laliga.es/en/standings' },
+  { team: 'Barcelona',      badge: '🔵', league: 'la-liga', leagueName: 'La Liga', form: ['W','W','W','W','W'], played: 28, wins: 23, draws: 1, losses: 4,  gf: 77, ga: 28, cleanSheets: 8,  topScorer: 'Kylian Mbappé (Real Madrid) — 23 goals · Raphinha 11 goals (hat-trick MD28 vs Sevilla) · Lewandowski 11 goals (FIT — eye socket healed)',  nextMatch: 'MD29 — Sun 22 Mar', rank: 1,  source: 'https://www.laliga.es/en/standings' },
+  { team: 'Real Madrid',    badge: '👑', league: 'la-liga', leagueName: 'La Liga', form: ['L','W','D','W','W'], played: 28, wins: 21, draws: 3, losses: 4,  gf: 60, ga: 24, cleanSheets: 7,  topScorer: 'Kylian Mbappé — 23 La Liga goals (returned UCL Mar 17, derby Mar 22 LIKELY available — fitness managed)', nextMatch: 'MD29 — Sun 22 Mar (vs Atlético)', rank: 2,  source: 'https://www.laliga.es/en/standings' },
   { team: 'Atlético Madrid',badge: '🔴', league: 'la-liga', leagueName: 'La Liga', form: ['W','W','D','W','W'], played: 28, wins: 17, draws: 6, losses: 5,  gf: 47, ga: 25, cleanSheets: 8,  topScorer: 'Antoine Griezmann — 6 goals',      nextMatch: 'MD29 — Sun 22 Mar', rank: 3,  source: 'https://www.laliga.es/en/standings' },
   { team: 'Villarreal',     badge: '💛', league: 'la-liga', leagueName: 'La Liga', form: ['D','W','W','D','W'], played: 28, wins: 17, draws: 4, losses: 7,  gf: 51, ga: 33, cleanSheets: 5,  topScorer: 'Alexander Sorloth — top scorer',   nextMatch: 'MD29 TBC',          rank: 4,  source: 'https://www.laliga.es/en/standings' },
   { team: 'Real Betis',     badge: '🟢', league: 'la-liga', leagueName: 'La Liga', form: ['W','D','D','D','W'], played: 28, wins: 11, draws: 11,losses: 6,  gf: 43, ga: 35, cleanSheets: 5,  topScorer: 'Isco — top scorer',               nextMatch: 'MD29 TBC',          rank: 5,  source: 'https://www.laliga.es/en/standings' },
@@ -767,8 +873,8 @@ const BUNDESLIGA_TEAMS = [
 // ─── BUNDESLIGA FORM DATA (APPENDED) ──────────────────────────────────────
 // Matchday 26, as of March 15, 2026 — Verified by Referee (Cycle 9)
 const BUNDESLIGA_FORM_DATA = [
-  { team: 'Bayern Munich',         badge: '🔴', league: 'bundesliga', leagueName: 'Bundesliga', form: ['W','W','D','W','D'], played: 26, wins: 21, draws: 4, losses: 1,  gf: 93, ga: 25, cleanSheets: 14, topScorer: 'Harry Kane — 30 Bundesliga goals ✅',            nextMatch: 'MD27 — Sat 21 Mar', rank: 1,  source: 'https://www.bundesliga.com/en/bundesliga/standings' },
-  { team: 'Borussia Dortmund',     badge: '🟡', league: 'bundesliga', leagueName: 'Bundesliga', form: ['W','W','W','L','W'], played: 26, wins: 17, draws: 7, losses: 2,  gf: 55, ga: 26, cleanSheets: 6,  topScorer: 'Serhou Guirassy — 11 goals',                nextMatch: 'MD27 TBC',          rank: 2,  source: 'https://www.bundesliga.com/en/bundesliga/standings' },
+  { team: 'Bayern Munich',         badge: '🔴', league: 'bundesliga', leagueName: 'Bundesliga', form: ['W','W','D','W','D'], played: 26, wins: 21, draws: 4, losses: 1,  gf: 93, ga: 25, cleanSheets: 14, topScorer: 'Harry Kane — 30 Bundesliga goals (Tier 1: bundesliga.com — domestic league only, on pace for record)',            nextMatch: 'MD27 — Sat 21 Mar (vs Union Berlin, GK crisis)', rank: 1,  source: 'https://www.bundesliga.com/en/bundesliga/standings' },
+  { team: 'Borussia Dortmund',     badge: '🟡', league: 'bundesliga', leagueName: 'Bundesliga', form: ['W','W','W','L','W'], played: 26, wins: 17, draws: 7, losses: 2,  gf: 55, ga: 26, cleanSheets: 6,  topScorer: 'Serhou Guirassy — 11 goals (Emre Can ACL — season over)',                nextMatch: 'MD27 — Sat 21 Mar',          rank: 2,  source: 'https://www.bundesliga.com/en/bundesliga/standings' },
   { team: 'TSG Hoffenheim',        badge: '💙', league: 'bundesliga', leagueName: 'Bundesliga', form: ['W','W','D','L','W'], played: 26, wins: 15, draws: 5, losses: 6,  gf: 54, ga: 34, cleanSheets: 4,  topScorer: 'Andrej Kramarić — 10 goals',                nextMatch: 'MD27 TBC',          rank: 3,  source: 'https://www.bundesliga.com/en/bundesliga/standings' },
   { team: 'VfB Stuttgart',         badge: '🔴', league: 'bundesliga', leagueName: 'Bundesliga', form: ['W','D','L','W','W'], played: 26, wins: 15, draws: 5, losses: 6,  gf: 51, ga: 34, cleanSheets: 4,  topScorer: 'Deniz Undav — 16 goals',                    nextMatch: 'MD27 TBC',          rank: 4,  source: 'https://www.bundesliga.com/en/bundesliga/standings' },
   { team: 'RB Leipzig',            badge: '🔴', league: 'bundesliga', leagueName: 'Bundesliga', form: ['W','D','W','L','L'], played: 26, wins: 14, draws: 5, losses: 7,  gf: 48, ga: 35, cleanSheets: 3,  topScorer: 'Christoph Baumgartner — 10 goals',          nextMatch: 'MD27 TBC',          rank: 5,  source: 'https://www.bundesliga.com/en/bundesliga/standings' },
@@ -783,7 +889,7 @@ const BUNDESLIGA_FORM_DATA = [
   { team: '1. FC Köln',            badge: '🔴', league: 'bundesliga', leagueName: 'Bundesliga', form: ['D','L','W','D','L'], played: 26, wins: 6,  draws: 7, losses: 13, gf: 35, ga: 44, cleanSheets: 2,  topScorer: 'Top scorer TBC',                            nextMatch: 'MD27 TBC',          rank: 14, source: 'https://www.bundesliga.com/en/bundesliga/standings' },
   { team: 'Werder Bremen',         badge: '🟢', league: 'bundesliga', leagueName: 'Bundesliga', form: ['D','L','W','L','L'], played: 26, wins: 6,  draws: 7, losses: 13, gf: 29, ga: 47, cleanSheets: 2,  topScorer: 'Top scorer TBC',                            nextMatch: 'MD27 TBC',          rank: 15, source: 'https://www.bundesliga.com/en/bundesliga/standings' },
   { team: 'FC St. Pauli',          badge: '🤍', league: 'bundesliga', leagueName: 'Bundesliga', form: ['W','L','D','L','L'], played: 26, wins: 6,  draws: 6, losses: 14, gf: 23, ga: 42, cleanSheets: 2,  topScorer: 'Top scorer TBC',                            nextMatch: 'MD27 TBC',          rank: 16, source: 'https://www.bundesliga.com/en/bundesliga/standings' },
-  { team: 'VfL Wolfsburg',         badge: '🟢', league: 'bundesliga', leagueName: 'Bundesliga', form: ['L','L','D','L','L'], played: 26, wins: 5,  draws: 6, losses: 15, gf: 35, ga: 56, cleanSheets: 2,  topScorer: 'Top scorer TBC',                            nextMatch: 'MD27 TBC',          rank: 17, source: 'https://www.bundesliga.com/en/bundesliga/standings' },
+  { team: 'VfL Wolfsburg',         badge: '🟢', league: 'bundesliga', leagueName: 'Bundesliga', form: ['L','L','D','L','L'], played: 26, wins: 5,  draws: 6, losses: 15, gf: 35, ga: 56, cleanSheets: 2,  topScorer: 'Top scorer TBC (Hecking debut MD27)',                            nextMatch: 'MD27 — Sat 21 Mar (vs Werder Bremen)',          rank: 17, source: 'https://www.bundesliga.com/en/bundesliga/standings' },
   { team: '1. FC Heidenheim',      badge: '🔴', league: 'bundesliga', leagueName: 'Bundesliga', form: ['L','L','L','L','L'], played: 26, wins: 3,  draws: 5, losses: 18, gf: 24, ga: 58, cleanSheets: 1,  topScorer: 'Top scorer TBC',                            nextMatch: 'MD27 TBC',          rank: 18, source: 'https://www.bundesliga.com/en/bundesliga/standings' },
 ];
 
